@@ -6,17 +6,20 @@ This plugin enables you to right arrow into the 1Password application, giving yo
 
 ### Actions
 
-Having selected a login, using the action 'Go & Fill...' will perform just like the Go 7 Fill from within 1Password.
+Having selected a login, using the action 'Go & Fill...' will perform just like the Go & Fill from within 1Password.
 
 The 'Go & Fill...' action works with the comma trick, so you can open multiple logins at once.
 
-### Comma trick
+### Adding to the Catalog
 
-To save you time from having to search for 1Password, then right arrow you can 'tick' the 'Web Forms' source under Catalog Preferences, and all forms will be searchable from anywhere (disabled by default).
+To save you time from having to search for 1Password then right arrow, you can **tick** the 'Web Forms' source in the Catalog Preferences Pane (under Modules). This will make all forms will searchable from anywhere in Quicksilver (this is disabled by default).
 
 ## Starting Off
 
-You may need to rescan manually to start with. If the plugin doesn't seem to work, try re-downloading and installing it so you get a message from Quicksilver Saying 'Install Complete asking you to 'Relaunch' or do so 'Later' (chose 'Relaunch').
+You may need to rescan manually to start with to get your logins to show up.
+If the plugin doesn't seem to work, try re-downloading and installing it so you get a message from Quicksilver Saying 'Install Complete asking you to 'Relaunch' or do so 'Later' (chose 'Relaunch').
+
+![Relaunch Dialog](http://i43.tinypic.com/35bi0es.jpg "Relaunch Dialog")
 
 ## Bugs
 
