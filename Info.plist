@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.robertson.Quicksilver.OnePassword</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>1Password Module</string>
+	<key>CFBundlePackageType</key>
+	<string>BNDL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.2</string>
+	<key>CFBundleVersion</key>
+	<string>81</string>
+	<key>QSActions</key>
+	<dict>
+		<key>goAndFill</key>
+		<dict>
+			<key>actionClass</key>
+			<string>OnePasswordAction</string>
+			<key>actionSelector</key>
+			<string>goAndFill:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QS1PasswordForm</string>
+			</array>
+			<key>name</key>
+			<string>Go &amp; Fill...</string>
+			<key>precedence</key>
+			<string>1</string>
+			<key>validatesObjects</key>
+			<false/>
+		</dict>
+		<key>viewInOnePwd</key>
+		<dict>
+			<key>actionClass</key>
+			<string>OnePasswordAction</string>
+			<key>actionSelector</key>
+			<string>viewInOnePwd:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QS1PasswordForm</string>
+			</array>
+			<key>name</key>
+			<string>Open in 1Password</string>
+			<key>precedence</key>
+			<string>3</string>
+			<key>validatesObjects</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>QSPlugIn</key>
+	<dict>
+		<key>author</key>
+		<string></string>
+		<key>categories</key>
+		<array>
+			<string>Applications</string>
+		</array>
+		<key>description</key>
+		<string>Adds support for 1Password Go &amp; Fill</string>
+		<key>extendedDescription</key>
+		<string>&lt;h3&gt;1Password 3 Plugin&lt;/h3&gt; &lt;p&gt;This plugin enables you to right arrow into the 1Password application, giving you a list of all your Logins saved in 1Password&lt;br /&gt; &lt;p&gt;Having selected a login, using the action &apos;Go &amp; Fill...&apos; will perform just like the Go 7 Fill from within 1Password&lt;/p&gt; &lt;p&gt;The &apos;Go &amp; Fill...&apos; action works with the comma trick, so you can open multiple logins at once&lt;/p&gt; &lt;p&gt;To save you time from having to search for 1Password, then right arrow you can &apos;tick&apos; the &apos;Web Forms&apos; source under Catalog Preferences, and all forms will be searchable from anywhere (disbaled by default)&lt;br /&gt; You may need to rescan manually to start with&lt;/p&gt;  &lt;p&gt;This is an early test project, and any ideas or bugs should be addressed to me@patjack.co.uk&lt;/p&gt;</string>
+		<key>icon</key>
+		<string>ws.agile.1Password</string>
+		<key>relatedBundles </key>
+		<array>
+			<string>ws.agile.1Password</string>
+		</array>
+	</dict>
+	<key>QSPresetAdditions</key>
+	<array>
+		<dict>
+			<key>ID</key>
+			<string>QSPresetOnePassword</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>QSPreset1PasswordForm</string>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Web Forms</string>
+					<key>source</key>
+					<string>OnePasswordSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>icon</key>
+			<string>ws.agile.1Password</string>
+			<key>name</key>
+			<string>1Password</string>
+			<key>requiresBundle</key>
+			<string>ws.agile.1Password</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+	</array>
+	<key>QSRegistration</key>
+	<dict>
+		<key>QSActionProviders</key>
+		<dict>
+			<key>OnePasswordAction</key>
+			<string>OnePasswordAction</string>
+		</dict>
+		<key>QSBundleChildHandlers</key>
+		<dict>
+			<key>ws.agile.1Password</key>
+			<string>OnePasswordSource</string>
+		</dict>
+		<key>QSObjectHandlers</key>
+		<dict>
+			<key>QS1PasswordForm</key>
+			<string>OnePasswordSource</string>
+		</dict>
+		<key>QSObjectSources</key>
+		<dict>
+			<key>OnePasswordSource</key>
+			<string>OnePasswordSource</string>
+		</dict>
+	</dict>
+	<key>QSRequirementsTemplate</key>
+	<dict>
+		<key>bundlesTemplate</key>
+		<array>
+			<dict>
+				<key>id</key>
+				<string></string>
+				<key>name</key>
+				<string></string>
+				<key>version</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>feature</key>
+		<integer>0</integer>
+		<key>launchLoad</key>
+		<false/>
+		<key>pathsTemplate</key>
+		<array>
+			<string>/path/to/something</string>
+		</array>
+		<key>pluginsTemplate</key>
+		<array>
+			<dict>
+				<key>id</key>
+				<string></string>
+				<key>name</key>
+				<string></string>
+				<key>version</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>

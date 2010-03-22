@@ -1,0 +1,396 @@
+// !$*UTF8*$!
+{
+	0259C573FE90428111CA0C5A /* Project object */ = {
+		activeArchitecturePreference = i386;
+		activeBuildConfigurationName = Release;
+		activeSDKPreference = macosx10.5;
+		activeTarget = 8D1AC9600486D14A00FE50C9 /* OnePassword */;
+		addToTargets = (
+			8D1AC9600486D14A00FE50C9 /* OnePassword */,
+		);
+		breakpoints = (
+			CD672D78113172A6008405E5 /* OnePasswordAction.m:15 */,
+			CDE4E6F4113311D1003CAF99 /* OnePasswordAction.m:63 */,
+			CDE4E770113311EB003CAF99 /* OnePasswordAction.m:68 */,
+		);
+		codeSenseManager = CDB5BB8C110109170001C0D3 /* Code sense */;
+		perUserDictionary = {
+			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXBreakpointsDataSource_BreakpointID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					198,
+					20,
+					99,
+					99,
+					29,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXBreakpointsDataSource_ActionID,
+					PBXBreakpointsDataSource_TypeID,
+					PBXBreakpointsDataSource_BreakpointID,
+					PBXBreakpointsDataSource_UseID,
+					PBXBreakpointsDataSource_LocationID,
+					PBXBreakpointsDataSource_ConditionID,
+					PBXBreakpointsDataSource_IgnoreCountID,
+					PBXBreakpointsDataSource_ContinueID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					778,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					1051,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					926,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 290958948;
+			PBXWorkspaceStateSaveDate = 290958948;
+		};
+		perUserProjectItems = {
+			CD1451CB11331C02003689F3 /* PBXTextBookmark */ = CD1451CB11331C02003689F3 /* PBXTextBookmark */;
+			CD2150A81157AE8C00D66C15 /* PBXTextBookmark */ = CD2150A81157AE8C00D66C15 /* PBXTextBookmark */;
+			CD2150A91157AE8C00D66C15 /* PlistBookmark */ = CD2150A91157AE8C00D66C15 /* PlistBookmark */;
+			CD79A4951102B461004ED2F3 /* PBXTextBookmark */ = CD79A4951102B461004ED2F3 /* PBXTextBookmark */;
+			CDC9BEB6110DEA8E00DC3665 /* PlistBookmark */ = CDC9BEB6110DEA8E00DC3665 /* PlistBookmark */;
+			CDD8746E113166F7009ED78C /* PBXTextBookmark */ = CDD8746E113166F7009ED78C /* PBXTextBookmark */;
+			CDD87470113166F7009ED78C /* PBXTextBookmark */ = CDD87470113166F7009ED78C /* PBXTextBookmark */;
+			CDD8747611316720009ED78C /* PBXTextBookmark */ = CDD8747611316720009ED78C /* PBXTextBookmark */;
+			CDE4E7A9113314D2003CAF99 /* PBXTextBookmark */ = CDE4E7A9113314D2003CAF99 /* PBXTextBookmark */;
+			CDE4E850113318F4003CAF99 /* PBXTextBookmark */ = CDE4E850113318F4003CAF99 /* PBXTextBookmark */;
+			CDE4E852113318F4003CAF99 /* PBXTextBookmark */ = CDE4E852113318F4003CAF99 /* PBXTextBookmark */;
+			CDE4E86311331A7B003CAF99 /* PBXTextBookmark */ = CDE4E86311331A7B003CAF99 /* PBXTextBookmark */;
+		};
+		sourceControlManager = CDB5BB8B110109170001C0D3 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	32DBCF980370C29C00C91783 /* OnePassword_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1297, 623}}";
+			sepNavSelRange = "{213, 0}";
+			sepNavVisRange = "{0, 258}";
+			sepNavWindowFrame = "{{81, 0}, {1199, 778}}";
+		};
+	};
+	8D1AC9600486D14A00FE50C9 /* OnePassword */ = {
+		activeExec = 0;
+	};
+	8D1AC9730486D14A00FE50C9 /* Info.plist */ = {
+		uiCtxt = {
+			sepNavWindowFrame = "{{81, 0}, {1599, 759}}";
+		};
+	};
+	BBF5817A0B1D9D84003CFF55 /* OnePasswordAction.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1297, 629}}";
+			sepNavSelRange = "{587, 2}";
+			sepNavVisRange = "{0, 641}";
+			sepNavWindowFrame = "{{81, 0}, {1599, 1028}}";
+		};
+	};
+	BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1297, 1404}}";
+			sepNavSelRange = "{593, 0}";
+			sepNavVisRange = "{706, 1635}";
+			sepNavWindowFrame = "{{81, 0}, {1599, 1028}}";
+		};
+	};
+	BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1297, 629}}";
+			sepNavSelRange = "{420, 0}";
+			sepNavVisRange = "{0, 421}";
+		};
+	};
+	BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1090, 2067}}";
+			sepNavSelRange = "{4978, 0}";
+			sepNavVisRange = "{356, 1449}";
+			sepNavWindowFrame = "{{81, 0}, {1599, 1028}}";
+		};
+	};
+	CD1451CB11331C02003689F3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32DBCF980370C29C00C91783 /* OnePassword_Prefix.pch */;
+		name = "OnePassword_Prefix.pch: 10";
+		rLen = 0;
+		rLoc = 213;
+		rType = 0;
+		vrLen = 258;
+		vrLoc = 0;
+	};
+	CD2150A81157AE8C00D66C15 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */;
+		name = "OnePasswordSource.m: 128";
+		rLen = 0;
+		rLoc = 4978;
+		rType = 0;
+		vrLen = 1449;
+		vrLoc = 356;
+	};
+	CD2150A91157AE8C00D66C15 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleVersion,
+		);
+		name = "/Developer/Apps/OnePassword/1Password-Plugin/Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	CD672D78113172A6008405E5 /* OnePasswordAction.m:15 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */;
+		functionName = "-goAndFill:";
+		hitCount = 2;
+		ignoreCount = 0;
+		lineNumber = 15;
+		location = OnePassword;
+		modificationTime = 288561446.243325;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	CD79A43E1102B428004ED2F3 /* JSON.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = JSON.h;
+		path = /Users/patrick/Library/Frameworks/JSON.framework/Headers/JSON.h;
+		sourceTree = "<absolute>";
+	};
+	CD79A4951102B461004ED2F3 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CD79A43E1102B428004ED2F3 /* JSON.h */;
+		name = "JSON.h: 47";
+		rLen = 0;
+		rLoc = 2221;
+		rType = 0;
+		vrLen = 1928;
+		vrLoc = 340;
+	};
+	CDB5BB8B110109170001C0D3 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	CDB5BB8C110109170001C0D3 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	CDC9BEB6110DEA8E00DC3665 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1AC9730486D14A00FE50C9 /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			QSActions,
+			goAndFill,
+			validatesObjects,
+		);
+		name = /Users/patrick/Desktop/OnePassword/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	CDD8746E113166F7009ED78C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CDD8746F113166F7009ED78C /* NDSDKCompatibility.h */;
+		name = "NDSDKCompatibility.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 705;
+		vrLoc = 0;
+	};
+	CDD8746F113166F7009ED78C /* NDSDKCompatibility.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = NDSDKCompatibility.h;
+		path = /Applications/Quicksilver.app/Contents/Frameworks/QSFoundation.framework/Headers/NDSDKCompatibility.h;
+		sourceTree = "<absolute>";
+	};
+	CDD87470113166F7009ED78C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CDD87471113166F7009ED78C /* NDHotKeyEvent.h */;
+		name = "NDHotKeyEvent.h: 21";
+		rLen = 1;
+		rLoc = 1565;
+		rType = 0;
+		vrLen = 2222;
+		vrLoc = 0;
+	};
+	CDD87471113166F7009ED78C /* NDHotKeyEvent.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = NDHotKeyEvent.h;
+		path = /Applications/Quicksilver.app/Contents/Frameworks/QSFoundation.framework/Headers/NDHotKeyEvent.h;
+		sourceTree = "<absolute>";
+	};
+	CDD87473113166F7009ED78C /* NDProcess.h */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.c.h;
+		name = NDProcess.h;
+		path = /Applications/Quicksilver.app/Contents/Frameworks/QSFoundation.framework/Headers/NDProcess.h;
+		sourceTree = "<absolute>";
+	};
+	CDD8747611316720009ED78C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = CDD87473113166F7009ED78C /* NDProcess.h */;
+		name = "NDProcess.h: 5";
+		rLen = 0;
+		rLoc = 204;
+		rType = 0;
+		vrLen = 1268;
+		vrLoc = 0;
+	};
+	CDE4E6F4113311D1003CAF99 /* OnePasswordAction.m:63 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */;
+		functionName = "-writePlistAndFill:";
+		hitCount = 4;
+		ignoreCount = 0;
+		lineNumber = 63;
+		location = OnePassword;
+		modificationTime = 288561553.958317;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	CDE4E770113311EB003CAF99 /* OnePasswordAction.m:68 */ = {
+		isa = PBXFileBreakpoint;
+		actions = (
+		);
+		breakpointStyle = 0;
+		continueAfterActions = 0;
+		countType = 0;
+		delayBeforeContinue = 0;
+		fileReference = BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */;
+		functionName = "-writePlistAndFill:";
+		hitCount = 4;
+		ignoreCount = 0;
+		lineNumber = 68;
+		location = OnePassword;
+		modificationTime = 288561559.102098;
+		originalNumberOfMultipleMatches = 1;
+		state = 1;
+	};
+	CDE4E7A9113314D2003CAF99 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = E1EAB045068128A200774DFF /* OnePassword.m */;
+		name = "OnePassword.m: 15";
+		rLen = 0;
+		rLoc = 211;
+		rType = 0;
+		vrLen = 211;
+		vrLoc = 0;
+	};
+	CDE4E850113318F4003CAF99 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */;
+		name = "OnePasswordSource.h: 21";
+		rLen = 0;
+		rLoc = 420;
+		rType = 0;
+		vrLen = 421;
+		vrLoc = 0;
+	};
+	CDE4E852113318F4003CAF99 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF5817A0B1D9D84003CFF55 /* OnePasswordAction.h */;
+		name = "OnePasswordAction.h: 24";
+		rLen = 2;
+		rLoc = 587;
+		rType = 0;
+		vrLen = 641;
+		vrLoc = 0;
+	};
+	CDE4E86311331A7B003CAF99 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */;
+		name = "OnePasswordAction.m: 25";
+		rLen = 0;
+		rLoc = 593;
+		rType = 0;
+		vrLen = 1635;
+		vrLoc = 706;
+	};
+	E1EAB045068128A200774DFF /* OnePassword.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1297, 763}}";
+			sepNavSelRange = "{211, 0}";
+			sepNavVisRange = "{0, 211}";
+			sepNavWindowFrame = "{{81, 19}, {1199, 759}}";
+		};
+	};
+}
