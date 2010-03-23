@@ -30,3 +30,8 @@ This is an early test project, and any ideas or bugs should be addressed to me@p
 Believe it or not, this plugin has taken me quite a while to develop. If you wish to donate, then the link's in the top right hand corner and I'd really appreciate it :)
 
 **Don't donate here for any work I've done on the QS app itself, this is just for my plugin**
+
+## Thanks
+
+Thanks goes to Rob McBroom for his excellent work on writing documentation detailing [QS Plugin Development](http://github.com/tiennou/blacktree-elements/blob/master/PluginDevelopmentReference/QuicksilverPlug-inReference.mdown).
+Thanks also to Jamie of the 1Password development team for his [excellent advice](http://support.agilewebsolutions.com/showthread.php?21959-Developing-a-Quicksilver-Plugin-for-1Password) and insights into how 1Password works.
