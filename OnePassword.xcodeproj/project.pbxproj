@@ -12,17 +12,30 @@
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		BBF5817C0B1D9D84003CFF55 /* OnePasswordAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */; };
 		BBF581840B1D9DC3003CFF55 /* OnePasswordSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */; };
+		CD7F19C01157C09300A79167 /* JSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CDD8749D1131687A009ED78C /* JSON.framework */; };
+		CD9E5D3F1158E17E00CCCA80 /* RevealIn1Pwd.scpt in CopyFiles */ = {isa = PBXBuildFile; fileRef = CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */; };
 		CDD8749E1131687A009ED78C /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD8749D1131687A009ED78C /* JSON.framework */; };
 		E1EAB046068128A200774DFF /* OnePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EAB045068128A200774DFF /* OnePassword.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CDBED121110863C1000532AF /* CopyFiles */ = {
+		CD7F19C61157C09D00A79167 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				CD7F19C01157C09300A79167 /* JSON.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD9E5D441158E18800CCCA80 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				CD9E5D3F1158E17E00CCCA80 /* RevealIn1Pwd.scpt in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +54,7 @@
 		BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordSource.h; sourceTree = "<group>"; };
 		BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordSource.m; sourceTree = "<group>"; };
 		CDD8749D1131687A009ED78C /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = Frameworks/JSON.framework; sourceTree = DEVELOPER_DIR; };
+		CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; name = RevealIn1Pwd.scpt; path = "Apps/OnePassword/1Password-Plugin/RevealIn1Pwd.scpt"; sourceTree = DEVELOPER_DIR; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E1EAB045068128A200774DFF /* OnePassword.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = OnePassword.m; sourceTree = "<group>"; };
 		E1EAB047068128A800774DFF /* OnePassword.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = OnePassword.h; sourceTree = "<group>"; };
@@ -76,6 +90,7 @@
 		0259C582FE90428111CA0C5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */,
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
 			);
 			name = Resources;
@@ -97,7 +112,6 @@
 				7F35FF3E07F9ACD90056051D /* QSFoundation.framework */,
 				7FFA8E9C0816CCCA00A858CD /* QSEffects.framework */,
 				7FFA8E9D0816CCCA00A858CD /* QSInterface.framework */,
-				7FC20C8107FB741700FDD3CA /* Other Frameworks */,
 				CDD8749D1131687A009ED78C /* JSON.framework */,
 			);
 			name = Frameworks;
@@ -124,13 +138,6 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		7FC20C8107FB741700FDD3CA /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,10 +146,11 @@
 			buildConfigurationList = 7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "OnePassword" */;
 			buildPhases = (
 				8D1AC9660486D14A00FE50C9 /* Resources */,
+				CD9E5D441158E18800CCCA80 /* CopyFiles */,
+				CD7F19C61157C09D00A79167 /* CopyFiles */,
 				8D1AC96A0486D14A00FE50C9 /* Sources */,
 				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
 				E1022B2806B3475D00299BEC /* ShellScript */,
-				CDBED121110863C1000532AF /* CopyFiles */,
 			);
 			buildRules = (
 			);
