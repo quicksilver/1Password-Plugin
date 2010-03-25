@@ -14,12 +14,16 @@ The 'Go & Fill...' action works with the comma trick, so you can open multiple l
 
 To save you time from having to search for 1Password then right arrow, you can **tick** the 'Web Forms' source in the Catalog Preferences Pane (under Modules). This will make all forms will searchable from anywhere in Quicksilver (this is disabled by default).
 
-## Starting Off
+## Getting Started
+
+First, make sure you're using the **Agile Keychain**. The plugin does **not** work with the Mac OS X keychain.
 
 You may need to rescan manually to start with to get your logins to show up.
 If the plugin doesn't seem to work, try re-downloading and installing it so you get a message from Quicksilver Saying 'Install Complete asking you to 'Relaunch' or do so 'Later' (chose 'Relaunch').
 
 ![Relaunch Dialog](http://i43.tinypic.com/35bi0es.jpg "Relaunch Dialog")
+
+**If either of the actions don't seem to work, I'd recommend upgrading to QS β58+**
 
 ## Bugs
 
