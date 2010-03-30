@@ -43,14 +43,14 @@ Thanks also to Jamie of the 1Password development team for his [excellent advice
 ## Changelog
 
 ### 0.4
-Updated to JSON framework 2.2.3 (Released: 07/03/10)
-Set project to build JSON framework from scratch to avoid linking problems
+*	Updated to JSON framework 2.2.3 (Released: 07/03/10)
+*	Set project to build JSON framework from scratch to avoid linking problems
 
 ### 0.3
-Fixed: 'Open in 1Password' action for some (make sure using latest QS β58+)
+*	Fixed: 'Open in 1Password' action for some (make sure using latest QS β58+)
 
 ### 0.2
-Added 'Open in 1Password' action
+*	Added 'Open in 1Password' action
 
 ### 0.1
-Initial Release
+*	Initial Release
