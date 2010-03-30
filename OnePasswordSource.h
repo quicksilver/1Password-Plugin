@@ -7,7 +7,7 @@
 //
 
 #import <QSCore/QSObjectSource.h>
-#import <JSON/JSON.h>
+#import "JSON.h"
 
 #define QS1PasswordForm @"QS1PasswordForm"
 #define QS1PasswordSecureNote @"QS1PasswordSecureNote"

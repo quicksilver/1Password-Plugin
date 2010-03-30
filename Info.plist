@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.2</string>
+	<string>0.4</string>
 	<key>CFBundleVersion</key>
-	<string>99</string>
+	<string>C3</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -69,10 +69,6 @@
 		<string>&lt;h3&gt;1Password 3 Plugin&lt;/h3&gt; &lt;p&gt;This plugin enables you to right arrow into the 1Password application, giving you a list of all your Logins saved in 1Password&lt;br /&gt; &lt;p&gt;Having selected a login, using the action 'Go &amp; Fill...' will perform just like the Go 7 Fill from within 1Password&lt;/p&gt; &lt;p&gt;The 'Go &amp; Fill...' action works with the comma trick, so you can open multiple logins at once&lt;/p&gt; &lt;p&gt;To save you time from having to search for 1Password, then right arrow you can 'tick' the 'Web Forms' source under Catalog Preferences, and all forms will be searchable from anywhere (disbaled by default)&lt;br /&gt; You may need to rescan manually to start with&lt;/p&gt;  &lt;p&gt;This is an early test project, and any ideas or bugs should be addressed to me@patjack.co.uk&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>ws.agile.1Password</string>
-		<key>relatedBundles </key>
-		<array>
-			<string>ws.agile.1Password</string>
-		</array>
 	</dict>
 	<key>QSPresetAdditions</key>
 	<array>
@@ -92,8 +88,6 @@
 					<string>OnePasswordSource</string>
 				</dict>
 			</array>
-			<key>enabled</key>
-			<true/>
 			<key>icon</key>
 			<string>ws.agile.1Password</string>
 			<key>name</key>

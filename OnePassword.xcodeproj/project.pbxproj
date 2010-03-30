@@ -12,23 +12,17 @@
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		BBF5817C0B1D9D84003CFF55 /* OnePasswordAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */; };
 		BBF581840B1D9DC3003CFF55 /* OnePasswordSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */; };
-		CD7F19C01157C09300A79167 /* JSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CDD8749D1131687A009ED78C /* JSON.framework */; };
+		CD106EBD1161F80000121C1E /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CD106EB21161F80000121C1E /* NSObject+SBJSON.m */; };
+		CD106EBE1161F80000121C1E /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CD106EB41161F80000121C1E /* NSString+SBJSON.m */; };
+		CD106EBF1161F80000121C1E /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CD106EB61161F80000121C1E /* SBJSON.m */; };
+		CD106EC01161F80000121C1E /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = CD106EB81161F80000121C1E /* SBJsonBase.m */; };
+		CD106EC11161F80000121C1E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CD106EBA1161F80000121C1E /* SBJsonParser.m */; };
+		CD106EC21161F80000121C1E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = CD106EBC1161F80000121C1E /* SBJsonWriter.m */; };
 		CD9E5D3F1158E17E00CCCA80 /* RevealIn1Pwd.scpt in CopyFiles */ = {isa = PBXBuildFile; fileRef = CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */; };
-		CDD8749E1131687A009ED78C /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDD8749D1131687A009ED78C /* JSON.framework */; };
 		E1EAB046068128A200774DFF /* OnePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EAB045068128A200774DFF /* OnePassword.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CD7F19C61157C09D00A79167 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CD7F19C01157C09300A79167 /* JSON.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CD9E5D441158E18800CCCA80 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
@@ -53,7 +47,19 @@
 		BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordAction.m; sourceTree = "<group>"; };
 		BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordSource.h; sourceTree = "<group>"; };
 		BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordSource.m; sourceTree = "<group>"; };
-		CDD8749D1131687A009ED78C /* JSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSON.framework; path = Frameworks/JSON.framework; sourceTree = DEVELOPER_DIR; };
+		CD106EB01161F80000121C1E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = "Apps/OnePassword/1Password-Plugin/JSON/JSON.h"; sourceTree = DEVELOPER_DIR; };
+		CD106EB11161F80000121C1E /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJSON.h"; path = "Apps/OnePassword/1Password-Plugin/JSON/NSObject+SBJSON.h"; sourceTree = DEVELOPER_DIR; };
+		CD106EB21161F80000121C1E /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJSON.m"; path = "Apps/OnePassword/1Password-Plugin/JSON/NSObject+SBJSON.m"; sourceTree = DEVELOPER_DIR; };
+		CD106EB31161F80000121C1E /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SBJSON.h"; path = "Apps/OnePassword/1Password-Plugin/JSON/NSString+SBJSON.h"; sourceTree = DEVELOPER_DIR; };
+		CD106EB41161F80000121C1E /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SBJSON.m"; path = "Apps/OnePassword/1Password-Plugin/JSON/NSString+SBJSON.m"; sourceTree = DEVELOPER_DIR; };
+		CD106EB51161F80000121C1E /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJSON.h; path = "Apps/OnePassword/1Password-Plugin/JSON/SBJSON.h"; sourceTree = DEVELOPER_DIR; };
+		CD106EB61161F80000121C1E /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJSON.m; path = "Apps/OnePassword/1Password-Plugin/JSON/SBJSON.m"; sourceTree = DEVELOPER_DIR; };
+		CD106EB71161F80000121C1E /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonBase.h; path = "Apps/OnePassword/1Password-Plugin/JSON/SBJsonBase.h"; sourceTree = DEVELOPER_DIR; };
+		CD106EB81161F80000121C1E /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonBase.m; path = "Apps/OnePassword/1Password-Plugin/JSON/SBJsonBase.m"; sourceTree = DEVELOPER_DIR; };
+		CD106EB91161F80000121C1E /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonParser.h; path = "Apps/OnePassword/1Password-Plugin/JSON/SBJsonParser.h"; sourceTree = DEVELOPER_DIR; };
+		CD106EBA1161F80000121C1E /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonParser.m; path = "Apps/OnePassword/1Password-Plugin/JSON/SBJsonParser.m"; sourceTree = DEVELOPER_DIR; };
+		CD106EBB1161F80000121C1E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = "Apps/OnePassword/1Password-Plugin/JSON/SBJsonWriter.h"; sourceTree = DEVELOPER_DIR; };
+		CD106EBC1161F80000121C1E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = "Apps/OnePassword/1Password-Plugin/JSON/SBJsonWriter.m"; sourceTree = DEVELOPER_DIR; };
 		CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; name = RevealIn1Pwd.scpt; path = "Apps/OnePassword/1Password-Plugin/RevealIn1Pwd.scpt"; sourceTree = DEVELOPER_DIR; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E1EAB045068128A200774DFF /* OnePassword.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = OnePassword.m; sourceTree = "<group>"; };
@@ -68,7 +74,6 @@
 				8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */,
 				7F35FF4007F9ACD90056051D /* QSCore.framework in Frameworks */,
 				7F35FF4207F9ACD90056051D /* QSFoundation.framework in Frameworks */,
-				CDD8749E1131687A009ED78C /* JSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +117,6 @@
 				7F35FF3E07F9ACD90056051D /* QSFoundation.framework */,
 				7FFA8E9C0816CCCA00A858CD /* QSEffects.framework */,
 				7FFA8E9D0816CCCA00A858CD /* QSInterface.framework */,
-				CDD8749D1131687A009ED78C /* JSON.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -120,6 +124,7 @@
 		32DBCF9E0370C38000C91783 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CD106EAF1161F80000121C1E /* JSON */,
 				BBF5817A0B1D9D84003CFF55 /* OnePasswordAction.h */,
 				BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */,
 				E1EAB047068128A800774DFF /* OnePassword.h */,
@@ -138,6 +143,27 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		CD106EAF1161F80000121C1E /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				CD106EB01161F80000121C1E /* JSON.h */,
+				CD106EB11161F80000121C1E /* NSObject+SBJSON.h */,
+				CD106EB21161F80000121C1E /* NSObject+SBJSON.m */,
+				CD106EB31161F80000121C1E /* NSString+SBJSON.h */,
+				CD106EB41161F80000121C1E /* NSString+SBJSON.m */,
+				CD106EB51161F80000121C1E /* SBJSON.h */,
+				CD106EB61161F80000121C1E /* SBJSON.m */,
+				CD106EB71161F80000121C1E /* SBJsonBase.h */,
+				CD106EB81161F80000121C1E /* SBJsonBase.m */,
+				CD106EB91161F80000121C1E /* SBJsonParser.h */,
+				CD106EBA1161F80000121C1E /* SBJsonParser.m */,
+				CD106EBB1161F80000121C1E /* SBJsonWriter.h */,
+				CD106EBC1161F80000121C1E /* SBJsonWriter.m */,
+			);
+			name = JSON;
+			path = "Apps/OnePassword/1Password-Plugin/JSON";
+			sourceTree = DEVELOPER_DIR;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,7 +173,6 @@
 			buildPhases = (
 				8D1AC9660486D14A00FE50C9 /* Resources */,
 				CD9E5D441158E18800CCCA80 /* CopyFiles */,
-				CD7F19C61157C09D00A79167 /* CopyFiles */,
 				8D1AC96A0486D14A00FE50C9 /* Sources */,
 				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
 				E1022B2806B3475D00299BEC /* ShellScript */,
@@ -213,6 +238,12 @@
 				E1EAB046068128A200774DFF /* OnePassword.m in Sources */,
 				BBF5817C0B1D9D84003CFF55 /* OnePasswordAction.m in Sources */,
 				BBF581840B1D9DC3003CFF55 /* OnePasswordSource.m in Sources */,
+				CD106EBD1161F80000121C1E /* NSObject+SBJSON.m in Sources */,
+				CD106EBE1161F80000121C1E /* NSString+SBJSON.m in Sources */,
+				CD106EBF1161F80000121C1E /* SBJSON.m in Sources */,
+				CD106EC01161F80000121C1E /* SBJsonBase.m in Sources */,
+				CD106EC11161F80000121C1E /* SBJsonParser.m in Sources */,
+				CD106EC21161F80000121C1E /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,11 +286,13 @@
 					"\"$(SRCROOT)\"",
 					"\"$(DEVELOPER_DIR)/Frameworks\"",
 				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OnePassword_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = OnePassword;
 				WRAPPER_EXTENSION = qsplugin;
@@ -278,10 +311,12 @@
 		7F6B3EF1085CE8DF000735A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = i386;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx10.5;
+				VALID_ARCHS = "i386 ppc";
 			};
 			name = Release;
 		};

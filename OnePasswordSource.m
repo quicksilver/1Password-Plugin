@@ -8,7 +8,7 @@
 
 #import "OnePasswordSource.h"
 #import <QSCore/QSObject.h>
-#import <JSON/JSON.h>
+#import "JSON.h"
 
 @implementation OnePasswordSource
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry{
