@@ -39,3 +39,18 @@ Believe it or not, this plugin has taken me quite a while to develop. If you wis
 
 Thanks goes to Rob McBroom for his excellent work on writing documentation detailing [QS Plugin Development](http://github.com/tiennou/blacktree-elements/blob/master/PluginDevelopmentReference/QuicksilverPlug-inReference.mdown).
 Thanks also to Jamie of the 1Password development team for his [excellent advice](http://support.agilewebsolutions.com/showthread.php?21959-Developing-a-Quicksilver-Plugin-for-1Password) and insights into how 1Password works.
+
+## Changelog
+
+### 0.4
+Updated to JSON framework 2.2.3 (Released: 07/03/10)
+Set project to build JSON framework from scratch to avoid linking problems
+
+### 0.3
+Fixed: 'Open in 1Password' action for some (make sure using latest QS β58+)
+
+### 0.2
+Added 'Open in 1Password' action
+
+### 0.1
+Initial Release
