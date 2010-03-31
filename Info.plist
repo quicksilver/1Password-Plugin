@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.5</string>
+	<string>0.6</string>
 	<key>CFBundleVersion</key>
-	<string>AE</string>
+	<string>D8</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>

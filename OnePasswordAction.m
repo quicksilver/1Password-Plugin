@@ -42,27 +42,78 @@
 		NSLog(@"Cannot operate on multiple web forms :(");
 		// A nice noise to let the user know something is wrong
 		NSBeep();
-		return nil;
-			}
+	}
 	else {
-	
-		//NSLog(@"%@", [dObject label]);
-		//NSLog(@"%@", [dObject objectForMeta:@"locationKey"]);
+		
+		DLog(@"dObject label: %@", [dObject label]);
+		DLog(@"dObject form key: %@", [dObject objectForMeta:@"form"]);
 		NSString *command = @"defaults write ws.agile.1Password findUUID ";
 		command = [command stringByAppendingString:[dObject objectForMeta:@"form"]];
-		//NSLog(@"%@", command);
+		DLog(@"command: %@", command);
 		
-		// Set the args for the applescript - name for applescript 'keystroke' if 1Pwd is open and command for setting prefs if not
-		NSArray *arguments=[NSArray arrayWithObjects:[dObject label],command,nil];
-		
-		// Make dict to store errors
-		NSDictionary *dictErr=nil;
-		// Run the applesctipt
-		[[self script] executeSubroutine:@"reveal_in_1Pwd" arguments:arguments error:&dictErr];
-		// Log any errors
-		if (dictErr) NSLog(@"Create Error: %@",dictErr);	}
-
-		return nil;
+		// load the script from a resource by fetching its URL from within our bundle
+		NSString *path=[[NSBundle bundleForClass:[self class]]pathForResource:@"RevealIn1Pwd" ofType:@"scpt"];
+		if (path != nil)
+		{
+			NSDictionary* scptErrors = [NSDictionary dictionary];
+			NSAppleScript* appleScript =
+			[[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:&scptErrors];
+			if (appleScript != nil)
+			{
+				// create the first parameter
+				NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[dObject label]];
+				NSAppleEventDescriptor* secondParameter = [NSAppleEventDescriptor descriptorWithString:command];
+				
+				// create and populate the list of parameters
+				NSAppleEventDescriptor* parameters = [NSAppleEventDescriptor listDescriptor];
+				[parameters insertDescriptor:firstParameter atIndex:1];
+				[parameters insertDescriptor:secondParameter atIndex:2];
+				
+				
+				// create the AppleEvent target
+				ProcessSerialNumber psn = {0, kCurrentProcess};
+				NSAppleEventDescriptor* target =
+				[NSAppleEventDescriptor
+				 descriptorWithDescriptorType:typeProcessSerialNumber
+				 bytes:&psn
+				 length:sizeof(ProcessSerialNumber)];
+				
+				// create an NSAppleEventDescriptor with the script's method name to call,
+				// this is used for the script statement: "on show_message(user_message)"
+				// Note that the routine name must be in lower case.
+				NSAppleEventDescriptor* handler =
+				[NSAppleEventDescriptor descriptorWithString:
+				 [@"reveal_in_1pwd" lowercaseString]];
+				
+				// create the event for an AppleScript subroutine,
+				// set the method name and the list of parameters
+				NSAppleEventDescriptor* event =
+				[NSAppleEventDescriptor appleEventWithEventClass:kASAppleScriptSuite
+														 eventID:kASSubroutineEvent
+												targetDescriptor:target
+														returnID:kAutoGenerateReturnID
+												   transactionID:kAnyTransactionID];
+				[event setParamDescriptor:handler forKeyword:keyASSubroutineName];
+				[event setParamDescriptor:parameters forKeyword:keyDirectObject];
+				
+				// call the event in AppleScript
+				if (![appleScript executeAppleEvent:event error:&scptErrors])
+				{
+					NSLog(@"%@",scptErrors);
+					// report any errors from 'errors'
+				}
+				
+				[appleScript release];
+			}
+			else
+			{
+				NSLog(@"%@",scptErrors);
+				// report any errors from 'errors'
+			}
+		}
+	}
+	
+	return nil;
 }
 
 -(void)writePlistAndFill:(QSObject *)dObject
@@ -93,16 +144,6 @@
 	
 }
 
-// Thanks to Alcor - from the iCal plugin
-- (NSAppleScript *)script{
-	NSString *path=[[NSBundle bundleForClass:[self class]]pathForResource:@"RevealIn1Pwd" ofType:@"scpt"];
-	
-	DLog(@"path: %@", path);
-	
-	NSAppleScript *script=nil;
-	if (path)
-		script=[[[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:nil]autorelease];	
-}
 
 
 //-(QSObject *)trashForm:(QSObject *)dObject

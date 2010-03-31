@@ -44,6 +44,10 @@ Thanks also to Jamie of the 1Password development team for his [excellent advice
 
 ## Changelog
 
+### 0.6
+* Fixed another applescript problem by using Apple's NSApplescript approach as opposed to Alcor's
+* *Hopefully* fixed most people's bugs
+
 ### 0.5
 * Fixed problem where keychain location wasn't being picked up properly for some due to the '~' (tilde) in the file name
 
