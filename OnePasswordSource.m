@@ -42,21 +42,31 @@
 	// Find the path to the agile keychain file **has to be agilekeychain format
 	NSString *keychainPath= (NSString *)CFPreferencesCopyAppValue((CFStringRef)@"AgileKeychainLocation",(CFStringRef) @"ws.agile.1Password");
 	
+	DLog(@"Keychain path: %@", keychainPath);
+	
 	// make sure the keychain is in agile format
 	if ([[keychainPath pathExtension] isEqualToString:@"agilekeychain"]) 
 	{
 		
 		// Get into the data folder of it
-		keychainPath = [keychainPath stringByAppendingPathComponent:@"data/default"];
+		keychainPath = [keychainPath stringByAppendingPathComponent:@"data/default/"];
+		
+		// Expand the tilde
+		keychainPath = [keychainPath stringByExpandingTildeInPath];
+		
+		DLog(@"Keychain data path: %@", keychainPath);
 		
 		// Define Filemanager
 		NSFileManager *fm = [NSFileManager defaultManager];
 		
 		// Catch any errors
-		NSError *error;
-		
+		NSError *dataError = nil;
+				
 		// get all the files in the directory
-		NSArray *dataFiles = [fm contentsOfDirectoryAtPath:keychainPath error:&error];
+		NSArray *dataFiles = [fm contentsOfDirectoryAtPath:keychainPath error:&dataError];
+		
+		if(!dataFiles)
+			NSLog(@"Error: %@",dataError);
 		
 		// Set this up to get only the files ending in .1pwd
 		NSPredicate *contains1Pwd = [NSPredicate predicateWithFormat:@"SELF ENDSWITH[c] '1Password'"];
@@ -64,20 +74,26 @@
 		// Put these files in a new array
 		NSArray *filteredFiles = [dataFiles filteredArrayUsingPredicate:contains1Pwd];
 		
-		//NSLog(@"filtered files: %@", filteredFiles);
+		DLog(@"filtered files: %@", [filteredFiles objectAtIndex:0]);
 		
 		// For each .1pwd file in the filtered files
 		for (NSString *dataPath in filteredFiles)
 		{
-			NSError *error;
+			NSError *stringError = nil;
+						
 			// Stuff the file contents into a string
 			NSString *stringFromFileAtPath = [[NSString alloc]
 											  initWithContentsOfFile:[keychainPath stringByAppendingPathComponent:dataPath]
 											  encoding:NSUTF8StringEncoding
-											  error:&error];
+											  error:&stringError];
+			if(!stringFromFileAtPath)
+				NSLog(@"%@", stringError);
 			
 			// store the JSON file in a dictionary
 			NSDictionary *JSONDict = [stringFromFileAtPath JSONValue];
+			
+			if(!JSONDict)
+				NSLog(@"Error getting JSONDict");
 			
 			// Now we're gonna need to distinguish between the different types of things - web forms, passwords, identities, 
 			

@@ -21,6 +21,7 @@
 - (void)writePlistAndFill:(QSObject *)dObject;
 - (QSObject *)viewInOnePwd:(QSObject *)dObject;
 - (QSObject *)goAndFill:(QSObject *)dObject;
+- (NSAppleScript *)script;
 //- (QSObject *)trashForm:(QSObject *)dObject;
 
 @end

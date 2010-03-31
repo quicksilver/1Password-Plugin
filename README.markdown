@@ -4,6 +4,8 @@
 
 This plugin enables you to right arrow into the 1Password application, giving you a list of all your Logins saved in 1Password.
 
+For this plugin to work, you must have **Mac OS X Leopard or higher (10.5+)** and **1Password 3+**. It is also recommended you upgrade to QS β58+ if you're having problems.
+
 ### Actions
 
 Having selected a login, using the action 'Go & Fill...' will perform just like the Go & Fill from within 1Password.
@@ -41,6 +43,9 @@ Thanks goes to Rob McBroom for his excellent work on writing documentation detai
 Thanks also to Jamie of the 1Password development team for his [excellent advice](http://support.agilewebsolutions.com/showthread.php?21959-Developing-a-Quicksilver-Plugin-for-1Password) and insights into how 1Password works.
 
 ## Changelog
+
+### 0.5
+* Fixed problem where keychain location wasn't being picked up properly for some due to the '~' (tilde) in the file name
 
 ### 0.4
 *	Updated to JSON framework 2.2.3 (Released: 07/03/10)

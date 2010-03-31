@@ -96,7 +96,9 @@
 // Thanks to Alcor - from the iCal plugin
 - (NSAppleScript *)script{
 	NSString *path=[[NSBundle bundleForClass:[self class]]pathForResource:@"RevealIn1Pwd" ofType:@"scpt"];
-	NSLog(@"path: %@", path);
+	
+	DLog(@"path: %@", path);
+	
 	NSAppleScript *script=nil;
 	if (path)
 		script=[[[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:nil]autorelease];	
