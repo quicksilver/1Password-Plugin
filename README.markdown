@@ -8,13 +8,25 @@ For this plugin to work, you must have **Mac OS X Leopard or higher (10.5+)** an
 
 ### Actions
 
-Having selected a login, using the action 'Go & Fill...' will perform just like the Go & Fill from within 1Password.
+Having selected a login there are 2 actions that you can perform.
+
+Using the action 'Go & Fill...' will work just like the Go & Fill command from within 1Password; it will launch your default browser and automatically log you in.
 
 The 'Go & Fill...' action works with the comma trick, so you can open multiple logins at once.
+
+![Go And Fill... Action](http://i42.tinypic.com/i35lig.jpg "Go And Fill... Action")
+
+
+The second action is 'Open in 1Password'. This action will launch 1Password and bring the selected login item to the front for you to view/edit etc.
+
+![Open in 1Password Action](http://i42.tinypic.com/wk62qd.jpg "Open in 1Password Action")
+
 
 ### Adding to the Catalog
 
 To save you time from having to search for 1Password then right arrow, you can **tick** the 'Web Forms' source in the Catalog Preferences Pane (under Modules). This will make all forms will searchable from anywhere in Quicksilver (this is disabled by default).
+
+![1Password Catalog Source](http://i43.tinypic.com/znvo1.jpg "1Password Catalog Source")
 
 ## Getting Started
 
