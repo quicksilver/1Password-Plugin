@@ -6,6 +6,8 @@ This plugin enables you to right arrow into the 1Password application, giving yo
 
 For this plugin to work, you must have **Mac OS X Leopard or higher (10.5+)** and **1Password 3+**. It is also recommended you upgrade to QS β58+ if you're having problems.
 
+You can download the latest version and any previous versions from the Github downloads page [here](http://github.com/pjrobertson/1Password-Plugin/downloads "Download")
+
 ### Actions
 
 Having selected a login there are 2 actions that you can perform.
@@ -33,7 +35,8 @@ To save you time from having to search for 1Password then right arrow, you can *
 First, make sure you're using the **Agile Keychain**. The plugin does **not** work with the Mac OS X keychain.
 
 You may need to rescan manually to start with to get your logins to show up.
-If the plugin doesn't seem to work, try re-downloading and installing it so you get a message from Quicksilver Saying 'Install Complete asking you to 'Relaunch' or do so 'Later' (chose 'Relaunch').
+If the plugin doesn't seem to work, try re-downloading and installing it. Quicksilver will pop up a message saying 'Install Complete'.
+Click 'Relaunch' and it should hopefully fix any of your problems.
 
 ![Relaunch Dialog](http://i43.tinypic.com/35bi0es.jpg "Relaunch Dialog")
 
