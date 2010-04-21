@@ -59,6 +59,15 @@ Thanks also to Jamie of the 1Password development team for his [excellent advice
 
 ## Changelog
 
+### 0.7
+*  Changed the precedence of the Actions
+
+   I'd meant to set 'Go & Fill...' to be first but had actually set 'Open in 1Password to be first'
+   You only really need to download this version if...
+
+     1. This is the first time you're using the plugin
+     2. You haven't changed the order of the actions and want 'Go & Fill...' to be the default action
+
 ### 0.6
 * Fixed another applescript problem by using Apple's NSApplescript approach as opposed to Alcor's
 * *Hopefully* fixed most people's bugs
