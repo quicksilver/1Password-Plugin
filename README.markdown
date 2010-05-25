@@ -26,13 +26,13 @@ The second action is 'Open in 1Password'. This action will launch 1Password and 
 
 ### Adding to the Catalog
 
-To save you time from having to search for 1Password then right arrow, you can **tick** the 'Web Forms' source in the Catalog Preferences Pane (under Modules). This will make all forms will searchable from anywhere in Quicksilver (this is disabled by default).
+To save you from having to search for 1Password in the first pane then right arrowing into it, you can **tick** the 'Web Forms' source in the Quicksilver Catalog Preferences Pane (under Modules). This will mean all login forms will be searchable directly from the first pane in Quicksilver. Note that this is disabled by default.
 
 ![1Password Catalog Source](http://i43.tinypic.com/znvo1.jpg "1Password Catalog Source")
 
 ## Getting Started
 
-First, make sure you're using the **Agile Keychain**. The plugin does **not** work with the Mac OS X keychain.
+First, make sure you're using the **Agile Keychain**. The plugin does **not** work with the Mac OS X keychain. (Check in the 1Password preferences).
 
 You may need to rescan manually to start with to get your logins to show up.
 If the plugin doesn't seem to work, try re-downloading and installing it. Quicksilver will pop up a message saying 'Install Complete'.
@@ -44,7 +44,7 @@ Click 'Relaunch' and it should hopefully fix any of your problems.
 
 ## Bugs
 
-This is an early test project, and any ideas or bugs should be addressed to me@patjack.co.uk
+This is an *fairly* early test project, and any ideas or bugs should be addressed to me@patjack.co.uk
 
 ## Donating
 
