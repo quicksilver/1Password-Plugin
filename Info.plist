@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.7</string>
+	<string>0.8</string>
 	<key>CFBundleVersion</key>
-	<string>D8</string>
+	<string>DF</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -46,6 +46,7 @@
 			<key>directTypes</key>
 			<array>
 				<string>QS1PasswordForm</string>
+				<string>QS1PasswordSecureNote</string>
 			</array>
 			<key>name</key>
 			<string>Open in 1Password</string>
@@ -77,6 +78,16 @@
 			<string>QSPresetOnePassword</string>
 			<key>children</key>
 			<array>
+				<dict>
+					<key>ID</key>
+					<string>QSPreset1PasswordSecureNote</string>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Secure Notes</string>
+					<key>source</key>
+					<string>OnePasswordSource</string>
+				</dict>
 				<dict>
 					<key>ID</key>
 					<string>QSPreset1PasswordForm</string>
@@ -113,6 +124,8 @@
 		<key>QSObjectHandlers</key>
 		<dict>
 			<key>QS1PasswordForm</key>
+			<string>OnePasswordSource</string>
+			<key>QS1PasswordSecureNote</key>
 			<string>OnePasswordSource</string>
 		</dict>
 		<key>QSObjectSources</key>
