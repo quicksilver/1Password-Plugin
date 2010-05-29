@@ -45,6 +45,7 @@
 	}
 	else {
 		
+		DLog(@"Trying to open...");
 		DLog(@"dObject label: %@", [dObject label]);
 		DLog(@"dObject form key: %@", [dObject objectForMeta:@"form"]);
 		NSString *command = @"defaults write ws.agile.1Password findUUID ";

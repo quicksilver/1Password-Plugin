@@ -116,14 +116,19 @@
 				// else if it's a secure note
 				else if ([[JSONDict objectForKey:@"typeName"] isEqualToString:@"securenotes.SecureNote"])
 				{
-					/* QSObject *newObject;
+					/**/
+					
+					QSObject *newObject;
 					 
 					 newObject=[QSObject objectWithString:[JSONDict objectForKey:@"title"]];
-					 [newObject setObject:[JSONDict objectForKey:@"title"] forType:QS1PasswordSecureNote];
+					[newObject setObject:[JSONDict objectForKey:@"title"] forType:QS1PasswordSecureNote];
+					[newObject setLabel:[JSONDict objectForKey:@"title"]];
+					[newObject setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]];
+					[newObject setObject:[JSONDict objectForKey:@"uuid"] forMeta:@"form"];
 					 [newObject setPrimaryType:QS1PasswordSecureNote];
 					 
 					 [objects addObject:newObject];
-					 NSLog(@"File: %@ is a secure note", dataPath); */
+					 NSLog(@"File: %@ is a secure note", dataPath);
 				}
 				
 				// if it's a webform
