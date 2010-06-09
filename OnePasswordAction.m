@@ -6,6 +6,8 @@
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
 //
 
+// 'form' means UUID
+
 #import "OnePasswordAction.h"
 
 

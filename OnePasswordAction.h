@@ -13,6 +13,11 @@
 #define kOnePasswordAction @"OnePasswordAction"
 #define kQSObjectComponents @"QSObjectComponents"
 #define QS1PasswordForm @"QS1PasswordForm"
+#define QS1PasswordSecureNote @"QS1PasswordSecureNote"
+#define QS1PasswordIdentity @"QS1PasswordIdentity"
+#define QS1PasswordSoftwareLicense @"QS1PasswordSoftwareLicense"
+#define QS1PasswordOnlineService @"QS1PasswordOnlineService"
+#define QS1PasswordWalletItem @"QS1PasswordWalletItem"
 
 @interface OnePasswordAction : QSActionProvider
 {

@@ -101,16 +101,78 @@
 			if(![JSONDict objectForKey:@"trashed"])
 			{
 				
+				// Start the sorting
 				// if it's an identity
 				if ([[JSONDict objectForKey:@"typeName"] isEqualToString:@"identities.Identity"])
 				{
 					//NSLog(@"File: %@ is an identity", dataPath);
+					QSObject *newObject;
+					NSString *newObjectName = [JSONDict objectForKey:@"title"];
+					newObject=[QSObject objectWithString:newObjectName];
+					[newObject setObject:newObjectName forType:QS1PasswordWalletItem];
+					[newObject setLabel:newObjectName];
+					DLog(@"Image is at: %@", [[NSBundle bundleForClass:[self class]]pathForResource:@"identities" ofType:@"png"]);
+					[newObject setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleForClass:[self class]]pathForResource:@"identities" ofType:@"png"]]autorelease]];
+					[newObject setObject:[JSONDict objectForKey:@"uuid"] forMeta:@"form"];
+					
+					[objects addObject:newObject];
+					NSLog(@"File: %@ is a secure note", dataPath);
+					
+					
 				}
 				
 				// else if it's a wallet or sofware license (wallet items are wallet.financial, sofwtare licenses are wallet.computer)
-				else if ([[JSONDict objectForKey:@"typeName"] hasPrefix:@"wallet"])
+				else if ([[JSONDict objectForKey:@"typeName"] hasPrefix:@"wallet.financial"])
 				{
 					//NSLog(@"File: %@ is a wallet", dataPath);
+					QSObject *newObject;
+					NSString *newObjectName = [JSONDict objectForKey:@"title"];
+					newObject=[QSObject objectWithString:newObjectName];
+					[newObject setObject:newObjectName forType:QS1PasswordWalletItem];
+					[newObject setLabel:newObjectName];
+					DLog(@"Image is at: %@", [[NSBundle bundleForClass:[self class]]pathForResource:@"wallet" ofType:@"png"]);
+					[newObject setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleForClass:[self class]]pathForResource:@"wallet" ofType:@"png"]]autorelease]];
+					[newObject setObject:[JSONDict objectForKey:@"uuid"] forMeta:@"form"];
+					
+					[objects addObject:newObject];
+					NSLog(@"File: %@ is a secure note", dataPath);
+					
+				}
+				
+				// else if it's a software license
+				else if ([[JSONDict objectForKey:@"typeName"] hasPrefix:@"wallet.computer"])
+				{
+					//NSLog(@"File: %@ is a software license", dataPath);
+					QSObject *newObject;
+					NSString *newObjectName = [JSONDict objectForKey:@"title"];
+					newObject=[QSObject objectWithString:newObjectName];
+					[newObject setObject:newObjectName forType:QS1PasswordSoftwareLicense];
+					[newObject setLabel:newObjectName];
+					DLog(@"Image is at: %@", [[NSBundle bundleForClass:[self class]]pathForResource:@"software" ofType:@"png"]);
+					[newObject setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleForClass:[self class]]pathForResource:@"software" ofType:@"png"]]autorelease]];
+					[newObject setObject:[JSONDict objectForKey:@"uuid"] forMeta:@"form"];
+					
+					[objects addObject:newObject];
+					NSLog(@"File: %@ is a wallet item", dataPath);
+					
+				}
+				
+				// else if it's an online service
+				else if ([[JSONDict objectForKey:@"typeName"] hasPrefix:@"wallet.onlineservices"])
+				{
+					//NSLog(@"File: %@ is an onlineservice", dataPath);
+					QSObject *newObject;
+					NSString *newObjectName = [JSONDict objectForKey:@"title"];
+					newObject=[QSObject objectWithString:newObjectName];
+					[newObject setObject:newObjectName forType:QS1PasswordOnlineService];
+					[newObject setLabel:newObjectName];
+					DLog(@"Image is at: %@", [[NSBundle bundleForClass:[self class]]pathForResource:@"accounts" ofType:@"png"]);
+					[newObject setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleForClass:[self class]]pathForResource:@"accounts" ofType:@"png"]]autorelease]];
+					[newObject setObject:[JSONDict objectForKey:@"uuid"] forMeta:@"form"];
+					
+					[objects addObject:newObject];
+					NSLog(@"File: %@ is an online service", dataPath);
+					
 				}
 				
 				// else if it's a secure note
@@ -119,13 +181,13 @@
 					/**/
 					
 					QSObject *newObject;
-					 
-					 newObject=[QSObject objectWithString:[JSONDict objectForKey:@"title"]];
-					[newObject setObject:[JSONDict objectForKey:@"title"] forType:QS1PasswordSecureNote];
-					[newObject setLabel:[JSONDict objectForKey:@"title"]];
-					[newObject setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]];
+					NSString *newObjectName = [JSONDict objectForKey:@"title"];
+					 newObject=[QSObject objectWithString:newObjectName];
+					[newObject setObject:newObjectName forType:QS1PasswordSecureNote];
+					[newObject setLabel:newObjectName];
+					DLog(@"Image is at: %@", [[NSBundle bundleForClass:[self class]]pathForResource:@"secure-note" ofType:@"png"]);
+					[newObject setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleForClass:[self class]]pathForResource:@"secure-note" ofType:@"png"]]autorelease]];
 					[newObject setObject:[JSONDict objectForKey:@"uuid"] forMeta:@"form"];
-					 [newObject setPrimaryType:QS1PasswordSecureNote];
 					 
 					 [objects addObject:newObject];
 					 NSLog(@"File: %@ is a secure note", dataPath);
@@ -141,7 +203,6 @@
 					[newObject setObject:[JSONDict objectForKey:@"location"] forType:QS1PasswordForm];
 					[newObject setLabel:[JSONDict objectForKey:@"title"]];
 					[newObject setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]];
-					[newObject setPrimaryType:QS1PasswordForm];
 					[newObject setObject:[JSONDict objectForKey:@"locationKey"] forMeta:@"locationKey"];
 					[newObject setObject:[JSONDict objectForKey:@"uuid"] forMeta:@"form"];
 					[objects addObject:newObject];
@@ -171,9 +232,9 @@
 
 // Object Handler Methods
 
-- (void)setQuickIconForObject:(QSObject *)object{
-	[object setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]]; // An icon that is either already in memory or easy to load
-}
+//- (void)setQuickIconForObject:(QSObject *)object{
+	//[object setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]]; // An icon that is either already in memory or easy to load
+//}
 //- (BOOL)loadIconForObject:(QSObject *)object{
 //[object setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]];
 // return YES;
