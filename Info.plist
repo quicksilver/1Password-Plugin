@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.8</string>
+	<string>0.9</string>
 	<key>CFBundleVersion</key>
-	<string>105</string>
+	<string>E9</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -26,6 +26,8 @@
 			<string>OnePasswordAction</string>
 			<key>actionSelector</key>
 			<string>goAndFill:</string>
+			<key>alternateAction</key>
+			<string>viewInOnePwd</string>
 			<key>directTypes</key>
 			<array>
 				<string>QS1PasswordForm</string>
@@ -33,7 +35,7 @@
 			<key>name</key>
 			<string>Go &amp; Fill...</string>
 			<key>precedence</key>
-			<string>2</string>
+			<string>4</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -53,17 +55,17 @@
 				<string>QS1PasswordWalletItem</string>
 			</array>
 			<key>name</key>
-			<string>Open in 1Password</string>
+			<string>Reveal in 1Password</string>
 			<key>precedence</key>
-			<string>1</string>
+			<string>2</string>
 			<key>validatesObjects</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>QSPlugIn</key>
 	<dict>
 		<key>author</key>
-		<string></string>
+		<string>Patrick Robertson</string>
 		<key>categories</key>
 		<array>
 			<string>Applications</string>
@@ -71,7 +73,7 @@
 		<key>description</key>
 		<string>Adds support for 1Password Go &amp; Fill</string>
 		<key>extendedDescription</key>
-		<string>&lt;h3&gt;1Password 3 Plugin&lt;/h3&gt; &lt;p&gt;This plugin enables you to right arrow into the 1Password application, giving you a list of all your Logins saved in 1Password&lt;br /&gt; &lt;p&gt;Having selected a login, using the action 'Go &amp; Fill...' will perform just like the Go 7 Fill from within 1Password&lt;/p&gt; &lt;p&gt;The 'Go &amp; Fill...' action works with the comma trick, so you can open multiple logins at once&lt;/p&gt; &lt;p&gt;To save you time from having to search for 1Password, then right arrow you can 'tick' the 'Web Forms' source under Catalog Preferences, and all forms will be searchable from anywhere (disbaled by default)&lt;br /&gt; You may need to rescan manually to start with&lt;/p&gt;  &lt;p&gt;This is an early test project, and any ideas or bugs should be addressed to me@patjack.co.uk&lt;/p&gt;</string>
+		<string>&lt;h3&gt;1Password 3 Plugin&lt;/h3&gt; &lt;p&gt;This plugin enables you to right arrow into the 1Password application, giving you a list of all your data saved in 1Password&lt;br /&gt; &lt;p&gt;Having selected a web login, using the action &apos;Go &amp; Fill...&apos; will perform just like the Go &amp; Fill action from within 1Password&lt;/p&gt; &lt;p&gt;The &apos;Go &amp; Fill...&apos; action works with the comma trick, so you can open multiple logins at once&lt;/p&gt; &lt;p&gt;To save you time from having to search for 1Password, then right arrow you can &apos;tick&apos; the &apos;Web Forms&apos; source under Catalog Preferences, and all forms will be searchable from anywhere (disbaled by default)&lt;br /&gt; You may need to rescan manually to start with&lt;/p&gt; &lt;p&gt;This plugin also adds support for &apos;Reveal in 1Password&apos; of all data types - web forms, accounts, software, identities, wallet items and notes.&lt;br /&gt; Just use the action &apos;Reveal in 1Password&apos;&lt;/p&gt; &lt;p&gt;This is an early test project, and any ideas or bugs should be addressed to me@patjack.co.uk&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>ws.agile.1Password</string>
 	</dict>
@@ -84,23 +86,87 @@
 			<array>
 				<dict>
 					<key>ID</key>
-					<string>QSPreset1PasswordSecureNote</string>
+					<string>QSPreset1PasswordForm</string>
 					<key>enabled</key>
 					<true/>
+					<key>icon</key>
+					<string>ws.agile.1Password</string>
+					<key>name</key>
+					<string>Logins</string>
+					<key>source</key>
+					<string>OnePasswordSource</string>
+					<key>type</key>
+					<string>WebForm</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPreset1PasswordOnlineService</string>
+					<key>enabled</key>
+					<false/>
+					<key>icon</key>
+					<string>/Applications/1Password.app/Contents/Resources/logins-icon-128.png</string>
+					<key>name</key>
+					<string>Accounts</string>
+					<key>source</key>
+					<string>OnePasswordSource</string>
+					<key>type</key>
+					<string>OnlineService</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPreset1PasswordIdentity</string>
+					<key>enabled</key>
+					<false/>
+					<key>icon</key>
+					<string>UserIcon</string>
+					<key>name</key>
+					<string>Identities</string>
+					<key>source</key>
+					<string>OnePasswordSource</string>
+					<key>type</key>
+					<string>Identity</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPreset1PasswordSecureNote</string>
+					<key>enabled</key>
+					<false/>
+					<key>icon</key>
+					<string>/Applications/1Password.app/Contents/Resources/secure-notes-icon-128.png</string>
 					<key>name</key>
 					<string>Secure Notes</string>
 					<key>source</key>
 					<string>OnePasswordSource</string>
+					<key>type</key>
+					<string>SecureNote</string>
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>QSPreset1PasswordForm</string>
+					<string>QSPreset1PasswordSoftwareLicense</string>
 					<key>enabled</key>
-					<true/>
+					<false/>
+					<key>icon</key>
+					<string>ToolbarAppsFolderIcon</string>
 					<key>name</key>
-					<string>Web Forms</string>
+					<string>Software Licenses</string>
 					<key>source</key>
 					<string>OnePasswordSource</string>
+					<key>type</key>
+					<string>SoftwareLicense</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPreset1PasswordWalletItem</string>
+					<key>enabled</key>
+					<false/>
+					<key>icon</key>
+					<string>/Applications/1Password.app/Contents/Resources/wallet-icon-128.png</string>
+					<key>name</key>
+					<string>Wallet Items</string>
+					<key>source</key>
+					<string>OnePasswordSource</string>
+					<key>type</key>
+					<string>WalletItem</string>
 				</dict>
 			</array>
 			<key>icon</key>
@@ -129,7 +195,15 @@
 		<dict>
 			<key>QS1PasswordForm</key>
 			<string>OnePasswordSource</string>
+			<key>QS1PasswordIdentity</key>
+			<string>OnePasswordSource</string>
+			<key>QS1PasswordOnlineService</key>
+			<string>OnePasswordSource</string>
 			<key>QS1PasswordSecureNote</key>
+			<string>OnePasswordSource</string>
+			<key>QS1PasswordSoftwareLicense</key>
+			<string>OnePasswordSource</string>
+			<key>QS1PasswordWalletItem</key>
 			<string>OnePasswordSource</string>
 		</dict>
 		<key>QSObjectSources</key>

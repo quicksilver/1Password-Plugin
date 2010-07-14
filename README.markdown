@@ -50,8 +50,6 @@ This is a *fairly* early test project, and any ideas or bugs should be addressed
 
 Believe it or not, this plugin has taken me quite a while to develop. If you wish to donate, then the link's in the top right hand corner and I'd really appreciate it :)
 
-[![Donate to Quicksilver 1Password Plugin](https://www.paypal.com/en_GB/i/btn/btn_donate_LG.gif "Donate")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=7MJHCZAQF5KEU&amp;lc=GB&amp;item_name=Quicksilver%201Password%20Plugin&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
-
 **Don't donate here for any work I've done on the QS app itself, this is just for my plugin**
 
 ## Thanks
@@ -60,6 +58,17 @@ Thanks goes to Rob McBroom for his excellent work on writing documentation detai
 Thanks also to Jamie of the 1Password development team for his [excellent advice](http://support.agilewebsolutions.com/showthread.php?21959-Developing-a-Quicksilver-Plugin-for-1Password) and insights into how 1Password works.
 
 ## Changelog
+
+### 0.9
+**This is quite a major update to the 1Password Plugin!**
+
+* Added alternate action to go and fill - hold CMD to 'reveal in 1Pwd'
+* Action 'Open in 1Password' renamed to 'Reveal in 1Password' - more Mac like
+* Added scanning of identities, accounts, software and secure notes
+* Added separate entries in the catalog preference pane to chose which sources to scan
+* Better crash resilience - won't crash if there's a problem finding the keychain or indexing the catalog
+* Fixed a (fairly) bug for users when their keychain was in the default ~/Library/Application Support/1Password folder
+* Added nice new icons for each type of 1Password data
 
 ### 0.8
 * Fixed bug when 'Opening in 1Password' after having searched using the 1Password search field
