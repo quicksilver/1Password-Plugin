@@ -50,6 +50,8 @@ This is a *fairly* early test project, and any ideas or bugs should be addressed
 
 Believe it or not, this plugin has taken me quite a while to develop. If you wish to donate, then the link's in the top right hand corner and I'd really appreciate it :)
 
+[![Donate to Quicksilver 1Password Plugin](https://www.paypal.com/en_GB/i/btn/btn_donate_LG.gif "Donate")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=7MJHCZAQF5KEU&amp;lc=GB&amp;item_name=Quicksilver%201Password%20Plugin&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+
 **Don't donate here for any work I've done on the QS app itself, this is just for my plugin**
 
 ## Thanks
