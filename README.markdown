@@ -44,7 +44,7 @@ Click 'Relaunch' and it should hopefully fix any of your problems.
 
 ## Bugs
 
-This is a *fairly* early test project, and any ideas or bugs should be addressed to me@patjack.co.uk
+This is nicely maturing, but you may still have some ideas or have found some bugs. If so, let me know at me@patjack.co.uk
 
 ## Donating
 
