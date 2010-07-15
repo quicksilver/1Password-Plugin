@@ -26,9 +26,9 @@ The second action is 'Open in 1Password'. This action will launch 1Password and 
 
 ### Adding to the Catalog
 
-To save you from having to search for 1Password in the first pane then right arrowing into it, you can **tick** the 'Web Forms' source in the Quicksilver Catalog Preferences Pane (under Modules). This will mean all login forms will be searchable directly from the first pane in Quicksilver. Note that this is disabled by default.
+To save you from having to search for 1Password in the first pane then right arrowing into it, you can **tick** the each of the data types (logins, identities, secure notes etc.) in the Quicksilver Catalog Preferences Pane (under Modules). This will mean that the 1Password types enabled will be searchable directly from the first pane in Quicksilver. This feature is disabled by default.
 
-![1Password Catalog Source](http://i43.tinypic.com/znvo1.jpg "1Password Catalog Source")
+![1Password Catalog Source](http://i.imgur.com/RDRP7.jpg "1Password Catalog Source")
 
 ## Getting Started
 
