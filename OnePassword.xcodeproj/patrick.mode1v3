@@ -313,7 +313,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>Info.plist</string>
+								<string>OnePassword.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -321,11 +321,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>Info.plist</string>
+										<string>OnePassword.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>CD9B465211EDA11E000C5DDA</string>
+										<string>CDD8BC5D11EE959300FF9C66</string>
 										<key>history</key>
 										<array>
 											<string>CD79A4951102B461004ED2F3</string>
@@ -345,7 +345,6 @@
 											<string>CDB2D14F1163A6CD00A97A31</string>
 											<string>CD1CF9B91163F198005118CC</string>
 											<string>CDB9DD0F11C38B5500293EB0</string>
-											<string>CD6922BB11C3D45D00FEBF7F</string>
 											<string>CD791F7D11C6A332002465AE</string>
 											<string>CD791F8011C6A332002465AE</string>
 											<string>CD4ECCC411D54CAC00B4FDF6</string>
@@ -353,12 +352,12 @@
 											<string>CD1E8B0011DA98A100E3C19D</string>
 											<string>CD7B34A811DB227E00ED660A</string>
 											<string>CD7B34B811DB270800ED660A</string>
-											<string>CD7B34B911DB270800ED660A</string>
 											<string>CD13416F11E9586400819949</string>
-											<string>CD13418811E95A7200819949</string>
 											<string>CD13418911E95A7200819949</string>
 											<string>CD13418A11E95A7200819949</string>
-											<string>CD13418C11E95A7200819949</string>
+											<string>CD9B466B11EDA32D000C5DDA</string>
+											<string>CDD8BC5611EE94D100FF9C66</string>
+											<string>CDD8BC5711EE94D100FF9C66</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -370,16 +369,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {910, 432}}</string>
+								<string>{{0, 0}, {910, 408}}</string>
 								<key>RubberWindowFrame</key>
 								<string>81 55 1199 723 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>432pt</string>
+							<string>408pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -390,14 +391,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 437}, {910, 245}}</string>
+								<string>{{0, 413}, {910, 269}}</string>
 								<key>RubberWindowFrame</key>
 								<string>81 55 1199 723 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>245pt</string>
+							<string>269pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -416,9 +417,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>CD9B464A11ED9DFC000C5DDA</string>
+				<string>CDD8BC2C11EE921D00FF9C66</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>CD9B464B11ED9DFC000C5DDA</string>
+				<string>CDD8BC2D11EE921D00FF9C66</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -556,6 +557,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>CDD8BC5E11EE959300FF9C66</string>
 		<string>CDB5BBA7110109B50001C0D3</string>
 		<string>/Developer/Apps/OnePassword/1Password-Plugin/OnePassword.xcodeproj</string>
 	</array>
@@ -637,7 +639,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>CDB5BBA7110109B50001C0D3</string>
-				<string>CD9B464F11ED9DFC000C5DDA</string>
+				<string>CDD8BC2E11EE921D00FF9C66</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

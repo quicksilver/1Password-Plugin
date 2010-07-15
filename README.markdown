@@ -61,6 +61,11 @@ Thanks also to Jamie of the 1Password development team for his [excellent advice
 
 ## Changelog
 
+### 1.0
+**Reached the 1.0 milestone!**
+
+* Fixed a bug that had cropped into the 0.9 release stopping some users from indexing their 1Password entries
+
 ### 0.9
 **This is quite a major update to the 1Password Plugin!**
 

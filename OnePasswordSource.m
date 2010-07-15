@@ -45,26 +45,22 @@
 	
 	// Find the path to the agile keychain file **has to be agilekeychain format
 	NSString *keychainPath= (NSString *)CFPreferencesCopyAppValue((CFStringRef)@"AgileKeychainLocation",(CFStringRef) @"ws.agile.1Password");
-	
-	// Check is keychain path is declared in the .plist (AgileKeychainLocation set)
+		
+	// Check if keychain path is declared in the .plist (AgileKeychainLocation is set)
 	if (keychainPath == nil)
 	{
 		// If not, set it to the default location
-		keychainPath = [[NSString stringWithString:@"~/Library/Application Support/1Password/1Password.agilekeychain"] stringByExpandingTildeInPath];
+		keychainPath = [NSString stringWithString:@"~/Library/Application Support/1Password/1Password.agilekeychain"];
 	}
 	
+	// Expand the tilde !important!
+	keychainPath = [keychainPath stringByExpandingTildeInPath];
+
 	// Make sure there's actually a file where we're looking, otherwise return 0 (below)
 	if ([fm fileExistsAtPath:keychainPath]) {
 		
 		// Get into the data folder of it
 		keychainPath = [keychainPath stringByAppendingPathComponent:@"data/default/"];
-		
-		// Expand the tilde
-		keychainPath = [keychainPath stringByExpandingTildeInPath];
-		
-		//DLog(@"Keychain data path: %@", keychainPath);
-		
-		
 		
 		// Catch any errors
 		NSError *dataError = nil;
@@ -93,15 +89,18 @@
 											  initWithContentsOfFile:[keychainPath stringByAppendingPathComponent:dataPath]
 											  encoding:NSUTF8StringEncoding
 											  error:&stringError];
+			
+			// if there's something wrong with the string
 			if(!stringFromFileAtPath)
 				NSLog(@"%@", stringError);
 			
 			// store the JSON file in a dictionary
 			NSDictionary *JSONDict = [stringFromFileAtPath JSONValue];
 			
+			// If there's something wrong with the JSON Dictionary
 			if(!JSONDict)
 				NSLog(@"Error getting JSONDict");
-			
+		
 			// Now we're gonna need to distinguish between the different types of things - web forms, passwords, identities, 
 			
 			// First of all make sure it hasn't been trashed. We don't want to index trashed items (that is, trashed within 1Pwd)
