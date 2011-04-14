@@ -39,6 +39,12 @@
 
 
 - (BOOL)loadChildrenForObject:(QSObject *)object {
+	// For the children to 1Pwd, just load what's in objectsForEntry
+	if([[object primaryType] isEqualToString:QS1PasswordForm] || [[object primaryType] isEqualToString:QS1PasswordIdentity]
+	   || [[object primaryType] isEqualToString:QS1PasswordWalletItem] || [[object primaryType] isEqualToString:QS1PasswordSoftwareLicense]
+	   || [[object primaryType] isEqualToString:QS1PasswordOnlineService] || [[object primaryType] isEqualToString:QS1PasswordSecureNote])
+		return NO;
+		
 	NSArray *items = [self objectsForEntry:[NSDictionary dictionaryWithObject:@"TRUE" forKey:@"LoadingChildren"]];
 	[object setChildren:items];
 	return YES;
