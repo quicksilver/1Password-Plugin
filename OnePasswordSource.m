@@ -39,7 +39,6 @@
 
 
 - (BOOL)loadChildrenForObject:(QSObject *)object {
-	// For the children to 1Pwd, just load what's in objectsForEntry
 	NSArray *items = [self objectsForEntry:[NSDictionary dictionaryWithObject:@"TRUE" forKey:@"LoadingChildren"]];
 	[object setChildren:items];
 	return YES;
@@ -242,6 +241,8 @@
 						[newObject setObject:[JSONDict objectForKey:@"location"] forType:QS1PasswordForm];
 						[newObject setPrimaryType:QS1PasswordForm];
 						[newObject setLabel:[JSONDict objectForKey:@"title"]];
+						[newObject setDetails:[JSONDict objectForKey:@"location"]];
+						[newObject setName:[JSONDict objectForKey:@"title"]];
 						[newObject setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]];
 						[newObject setObject:[JSONDict objectForKey:@"locationKey"] forMeta:@"locationKey"];
 						[newObject setObject:[JSONDict objectForKey:@"uuid"] forMeta:@"form"];
