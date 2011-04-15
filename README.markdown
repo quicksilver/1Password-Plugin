@@ -44,7 +44,7 @@ Click 'Relaunch' and it should hopefully fix any of your problems.
 
 ## Donating
 
-Believe it or not, this plugin has taken me quite a while to develop. If you wish to donate, then the link's in the top right hand corner and I'd really appreciate it :)
+Believe it or not, this plugin has taken me quite a while to develop. If you wish to donate, then the click the links below. I'd really appreciate it :)
 
 [![Donate to Quicksilver 1Password Plugin](https://www.paypal.com/en_GB/i/btn/btn_donate_LG.gif "Donate")](http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/)  (Redirect) - Click the 'Donate' button on the redirected page.
 
