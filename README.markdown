@@ -6,7 +6,7 @@ This plugin enables you to right arrow into the 1Password application, giving yo
 
 For this plugin to work, you must have **Mac OS X Leopard or higher (10.5+)** and **1Password 3+**. It is also recommended you upgrade to QS β58+ if you're having problems.
 
-You can download the latest version and any previous versions from the Github downloads page [here](http://github.com/pjrobertson/1Password-Plugin/downloads "Download")
+You can download the latest version and any previous versions from the [Quicksilver Plugins Repository](http://qsapp.com/plugins "Download")
 
 ### Actions
 
@@ -42,17 +42,18 @@ Click 'Relaunch' and it should hopefully fix any of your problems.
 
 **If either of the actions don't seem to work, I'd recommend upgrading to QS β58+**
 
-## Bugs
-
-This is nicely maturing, but you may still have some ideas or have found some bugs. If so, let me know at me@patjack.co.uk
-
 ## Donating
 
 Believe it or not, this plugin has taken me quite a while to develop. If you wish to donate, then the link's in the top right hand corner and I'd really appreciate it :)
 
-[![Donate to Quicksilver 1Password Plugin](https://www.paypal.com/en_GB/i/btn/btn_donate_LG.gif "Donate")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=7MJHCZAQF5KEU&amp;lc=GB&amp;item_name=Quicksilver%201Password%20Plugin&amp;currency_code=USD&amp;bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+[![Donate to Quicksilver 1Password Plugin](https://www.paypal.com/en_GB/i/btn/btn_donate_LG.gif "Donate")](http://patjack.co.uk/1password-plugin-for-quicksilver/)  (Redirect) - Click the 'Donate' button on the redirected page.
 
 **Don't donate here for any work I've done on the QS app itself, this is just for my plugin**
+
+## Bugs
+
+This is nicely maturing, but you may still have some ideas or have found some bugs. If so, let me know at me@patjack.co.uk
+
 
 ## Thanks
 
@@ -60,6 +61,12 @@ Thanks goes to Rob McBroom for his excellent work on writing documentation detai
 Thanks also to Jamie of the 1Password development team for his [excellent advice](http://support.agilewebsolutions.com/showthread.php?21959-Developing-a-Quicksilver-Plugin-for-1Password) and insights into how 1Password works.
 
 ## Changelog
+
+### 1.2
+**Interface clean up. Things look much better :)**
+
+* Cleaned up the interface. The plugin now displays the names of Web Forms, and it's these names that are searchable. This greatly cleans the UI.
+* Fixed a bug that would cause Quicksilver to hang (re-cataloguing everything) when trying to right arrow into a 1Password Object in Quicksilver.
 
 ### 1.0
 **Reached the 1.0 milestone!**
