@@ -46,7 +46,7 @@ Click 'Relaunch' and it should hopefully fix any of your problems.
 
 Believe it or not, this plugin has taken me quite a while to develop. If you wish to donate, then the link's in the top right hand corner and I'd really appreciate it :)
 
-[![Donate to Quicksilver 1Password Plugin](https://www.paypal.com/en_GB/i/btn/btn_donate_LG.gif "Donate")](http://patjack.co.uk/1password-plugin-for-quicksilver/)  (Redirect) - Click the 'Donate' button on the redirected page.
+[![Donate to Quicksilver 1Password Plugin](https://www.paypal.com/en_GB/i/btn/btn_donate_LG.gif "Donate")](http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/)  (Redirect) - Click the 'Donate' button on the redirected page.
 
 **Don't donate here for any work I've done on the QS app itself, this is just for my plugin**
 
