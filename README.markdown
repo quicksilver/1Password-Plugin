@@ -2,24 +2,26 @@
 
 ## What does it do?
 
-This plugin enables you to right arrow into the 1Password application, giving you a list of all your Logins saved in 1Password.
+This plugin enables you to right arrow into the 1Password application, giving you a list of all your data saved in 1Password.
 
-For this plugin to work, you must have **Mac OS X Leopard or higher (10.5+)** and **1Password 3+**. It is also recommended you upgrade to QS β58+ if you're having problems.
+Requirements: **Mac OS X Leopard or higher (10.5+)**, **1Password 3+** and **Quicksilver ß60+**.
 
-You can download the latest version and any previous versions from the [Quicksilver Plugins Repository](http://qsapp.com/plugins "Download")
+You can download the latest version from the [Quicksilver Plugins Repository](http://qsapp.com/plugins "Download")
 
 ### Actions
 
-Having selected a login there are 2 actions that you can perform.
+The plugin enabled 3 actions for 1Password objects.
 
-Using the action 'Go & Fill...' will work just like the Go & Fill command from within 1Password; it will launch your default browser and automatically log you in.
+The 'Go & Fill' action will work just like the Go & Fill command from within 1Password; it will launch your default browser and automatically log you in.
 
-The 'Go & Fill...' action works with the comma trick, so you can open multiple logins at once.
+The 'Go & Fill With...' action enabled you to open logins in your non-default browser(s).
+
+Both the 'Go & Fill' and 'Go & Fill With...' actions work with the comma trick, so you can open multiple logins at once, or open logins in multiple browsers.
 
 ![Go And Fill... Action](http://i42.tinypic.com/i35lig.jpg "Go And Fill... Action")
 
 
-The second action is 'Open in 1Password'. This action will launch 1Password and bring the selected login item to the front for you to view/edit etc.
+The final action, which works on all 1Password objects is 'Reveal in 1Password'. This action will launch 1Password and bring the selected login item to the front for you to view/edit it.
 
 ![Open in 1Password Action](http://i42.tinypic.com/wk62qd.jpg "Open in 1Password Action")
 
@@ -39,8 +41,6 @@ If the plugin doesn't seem to work, try re-downloading and installing it. Quicks
 Click 'Relaunch' and it should hopefully fix any of your problems.
 
 ![Relaunch Dialog](http://i43.tinypic.com/35bi0es.jpg "Relaunch Dialog")
-
-**If either of the actions don't seem to work, I'd recommend upgrading to QS β58+**
 
 ## Donating
 
