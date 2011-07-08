@@ -70,7 +70,7 @@ Thanks also to Jamie of the 1Password development team for his [excellent advice
 * Added new 'Go and Fill With...' action to allow you to log in with different browsers
 * Many memory leak fixes
 * More robust error logging
-* Fixed a fatal crash that could be caused with 1Password entries that
+* Fixed a fatal crash that could be caused with multiple 1Password entries with the same name 
 * Changed to YAJL for JSON parsing. Maintains 10.5 support and faster than SBJSON
 * Code optimisations and reduction of duplicate code
 * More efficient storing of data in QSObjects
