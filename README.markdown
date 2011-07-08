@@ -62,6 +62,21 @@ Thanks also to Jamie of the 1Password development team for his [excellent advice
 
 ## Changelog
 
+### 2.0.0
+**Plugin overhaul and tidy up**
+
+* Now Quicksilver versions ß60+ only
+* Fixed object identifiers. Can now set abbreviations and increase/decrease score for 1Password objects
+* Added new 'Go and Fill With...' action to allow you to log in with different browsers
+* Many memory leak fixes
+* More robust error logging
+* Fixed a fatal crash that could be caused with 1Password entries that
+* Changed to YAJL for JSON parsing. Maintains 10.5 support and faster than SBJSON
+* Code optimisations and reduction of duplicate code
+* More efficient storing of data in QSObjects
+* Source code tidy up and fixed references in .xcodeproj
+* Other small bug fixes
+
 ### 1.2
 **Interface clean up. Things look much better :)**
 

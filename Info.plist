@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1</string>
+	<string>2.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>11B</string>
+	<string>211</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -33,9 +33,26 @@
 				<string>QS1PasswordForm</string>
 			</array>
 			<key>name</key>
-			<string>Go &amp; Fill...</string>
+			<string>Go &amp; Fill</string>
 			<key>precedence</key>
 			<string>4</string>
+			<key>validatesObjects</key>
+			<false/>
+		</dict>
+		<key>goAndFillWith</key>
+		<dict>
+			<key>actionClass</key>
+			<string>OnePasswordAction</string>
+			<key>actionSelector</key>
+			<string>goAndFill:with:</string>
+			<key>directTypes</key>
+			<array>
+				<string>QS1PasswordForm</string>
+			</array>
+			<key>name</key>
+			<string>Go &amp; Fill With...</string>
+			<key>precedence</key>
+			<string>3</string>
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
@@ -71,9 +88,9 @@
 			<string>Applications</string>
 		</array>
 		<key>description</key>
-		<string>Adds support for 1Password Go &amp; Fill</string>
+		<string>Adds support for 1Password Data to Reveal in 1Password and to Go &amp; Fill web forms</string>
 		<key>extendedDescription</key>
-		<string>&lt;h3&gt;1Password 3 Plugin&lt;/h3&gt; &lt;p&gt;This plugin enables you to right arrow into the 1Password application, giving you a list of all your data saved in 1Password&lt;br /&gt; &lt;p&gt;Having selected a web login, using the action 'Go &amp; Fill...' will perform just like the Go &amp; Fill action from within 1Password&lt;/p&gt; &lt;p&gt;The 'Go &amp; Fill...' action works with the comma trick, so you can open multiple logins at once&lt;/p&gt; &lt;p&gt;To save you time from having to search for 1Password, then right arrow you can 'tick' the 'Web Forms' source under Catalog Preferences, and all forms will be searchable from anywhere (disbaled by default)&lt;br /&gt; You may need to rescan manually to start with&lt;/p&gt; &lt;p&gt;This plugin also adds support for 'Reveal in 1Password' of all data types - web forms, accounts, software, identities, wallet items and notes.&lt;br /&gt; Just use the action 'Reveal in 1Password'&lt;/p&gt; &lt;p&gt;This is an early test project, and any ideas or bugs should be addressed to me@patjack.co.uk&lt;/p&gt;</string>
+		<string>&lt;h3&gt;1Password 3 Plugin&lt;/h3&gt; &lt;p&gt;This plugin enables right arrowing into the 1Password application, giving access to data saved in 1Password&lt;br /&gt; &lt;p&gt;Web logins objects, have 'Go &amp; Fill' action, as well as a 'Go &amp; Fill With...' action. &lt;/p&gt; &lt;p&gt;These actions works with the comma trick, so you can open multiple logins at once, or open them in multiple browsers&lt;/p&gt; &lt;p&gt;1Password data can be indexed directly in the Quicksilver catalog by 'ticking' the 'Web Forms' source under Catalog Preferences (disbaled by default)&lt;br /&gt; This plugin also adds support for 'Reveal in 1Password' for all data types: web forms, accounts, software, identities, wallet items and notes using the action 'Reveal in 1Password'&lt;/p&gt; &lt;p&gt;This plugin has taken a lot of development, so please consider &lt;a href="http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/"&gt;donating&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>ws.agile.1Password</string>
 	</dict>
@@ -211,39 +228,6 @@
 			<key>OnePasswordSource</key>
 			<string>OnePasswordSource</string>
 		</dict>
-	</dict>
-	<key>QSRequirementsTemplate</key>
-	<dict>
-		<key>bundlesTemplate</key>
-		<array>
-			<dict>
-				<key>id</key>
-				<string></string>
-				<key>name</key>
-				<string></string>
-				<key>version</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>feature</key>
-		<integer>0</integer>
-		<key>launchLoad</key>
-		<false/>
-		<key>pathsTemplate</key>
-		<array>
-			<string>/path/to/something</string>
-		</array>
-		<key>pluginsTemplate</key>
-		<array>
-			<dict>
-				<key>id</key>
-				<string></string>
-				<key>name</key>
-				<string></string>
-				<key>version</key>
-				<string></string>
-			</dict>
-		</array>
 	</dict>
 </dict>
 </plist>

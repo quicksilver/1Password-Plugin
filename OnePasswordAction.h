@@ -26,7 +26,6 @@
 #import "OnePasswordAction.h"
 
 #define kOnePasswordAction @"OnePasswordAction"
-#define kQSObjectComponents @"QSObjectComponents"
 #define QS1PasswordForm @"QS1PasswordForm"
 #define QS1PasswordSecureNote @"QS1PasswordSecureNote"
 #define QS1PasswordIdentity @"QS1PasswordIdentity"
@@ -44,9 +43,10 @@
 {
 }
 
-- (void)writePlistAndFill:(QSObject *)dObject;
+- (void)writePlistAndFill:(QSObject *)dObject withBrowsers:(QSObject *)iObject;
 - (QSObject *)viewInOnePwd:(QSObject *)dObject;
 - (QSObject *)goAndFill:(QSObject *)dObject;
+- (QSObject *)goAndFill:(QSObject *)dObject with:(QSObject *)iObject;
 //- (QSObject *)trashForm:(QSObject *)dObject;
 
 @end
