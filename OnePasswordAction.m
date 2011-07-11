@@ -107,7 +107,7 @@
 	
 	// setup the terminal command
 	NSString *command = @"defaults write ws.agile.1Password findUUID ";
-	command = [command stringByAppendingString:[dObject stringValue]];
+	command = [command stringByAppendingString:[dObject identifier]];
 	
 	// load the script from a resource by fetching its URL from within our bundle
 	NSString *path=[[NSBundle bundleForClass:[self class]] pathForResource:@"RevealIn1Pwd" ofType:@"scpt"];
@@ -119,7 +119,7 @@
 		if (appleScript != nil)
 		{
 			// create the parameters
-			NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[dObject label]];
+			NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[dObject details]];
 			NSAppleEventDescriptor* secondParameter = [NSAppleEventDescriptor descriptorWithString:command];
 			NSAppleEventDescriptor* thirdParameter = [NSAppleEventDescriptor descriptorWithString:[dObject primaryType]];
 			
@@ -182,7 +182,7 @@
 	path = [path stringByAppendingPathExtension:@"plist"];		
 		
 	// Put the reqired data into a dict (for plist creation)
-	NSDictionary *plistDict = [NSDictionary dictionaryWithObjectsAndKeys:[dObject stringValue], @"form", 
+	NSDictionary *plistDict = [NSDictionary dictionaryWithObjectsAndKeys:[dObject identifier], @"form", 
 							   [dObject details], @"location", 
 							   [NSDate date], @"timestamp", nil];
 	
