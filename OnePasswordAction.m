@@ -89,15 +89,9 @@
 
 - (QSObject *)goAndFill:(QSObject *)dObject with:(QSObject *)iObject {
 	
-	if ([dObject count] >1 ) {
-		// for each object - do exactly the same thing as for single objects
-		for (QSObject *goAndFillObject in [dObject objectForCache:kQSObjectComponents])
-		{
-			[self writePlistAndFill:goAndFillObject withBrowsers:iObject];
-		}
-	}
-	else {
-		[self writePlistAndFill:dObject withBrowsers:iObject];
+			// for each object - do exactly the same thing as for single objects
+	for (QSObject *goAndFillObject in [dObject splitObjects]) {
+		[self writePlistAndFill:goAndFillObject withBrowsers:iObject];
 	}
 
 	return nil;
@@ -119,7 +113,7 @@
 		if (appleScript != nil)
 		{
 			// create the parameters
-			NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[dObject details]];
+			NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[dObject name]];
 			NSAppleEventDescriptor* secondParameter = [NSAppleEventDescriptor descriptorWithString:command];
 			NSAppleEventDescriptor* thirdParameter = [NSAppleEventDescriptor descriptorWithString:[dObject primaryType]];
 			
@@ -178,6 +172,16 @@
 -(void)writePlistAndFill:(QSObject *)dObject withBrowsers:(QSObject *)iObject {		
 	// Create the path to the fill folder for the 1Pwd extension
 	NSString *path = [@"~/Library/Application Support/1Password/Fill" stringByExpandingTildeInPath];
+	NSFileManager *fm = [[NSFileManager alloc] init];
+	if (![fm fileExistsAtPath:path]) {
+		NSError *err;
+		[fm createDirectoryAtPath:[path stringByAppendingPathComponent:@"Fill"] withIntermediateDirectories:YES attributes:nil error:&err];
+		if (err) {
+			NSLog(@"Error: %@",err);
+		}
+	}
+	[fm release];
+	
 	path = [path stringByAppendingPathComponent:[dObject objectForMeta:@"locationKey"]];
 	path = [path stringByAppendingPathExtension:@"plist"];		
 		
