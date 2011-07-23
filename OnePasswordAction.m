@@ -90,9 +90,19 @@
 - (QSObject *)goAndFill:(QSObject *)dObject with:(QSObject *)iObject {
 	
 			// for each object - do exactly the same thing as for single objects
-	for (QSObject *goAndFillObject in [dObject splitObjects]) {
-		[self writePlistAndFill:goAndFillObject withBrowsers:iObject];
+			//	ß61 method
+	//for (QSObject *goAndFillObject in [dObject splitObjects]) {
+//		[self writePlistAndFill:goAndFillObject withBrowsers:iObject];
+//	}
+	if ([dObject count] > 1) {
+		for (QSObject *goAndFillObject in [dObject objectForCache:kQSObjectComponents]) {
+					[self writePlistAndFill:goAndFillObject withBrowsers:iObject];
+		}
 	}
+	else {
+		[self writePlistAndFill:dObject withBrowsers:iObject];
+	}
+
 
 	return nil;
 }
