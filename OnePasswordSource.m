@@ -143,6 +143,7 @@
 
 		QSObject *newObject;
 		newObject=[QSObject makeObjectWithIdentifier:uuidString];
+		[newObject setLabel:title];
 		[newObject setName:title];
 
 		if([objectType isEqualToString:@"webforms.WebForm"])
@@ -151,7 +152,6 @@
 			
 				NSString *location = [JSONDict objectForKey:@"location"];				
 				[newObject setObject:uuidString forType:QS1PasswordForm];
-				[newObject setLabel:location];
 				[newObject setDetails:location];
 				[newObject setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]];
 				[newObject setObject:[JSONDict objectForKey:@"locationKey"] forMeta:@"locationKey"];
