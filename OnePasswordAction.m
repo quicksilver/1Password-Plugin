@@ -96,11 +96,11 @@
 //	}
 	if ([dObject count] > 1) {
 		for (QSObject *goAndFillObject in [dObject objectForCache:kQSObjectComponents]) {
-					[self writePlistAndFill:goAndFillObject withBrowsers:iObject];
+					[self formURLAndFillWith:goAndFillObject andBrowsers:iObject];
 		}
 	}
 	else {
-		[self writePlistAndFill:dObject withBrowsers:iObject];
+		[self formURLAndFillWith:dObject andBrowsers:iObject];
 	}
 
 
@@ -179,46 +179,27 @@
 	return nil;
 }
 
--(void)writePlistAndFill:(QSObject *)dObject withBrowsers:(QSObject *)iObject {		
-	// Create the path to the fill folder for the 1Pwd extension
-	NSString *path = [@"~/Library/Application Support/1Password/Fill" stringByExpandingTildeInPath];
-	NSFileManager *fm = [[NSFileManager alloc] init];
-	if (![fm fileExistsAtPath:path]) {
-		NSError *err;
-		[fm createDirectoryAtPath:[path stringByAppendingPathComponent:@"Fill"] withIntermediateDirectories:YES attributes:nil error:&err];
-		if (err) {
-			NSLog(@"Error: %@",err);
-		}
-	}
-	[fm release];
+-(void)formURLAndFillWith:(QSObject *)dObject andBrowsers:(QSObject *)iObject {		
+	// Create the appropriate URL
+			
+	NSString *appendedString = [NSString stringWithFormat:@"?onepasswdfill=%@",[dObject identifier]];
+	NSString *URLString = [dObject details];
 	
-	path = [path stringByAppendingPathComponent:[dObject objectForMeta:@"locationKey"]];
-	path = [path stringByAppendingPathExtension:@"plist"];		
-		
-	// Put the reqired data into a dict (for plist creation)
-	NSDictionary *plistDict = [NSDictionary dictionaryWithObjectsAndKeys:[dObject identifier], @"form", 
-							   [dObject details], @"location", 
-							   [NSDate date], @"timestamp", nil];
-	
-	// Write the plist to the Fill folder
-	if (![plistDict writeToFile:path atomically:YES]) {
-		NSBeep();
-		NSLog(@"Error writing .plist file (Permission error?)");
-	}
-	
+	URLString = [URLString stringByAppendingString:appendedString];
+	NSURL *URL = [NSURL URLWithString:[URLString URLEncoding]];
 	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
 
+	
 	// Open the URL in the default browser
 	if(!iObject) {
-		[ws openURL:[NSURL URLWithString:[dObject details]]];
+		[ws openURL:URL];
 	}
 	
 	else {
 		for(QSObject *individual in [iObject splitObjects]){
 			if([individual isApplication]) {		
-				NSURL *url = [NSURL URLWithString:[dObject details]];
 				NSString *ident = [[NSBundle bundleWithPath:[individual singleFilePath]] bundleIdentifier];
-				[ws openURLs:[NSArray arrayWithObject:url] withAppBundleIdentifier:ident
+				[ws openURLs:[NSArray arrayWithObject:URL] withAppBundleIdentifier:ident
 					 options:0
 additionalEventParamDescriptor:nil
 		   launchIdentifiers:nil];

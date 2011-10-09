@@ -259,7 +259,6 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(QSFrameworks)",
-					"\"$(DEVELOPER_DIR)/Apps/OnePassword\"",
 					/Users/patrick/Library/Frameworks,
 					"\"$(SRCROOT)\"",
 					"\"$(DEVELOPER_DIR)/Frameworks\"",

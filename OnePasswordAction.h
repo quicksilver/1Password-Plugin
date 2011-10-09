@@ -43,7 +43,7 @@
 {
 }
 
-- (void)writePlistAndFill:(QSObject *)dObject withBrowsers:(QSObject *)iObject;
+- (void)formURLAndFillWith:(QSObject *)dObject andBrowsers:(QSObject *)iObject;
 - (QSObject *)viewInOnePwd:(QSObject *)dObject;
 - (QSObject *)goAndFill:(QSObject *)dObject;
 - (QSObject *)goAndFill:(QSObject *)dObject with:(QSObject *)iObject;
