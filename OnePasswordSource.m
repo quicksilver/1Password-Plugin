@@ -25,19 +25,88 @@
 #import <YAJL/YAJL.h>
 
 #import <QSCore/QSObject.h>
-#define kItemType @"type"
 
 @implementation OnePasswordSource
+
+@synthesize bundleID, keychainPath, onePasswordImage;
+
+-(void)dealloc {
+    [bundleID release];
+    [keychainPath release];
+    [onePasswordImage release];
+    [super dealloc];
+}
+
+-(id)sharedInstance {
+    
+}
+
+-(id)init {
+    if (self = [super init]) {
+        OSStatus result = LSFindApplicationForInfo (kLSUnknownCreator,CFSTR("com.agilebits.onepassword-osx"),NULL,nil,nil);
+        if (result == noErr) {
+            [self setBundleID:@"com.agilebits.onepassword-osx"]; 
+        }
+        else {
+            [self setBundleID:@"ws.agile.1Password"];
+        }
+//        NSLog(@"1Password Bundle ID: %@",[self bundleID]);
+
+        NSString *tempKeychainPath = nil;
+
+        NSString *CFkeychainPath = (NSString *)CFPreferencesCopyAppValue((CFStringRef)@"AgileKeychainLocation",(CFStringRef) @"ws.agile.1Password");
+        
+        NSFileManager *fm = [[NSFileManager alloc] init];
+
+        if (CFkeychainPath) {
+//            NSLog(@"Found keychain location from ws.agile.1Password plist for key AgileKeychainLocation");
+            tempKeychainPath = [CFkeychainPath mutableCopy];
+        }
+        
+        [CFkeychainPath release];
+        
+        if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
+//                   NSLog(@"DropBoxEnabled BOOL is set in ws.agile.1Password.plist, assuming keychain is in the dropbox folder");
+                    tempKeychainPath = [[NSString alloc] initWithString:kDropboxLocation];
+        }
+        
+        if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
+//            NSLog(@"Assuming 1Password keychain is in  ~/Library/Containers folder");
+            tempKeychainPath = [[NSString alloc] initWithString:kNewMASKeychainLocation];                
+        }
+        if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
+//            NSLog(@"Assuming 1Password keychain is in ~/Library/App Support folder");
+            tempKeychainPath = [[NSString alloc] initWithString:kOldKeychainLocation];
+        }
+        
+        if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
+            NSLog(@"Could not determine where your keychain resides.\n Tried everything for Bundle ID: %@, all I came up with was keychain: %@",
+                  [self bundleID], keychainPath);
+        }
+       
+        [self setKeychainPath:[tempKeychainPath stringByStandardizingPath]];
+        [fm release];
+        [tempKeychainPath release];
+    }
+    
+    // save the 1pass image as it's used a lot
+    [self setOnePasswordImage:[QSResourceManager imageNamed:[self bundleID]]];
+    
+    return self;
+}
+
+
+
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry{
 	
 	// Check to see if keychain has been modified since last scan
-	NSString *keychainPath= [(NSString *)CFPreferencesCopyAppValue((CFStringRef)@"AgileKeychainLocation",(CFStringRef) @"ws.agile.1Password") autorelease];
-	if (!keychainPath) {
-		keychainPath = @"~/Library/Application Support/1Password/1Password.agilekeychain";
-	}
-	NSError *error = nil;
-	NSDate *modDate=[[[NSFileManager defaultManager] attributesOfItemAtPath:[keychainPath stringByStandardizingPath] error:&error]fileModificationDate];
 	
+	NSError *error = nil;
+    NSFileManager *fm = [[NSFileManager alloc] init];
+	NSDate *modDate=[[fm attributesOfItemAtPath:[self keychainPath] error:&error] fileModificationDate];
+    
+	[fm release];
+    
 	if (error) {
 		NSLog(@"Error: %@", error);
 		return NO;
@@ -67,37 +136,24 @@
 //}
 
 - (NSArray *)objectsForEntry:(NSDictionary *)theEntry{
-	
-	NSFileManager *fm = [[NSFileManager alloc] init];
+    
 	
 	// Define the objects (Empty to start with) we're going to send back to QS
 	NSMutableArray *objects=[[NSMutableArray alloc] init];
 	
-	// Find the path to the agile keychain file **has to be agilekeychain format
-	NSString *keychainPath= [(NSString *)CFPreferencesCopyAppValue((CFStringRef)@"AgileKeychainLocation",(CFStringRef) @"ws.agile.1Password") autorelease];
-	
-	// If path not set in prefs
-	if (keychainPath == nil) {
-		keychainPath = @"~/Library/Application Support/1Password/1Password.agilekeychain";
-	}
-	
-	// Expand the tilde !important!
-	keychainPath = [keychainPath stringByExpandingTildeInPath];
-	
-	// If we can't find the Agile Keychain
-	if (![fm fileExistsAtPath:keychainPath]) {
-		[fm release];
-		// Tell the user and exit so as not to cause crashes
-		NSLog(@"Could not determine keychain location. Please report this to the developer");
-		return 0;
-	}
-	
 	// Get into the data folder of it
-	keychainPath = [keychainPath stringByAppendingPathComponent:@"data/default/"];
+	NSString *dataFolder = [[self keychainPath] stringByAppendingPathComponent:@"data/default/"];
 	
+    NSFileManager *fm = [[NSFileManager alloc] init];
+    
+    if (![self keychainPath] || ![fm fileExistsAtPath:[self keychainPath]]) {
+        NSLog(@"Unable to determine 1Password keychain path. Assumed it was in %@, but file not found.",[self keychainPath]);
+        return nil;
+    }
+    
 	// get all the files in the directory
 	NSError *dataError = nil;
-	NSArray *dataFiles = [fm contentsOfDirectoryAtPath:keychainPath error:&dataError];
+	NSArray *dataFiles = [fm contentsOfDirectoryAtPath:dataFolder error:&dataError];
 	
 	[fm release];
 	
@@ -105,19 +161,19 @@
 		NSLog(@"Error: %@",dataError);
 		return nil;
 	}
-	
+	   
 	// Set this up to get only the files ending in .1pwd
 	NSPredicate *contains1Pwd = [NSPredicate predicateWithFormat:@"SELF ENDSWITH[c] '1Password'"];
 
 	// Set the 1Pwd bundle to access the images
-	NSBundle *OnePasswordBundle = [NSBundle bundleWithIdentifier:@"ws.agile.1Password"];
+	NSBundle *OnePasswordBundle = [NSBundle bundleWithIdentifier:bundleID];
 	
 	
 	// For each .1pwd file in the filtered files
 	for (NSString *dataPath in [dataFiles filteredArrayUsingPredicate:contains1Pwd])
 	{		
 		
-		NSData *JSONData = [NSData dataWithContentsOfFile:[keychainPath stringByAppendingPathComponent:dataPath]];
+		NSData *JSONData = [NSData dataWithContentsOfFile:[dataFolder stringByAppendingPathComponent:dataPath]];
 		NSDictionary *JSONDict = [JSONData yajl_JSON];
 		
 		// If there's something wrong with the JSON Dictionary
@@ -133,11 +189,11 @@
 		NSString *type = [theEntry objectForKey:kItemType];
 		NSString *objectType = [JSONDict objectForKey:@"typeName"];
 		
+        // Ignore password types
 		if ([objectType isEqualToString:@"passwords.Password"]) {
 			continue;
 		}
-		// if it's a webform
-		
+        		
 		NSString *title = [JSONDict objectForKey:@"title"];
 		NSString *uuidString = [JSONDict objectForKey:@"uuid"];
 
@@ -146,6 +202,7 @@
 		[newObject setLabel:title];
 		[newObject setName:title];
 
+        // if it's a webform
 		if([objectType isEqualToString:@"webforms.WebForm"])
 		{					
 			if ([type isEqualToString:@"WebForm"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
@@ -153,7 +210,7 @@
 				NSString *location = [JSONDict objectForKey:@"location"];				
 				[newObject setObject:uuidString forType:QS1PasswordForm];
 				[newObject setDetails:location];
-				[newObject setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]];
+				[newObject setIcon:onePasswordImage];
 				[newObject setObject:[JSONDict objectForKey:@"locationKey"] forMeta:@"locationKey"];
 				[objects addObject:newObject];
 			}
@@ -177,7 +234,7 @@
 			{
 				if ([type isEqualToString:@"WalletItem"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
 					[newObject setObject:title forType:QS1PasswordWalletItem];
-					[newObject setIcon:[[[NSImage alloc] initByReferencingFile:[OnePasswordBundle pathForResource:@"wallet-icon-128" ofType:@"png"]]autorelease]];
+					[newObject setIcon:[[[NSImage alloc] initByReferencingFile:[OnePasswordBundle pathForResource:@"wallet-icon-128" ofType:@"png"]] autorelease]];
 					[objects addObject:newObject];
 				}
 			}
@@ -214,7 +271,6 @@
 			}	
 		}
 	}
-	
 	return objects;
 }
 
@@ -224,19 +280,19 @@
 - (void)setQuickIconForObject:(QSObject *)object{
 	if ([[object primaryType] isEqualToString:@"QS1PasswordForm"])
 	{
-		[object setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]];
+		[object setIcon:onePasswordImage];
 	}
 	else if([[object primaryType] isEqualToString:@"QS1PasswordSecureNote"])
 	{
-		[object setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleWithIdentifier:@"ws.agile.1Password"] pathForResource:@"secure-notes-icon-128" ofType:@"png"]]autorelease]];
+		[object setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleWithIdentifier:bundleID] pathForResource:@"secure-notes-icon-128" ofType:@"png"]]autorelease]];
 	}
 	else if([[object primaryType] isEqualToString:@"QS1PasswordOnlineService"])
 	{
-		[object setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleWithIdentifier:@"ws.agile.1Password"] pathForResource:@"logins-icon-128" ofType:@"png"]]autorelease]];
+		[object setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleWithIdentifier:bundleID] pathForResource:@"logins-icon-128" ofType:@"png"]]autorelease]];
 	}
 	else if([[object primaryType] isEqualToString:@"QS1PasswordWalletItem"])
 	{
-		[object setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleWithIdentifier:@"ws.agile.1Password"] pathForResource:@"wallet-icon-128" ofType:@"png"]]autorelease]];
+		[object setIcon:[[[NSImage alloc] initByReferencingFile:[[NSBundle bundleWithIdentifier:bundleID] pathForResource:@"wallet-icon-128" ofType:@"png"]]autorelease]];
 	}
 	else if([[object primaryType] isEqualToString:@"QS1PasswordIdentity"])
 	{
@@ -248,7 +304,7 @@
 	}
 }
 //- (BOOL)loadIconForObject:(QSObject *)object{
-//[object setIcon:[QSResourceManager imageNamed:@"ws.agile.1Password"]];
+//[object setIcon:[QSResourceManager imageNamed:bundleID]];
 // return YES;
 // }
 

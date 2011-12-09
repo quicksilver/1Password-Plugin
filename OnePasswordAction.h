@@ -41,6 +41,7 @@
 
 @interface OnePasswordAction : QSActionProvider
 {
+    NSString *bundleID;
 }
 
 - (void)formURLAndFillWith:(QSObject *)dObject andBrowsers:(QSObject *)iObject;

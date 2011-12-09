@@ -23,6 +23,12 @@
 
 #import <QSCore/QSObjectSource.h>
 
+// Keychain location defines
+#define kOldKeychainLocation @"~/Library/Application Support/1Password/1Password.agilekeychain"
+#define kNewMASKeychainLocation @"~/Library/Containers/com.agilebits.onepassword-osx-helper/Data/Documents/1Password.agilekeychain"
+#define kDropboxLocation @"~/Dropbox/1Password.agilekeychain"
+
+// QSObject type defines
 #define QS1PasswordForm @"QS1PasswordForm"
 #define QS1PasswordSecureNote @"QS1PasswordSecureNote"
 #define QS1PasswordIdentity @"QS1PasswordIdentity"
@@ -30,12 +36,21 @@
 #define QS1PasswordOnlineService @"QS1PasswordOnlineService"
 #define QS1PasswordWalletItem @"QS1PasswordWalletItem"
 
+// JSON defines
+#define kItemType @"type"
+
 
 
 
 @interface OnePasswordSource : QSObjectSource
 {
+    NSString *bundleID;
+    NSString *keychainPath;
+    NSImage *onePasswordImage;
 }
+@property (retain) NSString *bundleID;
+@property (retain) NSString *keychainPath;
+@property (retain) NSImage *onePasswordImage;
 @end
 
 

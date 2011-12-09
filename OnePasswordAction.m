@@ -108,11 +108,9 @@
 }
 
 - (QSObject *)viewInOnePwd:(QSObject *)dObject {
-	
 	// setup the terminal command
-	NSString *command = @"defaults write ws.agile.1Password findUUID ";
-	command = [command stringByAppendingString:[dObject identifier]];
-	
+	NSString *command = [NSString stringWithFormat:@"defaults write ws.agile.1Password findUUID %@", [dObject identifier]];
+	NSLog(@"command: %@",command);
 	// load the script from a resource by fetching its URL from within our bundle
 	NSString *path=[[NSBundle bundleForClass:[self class]] pathForResource:@"RevealIn1Pwd" ofType:@"scpt"];
 	if (path != nil)
