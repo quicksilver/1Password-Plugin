@@ -55,14 +55,14 @@
 		BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordSource.h; sourceTree = "<group>"; };
 		BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordSource.m; sourceTree = "<group>"; };
 		CD0117CB13CCBDDF00409D70 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
-		CD5013A5149382260022F5E1 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
-		CD5013A6149382260022F5E1 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		CD5013A7149382260022F5E1 /* Developer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Developer.xcconfig; sourceTree = "<group>"; };
-		CD5013A8149382260022F5E1 /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
-		CD5013A9149382260022F5E1 /* QSPlugIn_Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QSPlugIn_Debug.xcconfig; sourceTree = "<group>"; };
-		CD5013AA149382260022F5E1 /* QSPlugIn_Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QSPlugIn_Release.xcconfig; sourceTree = "<group>"; };
-		CD5013AB149382260022F5E1 /* Quicksilver.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
-		CD5013AC149382260022F5E1 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		CD5013EF14938D1B0022F5E1 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		CD5013F014938D1B0022F5E1 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		CD5013F114938D1B0022F5E1 /* Developer.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Developer.xcconfig; sourceTree = "<group>"; };
+		CD5013F214938D1B0022F5E1 /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
+		CD5013F314938D1B0022F5E1 /* QSPlugIn_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Debug.xcconfig; sourceTree = "<group>"; };
+		CD5013F414938D1B0022F5E1 /* QSPlugIn_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Release.xcconfig; sourceTree = "<group>"; };
+		CD5013F514938D1B0022F5E1 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
+		CD5013F614938D1B0022F5E1 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = RevealIn1Pwd.scpt; sourceTree = "<group>"; };
 		CDF8E28714928A4F005B1E49 /* OnePasswordDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordDefines.h; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -88,7 +88,7 @@
 		0259C574FE90428111CA0C5A /* OnePassword */ = {
 			isa = PBXGroup;
 			children = (
-				CD5013A4149382260022F5E1 /* Configuration */,
+				CD5013EE14938D1B0022F5E1 /* Configuration */,
 				32DBCF9E0370C38000C91783 /* Classes */,
 				32DBCF9F0370C38200C91783 /* Other Sources */,
 				0259C582FE90428111CA0C5A /* Resources */,
@@ -150,20 +150,20 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		CD5013A4149382260022F5E1 /* Configuration */ = {
+		CD5013EE14938D1B0022F5E1 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				CD5013A5149382260022F5E1 /* Common.xcconfig */,
-				CD5013A6149382260022F5E1 /* Debug.xcconfig */,
-				CD5013A7149382260022F5E1 /* Developer.xcconfig */,
-				CD5013A8149382260022F5E1 /* QSPlugIn.xcconfig */,
-				CD5013A9149382260022F5E1 /* QSPlugIn_Debug.xcconfig */,
-				CD5013AA149382260022F5E1 /* QSPlugIn_Release.xcconfig */,
-				CD5013AB149382260022F5E1 /* Quicksilver.pch */,
-				CD5013AC149382260022F5E1 /* Release.xcconfig */,
+				CD5013EF14938D1B0022F5E1 /* Common.xcconfig */,
+				CD5013F014938D1B0022F5E1 /* Debug.xcconfig */,
+				CD5013F114938D1B0022F5E1 /* Developer.xcconfig */,
+				CD5013F214938D1B0022F5E1 /* QSPlugIn.xcconfig */,
+				CD5013F314938D1B0022F5E1 /* QSPlugIn_Debug.xcconfig */,
+				CD5013F414938D1B0022F5E1 /* QSPlugIn_Release.xcconfig */,
+				CD5013F514938D1B0022F5E1 /* Quicksilver.pch */,
+				CD5013F614938D1B0022F5E1 /* Release.xcconfig */,
 			);
 			name = Configuration;
-			path = ../../QS/Quicksilver/Quicksilver/Configuration;
+			path = ../../../../../../private/tmp/QS/Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,14 +251,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(QSFrameworks)",
-					/Users/patrick/Library/Frameworks,
-					"\"$(SRCROOT)\"",
-					"\"$(DEVELOPER_DIR)/Frameworks\"",
-				);
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -268,7 +261,6 @@
 				GCC_PREFIX_HEADER = OnePassword_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_PKGINFO_FILE = NO;
@@ -284,12 +276,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(QSFrameworks)",
-					/Users/patrick/Library/Frameworks,
-					"\"$(SRCROOT)\"",
-					"\"$(DEVELOPER_DIR)/Frameworks\"",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -307,11 +293,15 @@
 		7F6B3EF0085CE8DF000735A8 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT,
+					/tmp/QS/build/Release,
+				);
 				GCC_C_LANGUAGE_STANDARD = ansi;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 			};
 			name = Development;
@@ -319,14 +309,17 @@
 		7F6B3EF1085CE8DF000735A8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					$SRCROOT,
+					/tmp/QS/build/Release,
+				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
-				VALID_ARCHS = "i386 ppc";
 			};
 			name = Release;
 		};
