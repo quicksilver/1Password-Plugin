@@ -1,4 +1,11 @@
+.svn
+.DS_Store
+._.*
+*.o
 build
+Makefile
+autom4te.cache
+*~
 *.pbxuser
 *.perspectivev3
 *.mode1v3
@@ -6,3 +13,6 @@ build
 *.pbxuser
 *.tm_build_errors
 *.tmproj
+Developer.xcconfig
+*.xcworkspace
+*.xcuserdatad
