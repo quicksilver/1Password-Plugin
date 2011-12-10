@@ -55,7 +55,16 @@
 		BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordSource.h; sourceTree = "<group>"; };
 		BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordSource.m; sourceTree = "<group>"; };
 		CD0117CB13CCBDDF00409D70 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
+		CD5013A5149382260022F5E1 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		CD5013A6149382260022F5E1 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		CD5013A7149382260022F5E1 /* Developer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Developer.xcconfig; sourceTree = "<group>"; };
+		CD5013A8149382260022F5E1 /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
+		CD5013A9149382260022F5E1 /* QSPlugIn_Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QSPlugIn_Debug.xcconfig; sourceTree = "<group>"; };
+		CD5013AA149382260022F5E1 /* QSPlugIn_Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QSPlugIn_Release.xcconfig; sourceTree = "<group>"; };
+		CD5013AB149382260022F5E1 /* Quicksilver.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
+		CD5013AC149382260022F5E1 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = RevealIn1Pwd.scpt; sourceTree = "<group>"; };
+		CDF8E28714928A4F005B1E49 /* OnePasswordDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordDefines.h; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E1EAB045068128A200774DFF /* OnePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePassword.m; sourceTree = "<group>"; };
 		E1EAB047068128A800774DFF /* OnePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePassword.h; sourceTree = "<group>"; };
@@ -79,6 +88,7 @@
 		0259C574FE90428111CA0C5A /* OnePassword */ = {
 			isa = PBXGroup;
 			children = (
+				CD5013A4149382260022F5E1 /* Configuration */,
 				32DBCF9E0370C38000C91783 /* Classes */,
 				32DBCF9F0370C38200C91783 /* Other Sources */,
 				0259C582FE90428111CA0C5A /* Resources */,
@@ -127,6 +137,7 @@
 				E1EAB045068128A200774DFF /* OnePassword.m */,
 				BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */,
 				BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */,
+				CDF8E28714928A4F005B1E49 /* OnePasswordDefines.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -137,6 +148,22 @@
 				32DBCF980370C29C00C91783 /* OnePassword_Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		CD5013A4149382260022F5E1 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				CD5013A5149382260022F5E1 /* Common.xcconfig */,
+				CD5013A6149382260022F5E1 /* Debug.xcconfig */,
+				CD5013A7149382260022F5E1 /* Developer.xcconfig */,
+				CD5013A8149382260022F5E1 /* QSPlugIn.xcconfig */,
+				CD5013A9149382260022F5E1 /* QSPlugIn_Debug.xcconfig */,
+				CD5013AA149382260022F5E1 /* QSPlugIn_Release.xcconfig */,
+				CD5013AB149382260022F5E1 /* Quicksilver.pch */,
+				CD5013AC149382260022F5E1 /* Release.xcconfig */,
+			);
+			name = Configuration;
+			path = ../../QS/Quicksilver/Quicksilver/Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +266,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OnePassword_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -266,6 +294,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = OnePassword_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = Info.plist;
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				OTHER_LDFLAGS = "-bundle";

@@ -22,6 +22,7 @@
 //
 
 #import "OnePasswordSource.h"
+#import "OnepasswordDefines.h"
 #import <YAJL/YAJL.h>
 
 #import <QSCore/QSObject.h>
@@ -37,18 +38,21 @@
     [super dealloc];
 }
 
--(id)sharedInstance {
-    
+static id _sharedInstance;
+
++ (id)sharedInstance {
+	if (!_sharedInstance) _sharedInstance = [[[self class] allocWithZone:[self zone]] init];
+	return _sharedInstance;
 }
 
 -(id)init {
     if (self = [super init]) {
         OSStatus result = LSFindApplicationForInfo (kLSUnknownCreator,CFSTR("com.agilebits.onepassword-osx"),NULL,nil,nil);
         if (result == noErr) {
-            [self setBundleID:@"com.agilebits.onepassword-osx"]; 
+            [self setBundleID:kOnePasswordMASBundleID]; 
         }
         else {
-            [self setBundleID:@"ws.agile.1Password"];
+            [self setBundleID:kOnePasswordOldBundleID];
         }
 //        NSLog(@"1Password Bundle ID: %@",[self bundleID]);
 

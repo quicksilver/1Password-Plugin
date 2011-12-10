@@ -24,6 +24,9 @@
 
 #import "OnePasswordAction.h"
 #import <QSCore/QSObject_FileHandling.h>
+#import "OnePasswordSource.h"
+#import "OnePasswordDefines.h"
+
 
 @implementation OnePasswordAction
 
@@ -108,8 +111,16 @@
 }
 
 - (QSObject *)viewInOnePwd:(QSObject *)dObject {
-	// setup the terminal command
-	NSString *command = [NSString stringWithFormat:@"defaults write ws.agile.1Password findUUID %@", [dObject identifier]];
+	
+    // setup the terminal command
+    NSString *command;
+    if ([[[OnePasswordSource sharedInstance] bundleID] isEqualToString:kOnePasswordMASBundleID]) {
+        command = [NSString stringWithFormat:@"defaults write %@ selectedObjects -array %@", kOnePasswordMASBundleID, [dObject identifier]];
+    }
+    else {
+        command = [NSString stringWithFormat:@"defaults write %@ findUUID %@", kOnePasswordOldBundleID, [dObject identifier]];
+
+    }
 	NSLog(@"command: %@",command);
 	// load the script from a resource by fetching its URL from within our bundle
 	NSString *path=[[NSBundle bundleForClass:[self class]] pathForResource:@"RevealIn1Pwd" ofType:@"scpt"];
