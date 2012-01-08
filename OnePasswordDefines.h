@@ -1,7 +1,7 @@
 // Keychain location defines
 #define kOldKeychainLocation @"~/Library/Application Support/1Password/1Password.agilekeychain"
 #define kNewMASKeychainLocation @"~/Library/Containers/com.agilebits.onepassword-osx-helper/Data/Documents/1Password.agilekeychain"
-#define kDropboxLocation @"~/Dropbox/1Password.agilekeychain"
+#define kDropboxLocation @"~/Dropbox/1Password/1Password.agilekeychain"
 
 // QSObject type defines
 #define QS1PasswordForm @"QS1PasswordForm"
