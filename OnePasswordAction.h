@@ -44,11 +44,9 @@
     NSString *bundleID;
 }
 
-- (void)formURLAndFillWith:(QSObject *)dObject andBrowsers:(QSObject *)iObject;
 - (QSObject *)viewInOnePwd:(QSObject *)dObject;
 - (QSObject *)goAndFill:(QSObject *)dObject;
 - (QSObject *)goAndFill:(QSObject *)dObject with:(QSObject *)iObject;
-//- (QSObject *)trashForm:(QSObject *)dObject;
 
 @end
 

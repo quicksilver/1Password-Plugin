@@ -28,11 +28,9 @@
 {
     NSString *bundleID;
     NSString *keychainPath;
-    NSImage *onePasswordImage;
 }
 @property (retain) NSString *bundleID;
 @property (retain) NSString *keychainPath;
-@property (retain) NSImage *onePasswordImage;
 +(id)sharedInstance;
 
 @end

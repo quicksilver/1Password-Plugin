@@ -92,21 +92,38 @@
 
 - (QSObject *)goAndFill:(QSObject *)dObject with:(QSObject *)iObject {
 	
-			// for each object - do exactly the same thing as for single objects
-			//	ß61 method
-	//for (QSObject *goAndFillObject in [dObject splitObjects]) {
-//		[self writePlistAndFill:goAndFillObject withBrowsers:iObject];
-//	}
-	if ([dObject count] > 1) {
-		for (QSObject *goAndFillObject in [dObject objectForCache:kQSObjectComponents]) {
-					[self formURLAndFillWith:goAndFillObject andBrowsers:iObject];
-		}
-	}
-	else {
-		[self formURLAndFillWith:dObject andBrowsers:iObject];
-	}
-
-
+    NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+    
+    NSMutableArray *URLArray = [[NSMutableArray alloc] initWithCapacity:[dObject count]];
+    for (QSObject *goAndFillObject in [dObject splitObjects]) {
+        
+        NSString *appendedString = [NSString stringWithFormat:@"?onepasswdfill=%@",[goAndFillObject identifier]];
+        NSString *URLString = [goAndFillObject details];
+        
+        URLString = [URLString stringByAppendingString:appendedString];
+        NSURL *URL = [NSURL URLWithString:[URLString URLEncoding]];
+        [URLArray addObject:URL];
+        
+    }
+       
+    if (!iObject) {
+        [ws openURLs:URLArray withAppBundleIdentifier:nil
+                                              options:0
+                       additionalEventParamDescriptor:nil
+                                    launchIdentifiers:nil];
+    } else {
+        for(QSObject *individual in [iObject splitObjects]){
+            if([individual isApplication]) {		
+                NSString *ident = [[NSBundle bundleWithPath:[individual singleFilePath]] bundleIdentifier];
+                [ws openURLs:URLArray withAppBundleIdentifier:ident
+                     options:0
+additionalEventParamDescriptor:nil
+           launchIdentifiers:nil];
+                
+            }
+        }
+    }
+    [URLArray release];
 	return nil;
 }
 
@@ -187,38 +204,6 @@
 	
 	return nil;
 }
-
--(void)formURLAndFillWith:(QSObject *)dObject andBrowsers:(QSObject *)iObject {		
-	// Create the appropriate URL
-			
-	NSString *appendedString = [NSString stringWithFormat:@"?onepasswdfill=%@",[dObject identifier]];
-	NSString *URLString = [dObject details];
-	
-	URLString = [URLString stringByAppendingString:appendedString];
-	NSURL *URL = [NSURL URLWithString:[URLString URLEncoding]];
-	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-
-	
-	// Open the URL in the default browser
-	if(!iObject) {
-		[ws openURL:URL];
-	}
-	
-	else {
-		for(QSObject *individual in [iObject splitObjects]){
-			if([individual isApplication]) {		
-				NSString *ident = [[NSBundle bundleWithPath:[individual singleFilePath]] bundleIdentifier];
-				[ws openURLs:[NSArray arrayWithObject:URL] withAppBundleIdentifier:ident
-					 options:0
-additionalEventParamDescriptor:nil
-		   launchIdentifiers:nil];
-				
-		}
-	}
-	}
-	
-}
-
 
 
 //-(QSObject *)trashForm:(QSObject *)dObject
