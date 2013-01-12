@@ -26,8 +26,6 @@
 #import "OnepasswordDefines.h"
 #import <YAJL/YAJL.h>
 
-#import <QSCore/QSObject.h>
-
 @implementation OnePasswordSource
 
 @synthesize bundleID, keychainPath;
@@ -148,8 +146,8 @@ static id _sharedInstance;
     // Define the objects (Empty to start with) we're going to send back to QS
     NSMutableArray *objects=[[NSMutableArray alloc] init];
     
-    // Set this up to get only the files ending in .1pwd
-    NSPredicate *contains1Pwd = [NSPredicate predicateWithFormat:@"SELF ENDSWITH[c] '1Password'"];
+    // Set this up to get only the files with format UUID.1password (to ignore dropbox conflicts)
+    NSPredicate *contains1Pwd = [NSPredicate predicateWithFormat:@"SELF MATCHES '[0-9A-F]+.1password'"];
     
     // Set the 1Pwd bundle to access the images
     NSBundle *OnePasswordBundle = [NSBundle bundleWithIdentifier:bundleID];
