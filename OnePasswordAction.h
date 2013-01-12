@@ -21,8 +21,6 @@
 //	along with Quicksilver 1Password Module.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <QSCore/QSObject.h>
-#import <QSCore/QSActionProvider.h>
 #import "OnePasswordAction.h"
 
 #define kOnePasswordAction @"OnePasswordAction"

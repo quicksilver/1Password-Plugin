@@ -23,7 +23,6 @@
 
 
 #import "OnePasswordAction.h"
-#import <QSCore/QSObject_FileHandling.h>
 #import "OnePasswordSource.h"
 #import "OnePasswordDefines.h"
 

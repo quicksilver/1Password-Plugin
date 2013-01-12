@@ -21,8 +21,6 @@
 //	along with Quicksilver 1Password Module.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-#import <QSCore/QSObjectSource.h>
-
 
 @interface OnePasswordSource : QSObjectSource
 {
