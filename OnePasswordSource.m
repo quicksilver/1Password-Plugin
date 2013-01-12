@@ -156,19 +156,24 @@ static id _sharedInstance;
     
     @autoreleasepool {
         // For each .1pwd file in the filtered files
-        for (NSString *dataPath in filteredFiles)
-        {		
-            
+        for (NSString *dataPath in filteredFiles) {
             NSData *JSONData = [NSData dataWithContentsOfFile:[dataFolder stringByAppendingPathComponent:dataPath]];
-            NSDictionary *JSONDict = [JSONData yajl_JSON];
+            NSDictionary *JSONDict = nil;
+            @try {
+                JSONDict = [JSONData yajl_JSON];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"Error parsing 1Password data for %@.\nException: %@",dataPath,exception);
+                continue;
+            }
             
             // If there's something wrong with the JSON Dictionary
-            if(!JSONDict) {
-                NSLog(@"Error getting JSONDict");
+            if(JSONDict == nil) {
+                NSLog(@"Error getting JSONDict for %@",dataPath);
                 continue;
             }
             // Don't catalog trashed items
-            if([JSONDict objectForKey:@"trashed"]) {
+            if([JSONDict objectForKey:@"trashed"] != nil && [[JSONDict objectForKey:@"trashed"] boolValue]) {
                 continue;
             }
             
