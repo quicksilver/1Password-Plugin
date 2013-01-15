@@ -96,12 +96,8 @@
     NSMutableArray *URLArray = [[NSMutableArray alloc] initWithCapacity:[dObject count]];
     for (QSObject *goAndFillObject in [dObject splitObjects]) {
         
-        NSString *appendedString = [NSString stringWithFormat:@"?onepasswdfill=%@",[goAndFillObject identifier]];
-        NSString *URLString = [goAndFillObject details];
-        
-        URLString = [URLString stringByAppendingString:appendedString];
-        NSURL *URL = [NSURL URLWithString:[URLString URLEncoding]];
-        [URLArray addObject:URL];
+        NSString *URLString = [NSString stringWithFormat:@"%@?onepasswdfill=%@",[goAndFillObject details],[goAndFillObject objectForType:QS1PasswordForm]];
+        [URLArray addObject:[NSURL URLWithString:[URLString URLEncoding]]];
         
     }
        
@@ -112,7 +108,7 @@
                                     launchIdentifiers:nil];
     } else {
         for(QSObject *individual in [iObject splitObjects]){
-            if([individual isApplication]) {		
+            if([individual isApplication]) {	
                 NSString *ident = [[NSBundle bundleWithPath:[individual singleFilePath]] bundleIdentifier];
                 [ws openURLs:URLArray withAppBundleIdentifier:ident
                      options:0

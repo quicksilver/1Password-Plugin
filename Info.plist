@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.6.2</string>
 	<key>CFBundleVersion</key>
-	<string>366</string>
+	<string>370</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -91,18 +91,37 @@
 		</array>
 		<key>description</key>
 		<string>Adds support for 1Password Data to Reveal in 1Password and to Go &amp; Fill web forms</string>
+		<key>extendedDescription</key>
+		<string>&lt;h2&gt;1Password 3 Plugin&lt;/h2&gt;
+&lt;p&gt;The 1Password plugin for Quicksilver gives you the ability to manipulate 1Password data from Quicksilver, and to Go &amp;amp; Fill web logins.&lt;/p&gt;
+&lt;h3&gt;Catalog&lt;/h3&gt;
+&lt;p&gt;This plugin enables Quicksilver to index your 1Password data. This includes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Web forms&lt;/li&gt;
+&lt;li&gt;Accounts&lt;/li&gt;
+&lt;li&gt;Software&lt;/li&gt;
+&lt;li&gt;Identities&lt;/li&gt;
+&lt;li&gt;Wallet items&lt;/li&gt;
+&lt;li&gt;Notes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You can access all these items by right arrowing (→) into the 1Password.app in Quicksilver's first pane.
+You may also add these items to your catalog by going to the &lt;a href="qs://preferences#QSCatalogPrefPane"&gt;Catalog preferences&lt;/a&gt; and enabling the '1Password' entry.&lt;/p&gt;
+&lt;h3&gt;Actions&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Go &amp;amp; Fill&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Go &amp;amp; Fill action is available for 1Password web forms. When run on a web form, the plugin takes you to your browser and logs you in using the login.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Go &amp;amp; Fill With...&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This action is an extension of the 'Go &amp;amp; Fill' action, and allows you to specify a browser to use when filling the login/web form.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Reveal in 1Password&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Reveal in 1Password action is available for all data types (see above). It launches 1Password and selects the entry in the application, allowing you to manipulate of view its details.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;This plugin has taken a lot of development time. If you enjoy using it, please consider &lt;a href="http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/"&gt;donating&lt;/a&gt;.&lt;/p&gt;</string>
+		<key>icon</key>
+		<string>com.agilebits.onepassword-osx</string>
 		<key>relatedBundles</key>
 		<array>
 			<string>com.agilebits.onepassword-osx</string>
 			<string>ws.agile.1Password</string>
 		</array>
-		<key>extendedDescription</key>
-		<string>&lt;h3&gt;1Password 3 Plugin&lt;/h3&gt;
-
-&lt;p&gt;This plugin has taken a lot of development time. If you enjoy using it, please consider &lt;a href=&quot;http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/&quot;&gt;donating&lt;/a&gt;.&lt;/p&gt;
- &lt;p&gt;This plugin enables right arrowing into the 1Password application, giving access to data saved in 1Password&lt;br /&gt; &lt;p&gt;Web logins objects, have &apos;Go &amp; Fill&apos; action, as well as a &apos;Go &amp; Fill With...&apos; action. &lt;/p&gt; &lt;p&gt;These actions works with the comma trick, so you can open multiple logins at once, or open them in multiple browsers&lt;/p&gt; &lt;p&gt;1Password data can be indexed directly in the Quicksilver catalog by &apos;ticking&apos; any of the 1Password data types in the Preferences→Catalog→Plugins pane (disabled by default)&lt;br /&gt; This plugin also adds support for &apos;Reveal in 1Password&apos; for all data types: web forms, accounts, software, identities, wallet items and notes using the action &apos;Reveal in 1Password&apos;&lt;/p&gt;</string>
-		<key>icon</key>
-		<string>com.agilebits.onepassword-osx</string>
 	</dict>
 	<key>QSPresetAdditions</key>
 	<array>
