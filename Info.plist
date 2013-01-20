@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.6.2</string>
+	<string>2.6.3</string>
 	<key>CFBundleVersion</key>
-	<string>370</string>
+	<string>375</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -104,17 +104,17 @@
 &lt;li&gt;Wallet items&lt;/li&gt;
 &lt;li&gt;Notes&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;You can access all these items by right arrowing (→) into the 1Password.app in Quicksilver's first pane.
-You may also add these items to your catalog by going to the &lt;a href="qs://preferences#QSCatalogPrefPane"&gt;Catalog preferences&lt;/a&gt; and enabling the '1Password' entry.&lt;/p&gt;
+&lt;p&gt;You can access all these items by right arrowing (→) into the 1Password.app in Quicksilver&apos;s first pane.
+You may also add these items to your catalog by going to the &lt;a href=&quot;qs://preferences#QSCatalogPrefPane&quot;&gt;Catalog preferences&lt;/a&gt; and enabling the &apos;1Password&apos; entry.&lt;/p&gt;
 &lt;h3&gt;Actions&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Go &amp;amp; Fill&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The Go &amp;amp; Fill action is available for 1Password web forms. When run on a web form, the plugin takes you to your browser and logs you in using the login.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Go &amp;amp; Fill With...&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;This action is an extension of the 'Go &amp;amp; Fill' action, and allows you to specify a browser to use when filling the login/web form.&lt;/p&gt;
+&lt;p&gt;This action is an extension of the &apos;Go &amp;amp; Fill&apos; action, and allows you to specify a browser to use when filling the login/web form.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Reveal in 1Password&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;The Reveal in 1Password action is available for all data types (see above). It launches 1Password and selects the entry in the application, allowing you to manipulate of view its details.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;This plugin has taken a lot of development time. If you enjoy using it, please consider &lt;a href="http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/"&gt;donating&lt;/a&gt;.&lt;/p&gt;</string>
+&lt;p&gt;This plugin has taken a lot of development time. If you enjoy using it, please consider &lt;a href=&quot;http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/&quot;&gt;donating&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.agilebits.onepassword-osx</string>
 		<key>relatedBundles</key>

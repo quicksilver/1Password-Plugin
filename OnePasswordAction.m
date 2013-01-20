@@ -127,10 +127,10 @@ additionalEventParamDescriptor:nil
     // setup the terminal command
     NSString *command;
     if ([[[OnePasswordSource sharedInstance] bundleID] isEqualToString:kOnePasswordMASBundleID]) {
-        command = [NSString stringWithFormat:@"defaults write %@ selectedObjects -array %@", kOnePasswordMASBundleID, [dObject identifier]];
+        command = [NSString stringWithFormat:@"defaults write %@ selectedObjects -array %@", kOnePasswordMASBundleID, [dObject primaryObject]];
     }
     else {
-        command = [NSString stringWithFormat:@"defaults write %@ findUUID %@", kOnePasswordOldBundleID, [dObject identifier]];
+        command = [NSString stringWithFormat:@"defaults write %@ findUUID %@", kOnePasswordOldBundleID, [dObject primaryObject]];
 
     }
 	NSLog(@"command: %@",command);
@@ -144,7 +144,7 @@ additionalEventParamDescriptor:nil
 		if (appleScript != nil)
 		{
 			// create the parameters
-			NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[dObject name]];
+			NSAppleEventDescriptor* firstParameter = [NSAppleEventDescriptor descriptorWithString:[dObject label]];
 			NSAppleEventDescriptor* secondParameter = [NSAppleEventDescriptor descriptorWithString:command];
 			NSAppleEventDescriptor* thirdParameter = [NSAppleEventDescriptor descriptorWithString:[dObject primaryType]];
 			

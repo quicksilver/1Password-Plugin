@@ -225,7 +225,7 @@ static id _sharedInstance;
                 else if ([objectType hasPrefix:@"wallet.financial"])
                 {
                     if ([type isEqualToString:@"WalletItem"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
-                        [newObject setObject:title forType:QS1PasswordWalletItem];
+                        [newObject setObject:uuidString forType:QS1PasswordWalletItem];
                         [newObject setIcon:[[[NSImage alloc] initByReferencingFile:[OnePasswordBundle pathForResource:@"wallet-icon-128" ofType:@"png"]] autorelease]];
                         [objects addObject:newObject];
                     }
@@ -235,7 +235,7 @@ static id _sharedInstance;
                 else if ([objectType hasPrefix:@"wallet.computer"])
                 {
                     if ([type isEqualToString:@"SoftwareLicense"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
-                        [newObject setObject:title forType:QS1PasswordSoftwareLicense];
+                        [newObject setObject:uuidString forType:QS1PasswordSoftwareLicense];
                         [newObject setIcon:[QSResourceManager imageNamed:@"ToolbarAppsFolderIcon"]];
                         [objects addObject:newObject];
                     }
@@ -245,7 +245,7 @@ static id _sharedInstance;
                 else if ([objectType hasPrefix:@"wallet.onlineservices"])
                 {
                     if ([type isEqualToString:@"OnlineService"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
-                        [newObject setObject:title forType:QS1PasswordOnlineService];
+                        [newObject setObject:uuidString forType:QS1PasswordOnlineService];
                         [newObject setIcon:[[[NSImage alloc] initByReferencingFile:[OnePasswordBundle pathForResource:@"logins-icon-128" ofType:@"png"]] autorelease]];
                         [objects addObject:newObject];
                     }
@@ -270,28 +270,28 @@ static id _sharedInstance;
 // Object Handler Methods
 // An icon that is either already in memory or easy to load
 - (void)setQuickIconForObject:(QSObject *)object{
-	if ([[object primaryType] isEqualToString:@"QS1PasswordForm"])
+	if ([[object primaryType] isEqualToString:QS1PasswordForm])
 	{
 		[object setIcon:[QSResourceManager imageNamed:bundleID]];
 	}
-	else if([[object primaryType] isEqualToString:@"QS1PasswordSecureNote"])
+	else if([[object primaryType] isEqualToString:QS1PasswordSecureNote])
 	{
 		[object setIcon:[QSResourceManager imageNamed:@"secure-notes-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:bundleID]]];
 //        [[[NSImage alloc] initByReferencingFile:[[NSBundle bundleWithIdentifier:bundleID] pathForResource:@"secure-notes-icon-128" ofType:@"png"]]autorelease]];
 	}
-	else if([[object primaryType] isEqualToString:@"QS1PasswordOnlineService"])
+	else if([[object primaryType] isEqualToString:QS1PasswordOnlineService])
 	{
 		[object setIcon:[QSResourceManager imageNamed:@"logins-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:bundleID]]];
 	}
-	else if([[object primaryType] isEqualToString:@"QS1PasswordWalletItem"])
+	else if([[object primaryType] isEqualToString:QS1PasswordWalletItem])
 	{
 		[object setIcon:[QSResourceManager imageNamed:@"wallet-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:bundleID]]];
 	}
-	else if([[object primaryType] isEqualToString:@"QS1PasswordIdentity"])
+	else if([[object primaryType] isEqualToString:QS1PasswordIdentity])
 	{
 		[object setIcon:[QSResourceManager imageNamed:@"UserIcon"]];
 	}
-	else if([[object primaryType] isEqualToString:@"QS1PasswordSoftwareLicense"])
+	else if([[object primaryType] isEqualToString:QS1PasswordSoftwareLicense])
 	{
 		[object setIcon:[QSResourceManager imageNamed:@"ToolbarAppsFolderIcon"]];
 	}
