@@ -242,7 +242,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD5013F214938D1B0022F5E1 /* QSPlugIn.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = OnePassword_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = Info.plist;
@@ -256,7 +255,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD5013F214938D1B0022F5E1 /* QSPlugIn.xcconfig */;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREFIX_HEADER = OnePassword_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = Info.plist;

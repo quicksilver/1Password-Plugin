@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.6.3</string>
 	<key>CFBundleVersion</key>
-	<string>378</string>
+	<string>379</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -257,6 +257,11 @@ You may also add these items to your catalog by going to the &lt;a href="qs://pr
 			<key>OnePasswordSource</key>
 			<string>OnePasswordSource</string>
 		</dict>
+	</dict>
+	<key>QSRequirements</key>
+	<dict>
+		<key>version</key>
+		<string>4001</string>
 	</dict>
 </dict>
 </plist>
