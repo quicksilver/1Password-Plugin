@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.6.3</string>
 	<key>CFBundleVersion</key>
-	<string>384</string>
+	<string>3A0</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -256,6 +256,24 @@ You may also add these items to your catalog by going to the &lt;a href="qs://pr
 		<dict>
 			<key>OnePasswordSource</key>
 			<string>OnePasswordSource</string>
+		</dict>
+		<key>QSPreferencePanes</key>
+		<dict>
+			<key>1PasswordPrefPane</key>
+			<dict>
+				<key>class</key>
+				<string>QS1PasswordPreferencePane</string>
+				<key>description</key>
+				<string>Preferences</string>
+				<key>icon</key>
+				<string>com.agilebits.onepassword-osx</string>
+				<key>name</key>
+				<string>1Password</string>
+				<key>nibBundle</key>
+				<string>com.robertson.Quicksilver.OnePassword</string>
+				<key>nibName</key>
+				<string>OnePasswordPrefPane</string>
+			</dict>
 		</dict>
 	</dict>
 	<key>QSRequirements</key>

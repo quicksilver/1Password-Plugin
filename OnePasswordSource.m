@@ -28,11 +28,10 @@
 
 @implementation OnePasswordSource
 
-@synthesize bundleID, keychainPath;
+@synthesize bundleID;
 
 -(void)dealloc {
     [bundleID release];
-    [keychainPath release];
     [super dealloc];
 }
 
@@ -45,6 +44,7 @@ static id _sharedInstance;
 
 -(id)init {
     if (self = [super init]) {
+        
         OSStatus result = LSFindApplicationForInfo (kLSUnknownCreator,CFSTR("com.agilebits.onepassword-osx"),NULL,nil,nil);
         if (result == noErr) {
             [self setBundleID:kOnePasswordMASBundleID]; 
@@ -52,34 +52,38 @@ static id _sharedInstance;
         else {
             [self setBundleID:kOnePasswordOldBundleID];
         }
-//        NSLog(@"1Password Bundle ID: %@",[self bundleID]);
-
-        NSString *tempKeychainPath = [(NSString *)CFPreferencesCopyAppValue((CFStringRef)@"AgileKeychainLocation",(CFStringRef) @"ws.agile.1Password") autorelease];
-        
-        NSFileManager *fm = [[NSFileManager alloc] init];
-
-        if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
-            for (NSString *testKeychainPath in kKeychainPathArray) {
-                if ([fm fileExistsAtPath:[testKeychainPath stringByStandardizingPath]]) {
-                    tempKeychainPath = testKeychainPath;
-                    break;
+        NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
+        if (![d objectForKey:k1PPath]) {
+            // 1PPath hasn't been set previously
+            NSString *tempKeychainPath = [(NSString *)CFPreferencesCopyAppValue((CFStringRef)@"AgileKeychainLocation",(CFStringRef) @"ws.agile.1Password") autorelease];
+            
+            NSFileManager *fm = [[NSFileManager alloc] init];
+            
+            if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
+                for (NSString *testKeychainPath in kKeychainPathArray) {
+                    if ([fm fileExistsAtPath:[testKeychainPath stringByStandardizingPath]]) {
+                        tempKeychainPath = testKeychainPath;
+                        break;
+                    }
                 }
-            }   
+            }
             
+            if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
+                QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : [QSResourceManager imageNamed:self.bundleID], QSNotifierTitle : @"Unable to locate 1Password keychain", QSNotifierText : @"Please set the keychain location in the Quicksilver Preferences"});
+            } else {
+                [[NSUserDefaults standardUserDefaults] setObject:[tempKeychainPath stringByStandardizingPath] forKey:k1PPath];
+            }
+            [fm release];
         }
-            
-        if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
-            NSLog(@"Could not determine where your keychain resides.\n Tried everything for Bundle ID: %@, all I came up with was keychain: %@",
-                  [self bundleID], keychainPath);
-        }
-       
-        [self setKeychainPath:[tempKeychainPath stringByStandardizingPath]];
-        [fm release];
     }
         
     return self;
 }
 
+- (NSString *)keychainPath {
+    NSString *path = [[NSUserDefaults standardUserDefaults] stringForKey:k1PPath];
+    return path ? path : @"";
+}
 
 
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry{
