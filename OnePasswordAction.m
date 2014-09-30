@@ -48,7 +48,7 @@
 		return nil;
 	}
 	NSArray *validBrowsers = [NSArray arrayWithObjects:@"org.mozilla.firefox",
-							  @"com.apple.Safari",@"com.google.Chrome",@"org.mozilla.camino",
+							  @"com.apple.Safari",@"com.google.Chrome",@"org.mozilla.camino",@"com.operasoftware.Opera",
 							  @"com.omnigroup.omniweb",@"com.ranchero.NetNewsWire",
 							  @"com.fluidapp.Fluid",@"com.devon-technologies.agent",@"de.icab.iCab",@"org.webkit.nightly.WebKit",nil];
 	NSMutableArray *validIndirects = [NSMutableArray arrayWithCapacity:1];
