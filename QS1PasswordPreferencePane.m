@@ -13,10 +13,18 @@
 
 - (void)mainViewDidLoad {
     if (!onePasswdPathField.stringValue.length) {
-        onePasswdPathField.stringValue = @"Select your .agilekeychain";
+        NSString *storedPath = [[NSUserDefaults standardUserDefaults] stringForKey:k1PPath];
+        onePasswdPathField.stringValue = storedPath ? [self prettyPath:[NSURL fileURLWithPath:storedPath]] : @"Select your .agilekeychain";
     }
 }
 
+- (NSString *)prettyPath:(NSURL *)URLpath {
+    NSString *prettyPath = [NSString string];
+    for (NSString *pathComponent in [[URLpath pathComponents] subarrayWithRange:NSMakeRange(1, [URLpath pathComponents].count - 1)]) {
+        prettyPath = [prettyPath stringByAppendingFormat:@"▸ %@ ",pathComponent];
+    }
+    return prettyPath;
+}
 
 -(IBAction)setPath:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
@@ -28,11 +36,7 @@
      {
          if (result == NSFileHandlingPanelOKButton) {
              NSURL *URLpath = [panel URL];
-             NSString *prettyPath = [NSString string];
-             for (NSString *pathComponent in [URLpath pathComponents]) {
-                 prettyPath = [prettyPath stringByAppendingFormat:@"▸ %@ ",pathComponent];
-             }
-             [onePasswdPathField setStringValue:[prettyPath substringFromIndex:2]];
+             [onePasswdPathField setStringValue:[self prettyPath:URLpath]];
              [[NSUserDefaults standardUserDefaults] setObject:[URLpath path] forKey:k1PPath];
              return;
          }

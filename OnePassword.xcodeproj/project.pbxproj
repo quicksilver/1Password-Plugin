@@ -223,7 +223,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		E1022B2806B3475D00299BEC /* Update Version and Documentation */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -231,7 +231,7 @@
 			name = "Update Version and Documentation";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"$QS_BUILD_ROOT/Tools/bltrversion\"";
 		};
