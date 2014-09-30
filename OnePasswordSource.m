@@ -104,7 +104,7 @@ static id _sharedInstance;
 
 - (BOOL)loadChildrenForObject:(QSObject *)object {
 	// For the children to 1Pwd, just load what's in objectsForEntry
-	if([[object primaryType] isEqualToString:NSFilenamesPboardType]) {
+	if([[object primaryType] isEqualToString:QSFilePathType]) {
 		NSArray *items = [self objectsForEntry:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"LoadingChildren"]];
 		if (!items) {
 			return NO;
