@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.6.3</string>
+	<string>2.7.0</string>
 	<key>CFBundleVersion</key>
-	<string>3A1</string>
+	<string>3A3</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
