@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.6.3</string>
 	<key>CFBundleVersion</key>
-	<string>3A0</string>
+	<string>3A1</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -28,8 +28,6 @@
 			<string>OnePasswordAction</string>
 			<key>actionSelector</key>
 			<string>goAndFill:</string>
-			<key>alternateAction</key>
-			<string>viewInOnePwd</string>
 			<key>directTypes</key>
 			<array>
 				<string>QS1PasswordForm</string>
@@ -58,6 +56,9 @@
 			<key>validatesObjects</key>
 			<false/>
 		</dict>
+	</dict>
+	<key>QSActions-Obsolete</key>
+	<dict>
 		<key>viewInOnePwd</key>
 		<dict>
 			<key>actionClass</key>
