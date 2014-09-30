@@ -246,8 +246,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = Info.plist;
 				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = OnePassword;
-				WRAPPER_EXTENSION = qsplugin;
 			};
 			name = Debug;
 		};
@@ -259,8 +257,6 @@
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = Info.plist;
 				OTHER_LDFLAGS = "-bundle";
-				PRODUCT_NAME = OnePassword;
-				WRAPPER_EXTENSION = qsplugin;
 			};
 			name = Release;
 		};
@@ -268,16 +264,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD5013F014938D1B0022F5E1 /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					$SRCROOT,
 					/tmp/QS/build/Release,
 				);
-				GCC_C_LANGUAGE_STANDARD = ansi;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -285,17 +277,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD5013F614938D1B0022F5E1 /* Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				FRAMEWORK_SEARCH_PATHS = (
 					$SRCROOT,
 					/tmp/QS/build/Release,
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_MODEL_TUNING = G5;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
