@@ -123,7 +123,7 @@ additionalEventParamDescriptor:nil
 }
 
 - (QSObject *)viewInOnePwd:(QSObject *)dObject {
-	
+#if 0
     // setup the terminal command
     NSString *command;
     if ([[[OnePasswordSource sharedInstance] bundleID] isEqualToString:kOnePasswordMASBundleID]) {
@@ -196,7 +196,7 @@ additionalEventParamDescriptor:nil
 			// report any errors from 'errors'
 		}
 	}
-	
+#endif
 	return nil;
 }
 

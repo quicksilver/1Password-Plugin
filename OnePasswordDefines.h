@@ -18,8 +18,7 @@
 #define kItemType @"type"
 
 // OnePassword Bundle IDs
-#define kOnePasswordMASBundleID @"com.agilebits.onepassword-osx"
-#define kOnePasswordOldBundleID @"ws.agile.1Password"
+#define kOnePasswordBundleIDs @[@"com.agilebits.onepassword-osx", @"ws.agile.1Password", @"com.agilebits.onepassword4"]
 
 // Key for storing the keychain path in the prefs
 #define k1PPath @"QS1PasswordKeychainPath"

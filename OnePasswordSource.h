@@ -23,9 +23,7 @@
 
 
 @interface OnePasswordSource : QSObjectSource
-{
-    NSString *bundleID;
-}
+
 @property (retain) NSString *bundleID;
 +(id)sharedInstance;
 

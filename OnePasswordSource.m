@@ -28,10 +28,8 @@
 
 @implementation OnePasswordSource
 
-@synthesize bundleID;
-
 -(void)dealloc {
-    [bundleID release];
+    self.bundleID = nil;
     [super dealloc];
 }
 
@@ -45,12 +43,12 @@ static id _sharedInstance;
 -(id)init {
     if (self = [super init]) {
         
-        OSStatus result = LSFindApplicationForInfo (kLSUnknownCreator,CFSTR("com.agilebits.onepassword-osx"),NULL,nil,nil);
-        if (result == noErr) {
-            [self setBundleID:kOnePasswordMASBundleID]; 
-        }
-        else {
-            [self setBundleID:kOnePasswordOldBundleID];
+        for (NSString *bundleID in kOnePasswordBundleIDs) {
+            OSStatus result = LSFindApplicationForInfo (kLSUnknownCreator,(CFStringRef)bundleID, NULL, nil, nil);
+            if (result == noErr) {
+                self.bundleID = bundleID;
+                break;
+            }
         }
         NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
         if (![d objectForKey:k1PPath]) {
@@ -69,14 +67,15 @@ static id _sharedInstance;
             }
             
             if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
-                QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : [QSResourceManager imageNamed:self.bundleID], QSNotifierTitle : @"Unable to locate 1Password keychain", QSNotifierText : @"Please set the keychain location in the Quicksilver Preferences"});
+                NSImage *icon = [QSResourceManager imageNamed:self.bundleID];
+                QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : icon ? icon : [QSResourceManager imageNamed:@"com.blacktree.Quicksilver"], QSNotifierTitle : @"Unable to locate 1Password keychain", QSNotifierText : @"Please set the keychain location in the Quicksilver Preferences"});
             } else {
                 [[NSUserDefaults standardUserDefaults] setObject:[tempKeychainPath stringByStandardizingPath] forKey:k1PPath];
             }
             [fm release];
         }
     }
-        
+
     return self;
 }
 
@@ -84,7 +83,6 @@ static id _sharedInstance;
     NSString *path = [[NSUserDefaults standardUserDefaults] stringForKey:k1PPath];
     return path ? path : @"";
 }
-
 
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry{
 	
@@ -154,7 +152,7 @@ static id _sharedInstance;
     NSPredicate *contains1Pwd = [NSPredicate predicateWithFormat:@"SELF MATCHES '[0-9A-F]+.1password'"];
     
     // Set the 1Pwd bundle to access the images
-    NSBundle *OnePasswordBundle = [NSBundle bundleWithIdentifier:bundleID];
+    NSBundle *OnePasswordBundle = [NSBundle bundleWithIdentifier:self.bundleID];
     
     NSArray *filteredFiles = [dataFiles filteredArrayUsingPredicate:contains1Pwd];
     
@@ -206,7 +204,7 @@ static id _sharedInstance;
                     [newObject setObject:uuidString forType:QS1PasswordForm];
                     [newObject setDetails:location];
                     [newObject setLabel:title];
-                    [newObject setIcon:[QSResourceManager imageNamed:bundleID]];
+                    [newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
                     [newObject setObject:[JSONDict objectForKey:@"locationKey"] forMeta:@"locationKey"];
                     [objects addObject:newObject];
                 }
@@ -276,20 +274,20 @@ static id _sharedInstance;
 - (void)setQuickIconForObject:(QSObject *)object{
 	if ([[object primaryType] isEqualToString:QS1PasswordForm])
 	{
-		[object setIcon:[QSResourceManager imageNamed:bundleID]];
+		[object setIcon:[QSResourceManager imageNamed:self.bundleID]];
 	}
 	else if([[object primaryType] isEqualToString:QS1PasswordSecureNote])
 	{
-		[object setIcon:[QSResourceManager imageNamed:@"secure-notes-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:bundleID]]];
+		[object setIcon:[QSResourceManager imageNamed:@"secure-notes-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:self.bundleID]]];
 //        [[[NSImage alloc] initByReferencingFile:[[NSBundle bundleWithIdentifier:bundleID] pathForResource:@"secure-notes-icon-128" ofType:@"png"]]autorelease]];
 	}
 	else if([[object primaryType] isEqualToString:QS1PasswordOnlineService])
 	{
-		[object setIcon:[QSResourceManager imageNamed:@"logins-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:bundleID]]];
+		[object setIcon:[QSResourceManager imageNamed:@"logins-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:self.bundleID]]];
 	}
 	else if([[object primaryType] isEqualToString:QS1PasswordWalletItem])
 	{
-		[object setIcon:[QSResourceManager imageNamed:@"wallet-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:bundleID]]];
+		[object setIcon:[QSResourceManager imageNamed:@"wallet-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:self.bundleID]]];
 	}
 	else if([[object primaryType] isEqualToString:QS1PasswordIdentity])
 	{
