@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.7.1</string>
 	<key>CFBundleVersion</key>
-	<string>3A9</string>
+	<string>3AF</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -71,7 +71,6 @@
 				<string>QS1PasswordSecureNote</string>
 				<string>QS1PasswordIdentity</string>
 				<string>QS1PasswordSoftwareLicense</string>
-				<string>QS1PasswordOnlineService</string>
 				<string>QS1PasswordWalletItem</string>
 			</array>
 			<key>name</key>
@@ -148,20 +147,6 @@ You may also add these items to your catalog by going to the &lt;a href="qs://pr
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>QSPreset1PasswordOnlineService</string>
-					<key>enabled</key>
-					<false/>
-					<key>icon</key>
-					<string>/Applications/1Password.app/Contents/Resources/logins-icon-128.png</string>
-					<key>name</key>
-					<string>Accounts</string>
-					<key>source</key>
-					<string>OnePasswordSource</string>
-					<key>type</key>
-					<string>OnlineService</string>
-				</dict>
-				<dict>
-					<key>ID</key>
 					<string>QSPreset1PasswordIdentity</string>
 					<key>enabled</key>
 					<false/>
@@ -180,7 +165,7 @@ You may also add these items to your catalog by going to the &lt;a href="qs://pr
 					<key>enabled</key>
 					<false/>
 					<key>icon</key>
-					<string>/Applications/1Password.app/Contents/Resources/secure-notes-icon-128.png</string>
+					<string>OnePasswordSecureNoteIcon</string>
 					<key>name</key>
 					<string>Secure Notes</string>
 					<key>source</key>
@@ -208,9 +193,9 @@ You may also add these items to your catalog by going to the &lt;a href="qs://pr
 					<key>enabled</key>
 					<false/>
 					<key>icon</key>
-					<string>/Applications/1Password.app/Contents/Resources/wallet-icon-128.png</string>
+					<string>OnePasswordBankIcon</string>
 					<key>name</key>
-					<string>Wallet Items</string>
+					<string>Bank Accounts</string>
 					<key>source</key>
 					<string>OnePasswordSource</string>
 					<key>type</key>
@@ -246,8 +231,6 @@ You may also add these items to your catalog by going to the &lt;a href="qs://pr
 			<key>QS1PasswordForm</key>
 			<string>OnePasswordSource</string>
 			<key>QS1PasswordIdentity</key>
-			<string>OnePasswordSource</string>
-			<key>QS1PasswordOnlineService</key>
 			<string>OnePasswordSource</string>
 			<key>QS1PasswordSecureNote</key>
 			<string>OnePasswordSource</string>
@@ -287,6 +270,21 @@ You may also add these items to your catalog by going to the &lt;a href="qs://pr
 	</dict>
 	<key>QSResourceAdditions</key>
 	<dict>
+		<key>OnePasswordBankIcon</key>
+		<array>
+			<string>/Applications/1Password.app/Contents/Resources/type-bank-account-details.tiff</string>
+			<string>/Applications/1Password.app/Contents/Resources/wallet-icon-128.png</string>
+		</array>
+		<key>OnePasswordLoginsIcon</key>
+		<array>
+			<string>/Applications/1Password.app/Contents/Resources/type-login-details.tiff</string>
+			<string>/Applications/1Password.app/Contents/Resources/logins-icon-128.png</string>
+		</array>
+		<key>OnePasswordSecureNoteIcon</key>
+		<array>
+			<string>/Applications/1Password.app/Contents/Resources/type-secure-note-details.tiff</string>
+			<string>/Applications/1Password.app/Contents/Resources/secure-notes-icon-128.png</string>
+		</array>
 		<key>QS1PasswordIcon</key>
 		<dict>
 			<key>bundle</key>

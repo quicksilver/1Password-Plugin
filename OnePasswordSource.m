@@ -243,16 +243,6 @@ static id _sharedInstance;
                     }
                 }
                 
-                // else if it's an online service
-                else if ([objectType hasPrefix:@"wallet.onlineservices"])
-                {
-                    if ([type isEqualToString:@"OnlineService"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
-                        [newObject setObject:uuidString forType:QS1PasswordOnlineService];
-                        [newObject setIcon:[[[NSImage alloc] initByReferencingFile:[OnePasswordBundle pathForResource:@"logins-icon-128" ofType:@"png"]] autorelease]];
-                        [objects addObject:newObject];
-                    }
-                }
-                
                 // else if it's a secure note
                 else if ([objectType isEqualToString:@"securenotes.SecureNote"])
                 {
@@ -278,16 +268,11 @@ static id _sharedInstance;
 	}
 	else if([[object primaryType] isEqualToString:QS1PasswordSecureNote])
 	{
-		[object setIcon:[QSResourceManager imageNamed:@"secure-notes-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:self.bundleID]]];
-//        [[[NSImage alloc] initByReferencingFile:[[NSBundle bundleWithIdentifier:bundleID] pathForResource:@"secure-notes-icon-128" ofType:@"png"]]autorelease]];
-	}
-	else if([[object primaryType] isEqualToString:QS1PasswordOnlineService])
-	{
-		[object setIcon:[QSResourceManager imageNamed:@"logins-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:self.bundleID]]];
+		[object setIcon:[QSResourceManager imageNamed:@"OnePasswordSecureNoteIcon"]];
 	}
 	else if([[object primaryType] isEqualToString:QS1PasswordWalletItem])
 	{
-		[object setIcon:[QSResourceManager imageNamed:@"wallet-icon-128.png" inBundle:[NSBundle bundleWithIdentifier:self.bundleID]]];
+		[object setIcon:[QSResourceManager imageNamed:@"OnePasswordBankIcon" inBundle:[NSBundle bundleWithIdentifier:self.bundleID]]];
 	}
 	else if([[object primaryType] isEqualToString:QS1PasswordIdentity])
 	{
