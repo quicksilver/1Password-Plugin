@@ -157,8 +157,8 @@
 				CD5013F614938D1B0022F5E1 /* Release.xcconfig */,
 			);
 			name = Configuration;
-			path = ../../../../../../private/tmp/QS/Configuration;
-			sourceTree = "<group>";
+			path = /private/tmp/QS/Configuration;
+			sourceTree = "<absolute>";
 		};
 /* End PBXGroup section */
 
