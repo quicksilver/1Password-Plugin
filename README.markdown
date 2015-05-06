@@ -124,3 +124,6 @@ Thanks also to Jamie of the 1Password development team for his [excellent advice
 
 ### 0.1
 *	Initial Release
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Rockyspade/1password-plugin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
