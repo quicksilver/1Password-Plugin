@@ -50,32 +50,15 @@ static id _sharedInstance;
                 break;
             }
         }
-        NSUserDefaults *d = [NSUserDefaults standardUserDefaults];
-        if (![d objectForKey:k1PPath]) {
-            // 1PPath hasn't been set previously
-            NSString *tempKeychainPath = [(NSString *)CFPreferencesCopyAppValue((CFStringRef)@"AgileKeychainLocation",(CFStringRef) @"ws.agile.1Password") autorelease];
-            
-            NSFileManager *fm = [[NSFileManager alloc] init];
-            
-            if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
-                for (NSString *testKeychainPath in kKeychainPathArray) {
-                    if ([fm fileExistsAtPath:[testKeychainPath stringByStandardizingPath]]) {
-                        tempKeychainPath = testKeychainPath;
-                        break;
-                    }
-                }
-            }
-            
-            if (!tempKeychainPath || (tempKeychainPath && ![fm fileExistsAtPath:[tempKeychainPath stringByStandardizingPath]])) {
-                NSImage *icon = [QSResourceManager imageNamed:self.bundleID];
-                QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : icon ? icon : [QSResourceManager imageNamed:@"com.blacktree.Quicksilver"], QSNotifierTitle : @"Unable to locate 1Password keychain", QSNotifierText : @"Please set the keychain location in the Quicksilver Preferences"});
-            } else {
-                [[NSUserDefaults standardUserDefaults] setObject:[tempKeychainPath stringByStandardizingPath] forKey:k1PPath];
-            }
-            [fm release];
+        // QSDefaults probably won't be read until after this, so maybe pointless
+        NSString *location = [[[NSUserDefaults standardUserDefaults] objectForKey:@"QS1PasswordKeychainPath"] stringByStandardizingPath];
+        NSFileManager *fm = [[NSFileManager alloc] init];
+        if (!location || ![fm fileExistsAtPath:location]) {
+            NSImage *icon = [QSResourceManager imageNamed:self.bundleID];
+            QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : icon ? icon : [QSResourceManager imageNamed:@"com.blacktree.Quicksilver"], QSNotifierTitle : @"Unable to locate 1Password logins", QSNotifierText : @"Please enable 3rd Party integration in 1Password and set the file's location in Quicksilver's Preferences"});
         }
+        [fm release];
     }
-
     return self;
 }
 
@@ -117,146 +100,28 @@ static id _sharedInstance;
 	return NO;
 }
 
-// Return a unique identifier for an object (if you haven't assigned one before)
-//- (NSString *)identifierForObject:(id <QSObject>)object{
-//    return nil;
-//}
-
 - (NSArray *)objectsForEntry:(NSDictionary *)theEntry{
-    
-    // Get into the data folder of it
-    NSString *dataFolder = [[self keychainPath] stringByAppendingPathComponent:@"data/default/"];
-    
-    NSFileManager *fm = [[NSFileManager alloc] init];
-    
-    if (![self keychainPath] || ![fm fileExistsAtPath:[self keychainPath]]) {
-        NSLog(@"Unable to determine 1Password keychain path. Assumed it was in %@, but file not found.",[self keychainPath]);
-        return nil;
-    }
-    
-    // get all the files in the directory
-    NSError *dataError = nil;
-    NSArray *dataFiles = [fm contentsOfDirectoryAtPath:dataFolder error:&dataError];
-    
-    [fm release];
-    
-    if(dataError) {
-        NSLog(@"Error: %@",dataError);
-        return nil;
-    }
-    
     // Define the objects (Empty to start with) we're going to send back to QS
-    NSMutableArray *objects=[[NSMutableArray alloc] init];
-    
-    // Set this up to get only the files with format UUID.1password (to ignore dropbox conflicts)
-    NSPredicate *contains1Pwd = [NSPredicate predicateWithFormat:@"SELF MATCHES '[0-9A-F]+.1password'"];
-    
-    // Set the 1Pwd bundle to access the images
-    NSBundle *OnePasswordBundle = [NSBundle bundleWithIdentifier:self.bundleID];
-    
-    NSArray *filteredFiles = [dataFiles filteredArrayUsingPredicate:contains1Pwd];
-    
-    @autoreleasepool {
-        // For each .1pwd file in the filtered files
-        for (NSString *dataPath in filteredFiles) {
-            NSData *JSONData = [NSData dataWithContentsOfFile:[dataFolder stringByAppendingPathComponent:dataPath]];
-            NSDictionary *JSONDict = nil;
-            @try {
-                JSONDict = [JSONData yajl_JSON];
-            }
-            @catch (NSException *exception) {
-                NSLog(@"Error parsing 1Password data for %@.\nException: %@",dataPath,exception);
-                continue;
-            }
-            
-            // If there's something wrong with the JSON Dictionary
-            if(JSONDict == nil) {
-                NSLog(@"Error getting JSONDict for %@",dataPath);
-                continue;
-            }
-            // Don't catalog trashed items
-            if([JSONDict objectForKey:@"trashed"] != nil && [[JSONDict objectForKey:@"trashed"] boolValue]) {
-                continue;
-            }
-            
-            // Get the type of search we're performing: right arrow or a preset type as defined in the catalog prefs
-            NSString *type = [theEntry objectForKey:kItemType];
-            
-            // get the 1Password type from the JSONDict (webform, wallet item etc.)
-            NSString *objectType = [JSONDict objectForKey:@"typeName"];
-            
-            // Ignore password types
-            if ([objectType isEqualToString:@"passwords.Password"]) {
-                continue;
-            }
-            NSString *title = [JSONDict objectForKey:@"title"];
-            NSString *uuidString = [JSONDict objectForKey:@"uuid"];
-            
-            QSObject *newObject =nil;
-            
-            // if it's a webform
-            if([objectType isEqualToString:@"webforms.WebForm"])
-            {					
-                if ([type isEqualToString:@"WebForm"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
-                    NSString *location = [JSONDict objectForKey:@"location"];				
-                    newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"%@-%@",location,uuidString]];
-                    [newObject setName:location];
-                    [newObject setObject:uuidString forType:QS1PasswordForm];
-                    [newObject setDetails:location];
-                    [newObject setLabel:title];
-                    [newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
-                    [newObject setObject:[JSONDict objectForKey:@"locationKey"] forMeta:@"locationKey"];
-                    [objects addObject:newObject];
-                }
-            }
-            else {
-                newObject=[QSObject makeObjectWithIdentifier:uuidString];
-                [newObject setName:title];
-                [newObject setLabel:title];
-                // if it's an identity
-                if ([objectType isEqualToString:@"identities.Identity"])
-                {
-                    if ([type isEqualToString:@"Identity"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
-                        [newObject setObject:uuidString forType:QS1PasswordIdentity];
-                        [newObject setIcon:[QSResourceManager imageNamed:@"UserIcon"]];
-                        [objects addObject:newObject];
-                    }
-                }
-                
-                // else if it's a wallet or sofware license (wallet items are wallet.financial, software licenses are wallet.computer)
-                else if ([objectType hasPrefix:@"wallet.financial"])
-                {
-                    if ([type isEqualToString:@"WalletItem"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
-                        [newObject setObject:uuidString forType:QS1PasswordWalletItem];
-                        [newObject setIcon:[[[NSImage alloc] initByReferencingFile:[OnePasswordBundle pathForResource:@"wallet-icon-128" ofType:@"png"]] autorelease]];
-                        [objects addObject:newObject];
-                    }
-                }
-                
-                // else if it's a software license
-                else if ([objectType hasPrefix:@"wallet.computer"])
-                {
-                    if ([type isEqualToString:@"SoftwareLicense"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
-                        [newObject setObject:uuidString forType:QS1PasswordSoftwareLicense];
-                        [newObject setIcon:[QSResourceManager imageNamed:@"ToolbarAppsFolderIcon"]];
-                        [objects addObject:newObject];
-                    }
-                }
-                
-                // else if it's a secure note
-                else if ([objectType isEqualToString:@"securenotes.SecureNote"])
-                {
-                    if ([type isEqualToString:@"SecureNote"] || [[theEntry objectForKey:@"LoadingChildren"] boolValue]) {
-                        
-                        [newObject setObject:title forType:QS1PasswordSecureNote];
-                        [newObject setIcon:[[[NSImage alloc] initByReferencingFile:[OnePasswordBundle pathForResource:@"secure-notes-icon-128" ofType:@"png"]]autorelease]];
-                        [objects addObject:newObject];
-                    }
-                }	
-            }
-        }
+    NSMutableArray *objects = [NSMutableArray array];
+    QSObject *newObject;
+    NSString *location = [[[NSUserDefaults standardUserDefaults] objectForKey:k1PPath] stringByStandardizingPath];
+    NSData *JSONData = [NSData dataWithContentsOfFile:location];
+    NSArray *OPItems = [JSONData yajl_JSON];
+    for (NSArray *metadata in OPItems) {
+        NSString *uuid = metadata[0];
+        NSString *title = metadata[1];
+        NSString *location = metadata[2];
+        newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"%@-%@", location, uuid]];
+        [newObject setName:location];
+        [newObject setObject:uuid forType:QS1PasswordForm];
+        [newObject setObject:location forType:QSURLType];
+        [newObject setPrimaryType:QS1PasswordForm];
+        [newObject setDetails:location];
+        [newObject setLabel:title];
+        [newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
+        [objects addObject:newObject];
     }
-	return [objects autorelease];
+	return objects;
 }
 
 // Object Handler Methods
@@ -266,26 +131,5 @@ static id _sharedInstance;
 	{
 		[object setIcon:[QSResourceManager imageNamed:self.bundleID]];
 	}
-	else if([[object primaryType] isEqualToString:QS1PasswordSecureNote])
-	{
-		[object setIcon:[QSResourceManager imageNamed:@"OnePasswordSecureNoteIcon"]];
-	}
-	else if([[object primaryType] isEqualToString:QS1PasswordWalletItem])
-	{
-		[object setIcon:[QSResourceManager imageNamed:@"OnePasswordBankIcon" inBundle:[NSBundle bundleWithIdentifier:self.bundleID]]];
-	}
-	else if([[object primaryType] isEqualToString:QS1PasswordIdentity])
-	{
-		[object setIcon:[QSResourceManager imageNamed:@"UserIcon"]];
-	}
-	else if([[object primaryType] isEqualToString:QS1PasswordSoftwareLicense])
-	{
-		[object setIcon:[QSResourceManager imageNamed:@"ToolbarAppsFolderIcon"]];
-	}
 }
-//- (BOOL)loadIconForObject:(QSObject *)object{
-//[object setIcon:[QSResourceManager imageNamed:bundleID]];
-// return YES;
-// }
-
 @end

@@ -23,19 +23,6 @@
 
 #import "OnePasswordAction.h"
 
-#define kOnePasswordAction @"OnePasswordAction"
-#define QS1PasswordForm @"QS1PasswordForm"
-#define QS1PasswordSecureNote @"QS1PasswordSecureNote"
-#define QS1PasswordIdentity @"QS1PasswordIdentity"
-#define QS1PasswordSoftwareLicense @"QS1PasswordSoftwareLicense"
-#define QS1PasswordWalletItem @"QS1PasswordWalletItem"
-
-// Some things from Carbon
-#define kASAppleScriptSuite 'ascr'
-#define kASSubroutineEvent  'psbr'
-#define keyASSubroutineName 'snam'
-
-
 @interface OnePasswordAction : QSActionProvider
 {
     NSString *bundleID;
