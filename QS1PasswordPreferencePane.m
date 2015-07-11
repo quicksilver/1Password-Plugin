@@ -14,7 +14,7 @@
 - (void)mainViewDidLoad {
     if (!onePasswdPathField.stringValue.length) {
         NSString *storedPath = [[NSUserDefaults standardUserDefaults] stringForKey:k1PPath];
-        onePasswdPathField.stringValue = storedPath ? [self prettyPath:[NSURL fileURLWithPath:storedPath]] : @"Select your .agilekeychain";
+        onePasswdPathField.stringValue = storedPath ? [self prettyPath:[NSURL fileURLWithPath:storedPath]] : @"Select the file containing your logins";
     }
 }
 
@@ -29,7 +29,7 @@
 -(IBAction)setPath:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     [panel setCanChooseFiles:YES];
-    [panel setAllowedFileTypes:@[@"agilekeychain"]];
+    [panel setAllowedFileTypes:@[@"json"]];
     [panel setAllowsMultipleSelection:NO];
     [panel setCanChooseDirectories:NO];
     [panel beginWithCompletionHandler:^(NSInteger result)

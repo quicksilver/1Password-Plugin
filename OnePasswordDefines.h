@@ -8,10 +8,12 @@
 
 // QSObject type defines
 #define QS1PasswordForm @"QS1PasswordForm"
-#define QS1PasswordSecureNote @"QS1PasswordSecureNote"
-#define QS1PasswordIdentity @"QS1PasswordIdentity"
-#define QS1PasswordSoftwareLicense @"QS1PasswordSoftwareLicense"
-#define QS1PasswordWalletItem @"QS1PasswordWalletItem"
+#define kOnePasswordAction @"OnePasswordAction"
+
+// Some things from Carbon
+#define kASAppleScriptSuite 'ascr'
+#define kASSubroutineEvent  'psbr'
+#define keyASSubroutineName 'snam'
 
 // JSON defines
 #define kItemType @"type"
