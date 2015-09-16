@@ -29,8 +29,8 @@
 @implementation OnePasswordSource
 
 -(void)dealloc {
-    self.bundleID = nil;
-    [super dealloc];
+	self.bundleID = nil;
+	[super dealloc];
 }
 
 static id _sharedInstance;
@@ -41,15 +41,15 @@ static id _sharedInstance;
 }
 
 -(id)init {
-    if (self = [super init]) {
-        
-        for (NSString *bundleID in kOnePasswordBundleIDs) {
-            OSStatus result = LSFindApplicationForInfo (kLSUnknownCreator,(CFStringRef)bundleID, NULL, nil, nil);
-            if (result == noErr) {
-                self.bundleID = bundleID;
-                break;
-            }
-        }
+	if (self = [super init]) {
+		
+		for (NSString *bundleID in kOnePasswordBundleIDs) {
+			OSStatus result = LSFindApplicationForInfo (kLSUnknownCreator,(CFStringRef)bundleID, NULL, nil, nil);
+			if (result == noErr) {
+				self.bundleID = bundleID;
+				break;
+			}
+		}
 		Boolean t = false;
 		Boolean isValid = false;
 		NSString *prefsUsed = nil;
@@ -57,7 +57,7 @@ static id _sharedInstance;
 			t = CFPreferencesGetAppBooleanValue((CFStringRef)@"Enable3rdPartyIntegration", (CFStringRef) prefsString, &isValid);
 			if (isValid) {
 				prefsUsed = prefsString;
-    break;
+				break;
 			}
 		}
 		NSImage *icon = [QSResourceManager imageNamed:kQS1PasswordIcon];
@@ -89,13 +89,13 @@ static id _sharedInstance;
 				[fm release];
 			}
 		}
-    }
-    return self;
+	}
+	return self;
 }
 
 - (NSString *)keychainPath {
-    NSString *path = [[NSUserDefaults standardUserDefaults] stringForKey:k1PPath];
-    return path ? path : @"";
+	NSString *path = [[NSUserDefaults standardUserDefaults] stringForKey:k1PPath];
+	return path ? path : @"";
 }
 
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry{
@@ -103,11 +103,11 @@ static id _sharedInstance;
 	// Check to see if keychain has been modified since last scan
 	
 	NSError *error = nil;
-    NSFileManager *fm = [[NSFileManager alloc] init];
+	NSFileManager *fm = [[NSFileManager alloc] init];
 	NSDate *modDate=[[fm attributesOfItemAtPath:[self keychainPath] error:&error] fileModificationDate];
-    
+	
 	[fm release];
-    
+	
 	if (error) {
 		NSLog(@"Error: %@", error);
 		return NO;
@@ -132,27 +132,27 @@ static id _sharedInstance;
 }
 
 - (NSArray *)objectsForEntry:(NSDictionary *)theEntry{
-    // Define the objects (Empty to start with) we're going to send back to QS
-    NSMutableArray *objects = [NSMutableArray array];
-    QSObject *newObject;
-    NSString *location = [[[NSUserDefaults standardUserDefaults] objectForKey:k1PPath] stringByStandardizingPath];
-    NSData *JSONData = [NSData dataWithContentsOfFile:location];
+	// Define the objects (Empty to start with) we're going to send back to QS
+	NSMutableArray *objects = [NSMutableArray array];
+	QSObject *newObject;
+	NSString *location = [[[NSUserDefaults standardUserDefaults] objectForKey:k1PPath] stringByStandardizingPath];
+	NSData *JSONData = [NSData dataWithContentsOfFile:location];
 	// TODO - check to make sure this is valid JSON data before running yajl_JSON OR switch to NSJSONSerialization
-    NSArray *OPItems = [JSONData yajl_JSON];
-    for (NSArray *metadata in OPItems) {
-        NSString *uuid = metadata[0];
-        NSString *title = metadata[1];
-        NSString *location = metadata[2];
-        newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"%@-%@", location, uuid]];
-        [newObject setName:location];
-        [newObject setObject:uuid forType:QS1PasswordForm];
-        [newObject setObject:location forType:QSURLType];
-        [newObject setPrimaryType:QS1PasswordForm];
-        [newObject setDetails:location];
-        [newObject setLabel:title];
-        [newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
-        [objects addObject:newObject];
-    }
+	NSArray *OPItems = [JSONData yajl_JSON];
+	for (NSArray *metadata in OPItems) {
+		NSString *uuid = metadata[0];
+		NSString *title = metadata[1];
+		NSString *location = metadata[2];
+		newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"%@-%@", location, uuid]];
+		[newObject setName:location];
+		[newObject setObject:uuid forType:QS1PasswordForm];
+		[newObject setObject:location forType:QSURLType];
+		[newObject setPrimaryType:QS1PasswordForm];
+		[newObject setDetails:location];
+		[newObject setLabel:title];
+		[newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
+		[objects addObject:newObject];
+	}
 	return objects;
 }
 
