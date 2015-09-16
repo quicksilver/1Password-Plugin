@@ -14,7 +14,6 @@
 		BBF581840B1D9DC3003CFF55 /* OnePasswordSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */; };
 		CD0117CC13CCBDDF00409D70 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0117CB13CCBDDF00409D70 /* YAJL.framework */; };
 		CD0117DA13CCBDEA00409D70 /* YAJL.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD0117CB13CCBDDF00409D70 /* YAJL.framework */; };
-		CD17F50B19E1A53E002E9755 /* app-icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = CD17F50A19E1A53E002E9755 /* app-icon.icns */; };
 		CD53B37A19DB18C100795282 /* QS1PasswordPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = CD53B37919DB18C100795282 /* QS1PasswordPreferencePane.m */; };
 		CD53B37B19DB19F200795282 /* QSInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FFA8E9D0816CCCA00A858CD /* QSInterface.framework */; };
 		CD9EB80319DB1BB50008B37B /* RevealIn1Pwd.scpt in Resources */ = {isa = PBXBuildFile; fileRef = CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */; };
@@ -42,13 +41,12 @@
 		7FFA8E9C0816CCCA00A858CD /* QSEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSEffects.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FFA8E9D0816CCCA00A858CD /* QSInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1AC9740486D14A00FE50C9 /* OnePassword.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OnePassword.qsplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1AC9740486D14A00FE50C9 /* .bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = .bundle; path = OnePassword.qsplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF5817A0B1D9D84003CFF55 /* OnePasswordAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordAction.h; sourceTree = "<group>"; };
 		BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordAction.m; sourceTree = "<group>"; };
 		BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordSource.h; sourceTree = "<group>"; };
 		BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnePasswordSource.m; sourceTree = "<group>"; };
 		CD0117CB13CCBDDF00409D70 /* YAJL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YAJL.framework; sourceTree = "<group>"; };
-		CD17F50A19E1A53E002E9755 /* app-icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "app-icon.icns"; sourceTree = "<group>"; };
 		CD5013EF14938D1B0022F5E1 /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		CD5013F014938D1B0022F5E1 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		CD5013F114938D1B0022F5E1 /* Developer.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Developer.xcconfig; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 		0259C582FE90428111CA0C5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CD17F50A19E1A53E002E9755 /* app-icon.icns */,
 				CD53B37719DB17D900795282 /* OnePasswordPrefPane.xib */,
 				CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */,
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
@@ -106,7 +103,7 @@
 		1ED78706FE9D4A0611CA0C5A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1AC9740486D14A00FE50C9 /* OnePassword.qsplugin */,
+				8D1AC9740486D14A00FE50C9 /* .bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,7 +177,7 @@
 			name = OnePassword;
 			productInstallPath = "$(HOME)/Developer/Palettes";
 			productName = OnePassword;
-			productReference = 8D1AC9740486D14A00FE50C9 /* OnePassword.qsplugin */;
+			productReference = 8D1AC9740486D14A00FE50C9 /* .bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -216,7 +213,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD17F50B19E1A53E002E9755 /* app-icon.icns in Resources */,
 				CD9EB80319DB1BB50008B37B /* RevealIn1Pwd.scpt in Resources */,
 				CD9EB80419DB1BB60008B37B /* OnePasswordPrefPane.xib in Resources */,
 			);

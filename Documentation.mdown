@@ -8,7 +8,7 @@ For Quicksilver to index your logins, you will need to enable integration with 3
 
 ### Catalog
 
-This plugin enables Quicksilver to index your 1Password Logins.
+This plugin allows Quicksilver to index your 1Password Logins.
 
 You can access all these items by right arrowing (→) into the 1Password.app in Quicksilver's first pane.
 

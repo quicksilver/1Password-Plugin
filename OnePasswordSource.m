@@ -50,14 +50,45 @@ static id _sharedInstance;
                 break;
             }
         }
-        // QSDefaults probably won't be read until after this, so maybe pointless
-        NSString *location = [[[NSUserDefaults standardUserDefaults] objectForKey:@"QS1PasswordKeychainPath"] stringByStandardizingPath];
-        NSFileManager *fm = [[NSFileManager alloc] init];
-        if (!location || ![fm fileExistsAtPath:location]) {
-            NSImage *icon = [QSResourceManager imageNamed:self.bundleID];
-            QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : icon ? icon : [QSResourceManager imageNamed:@"com.blacktree.Quicksilver"], QSNotifierTitle : @"Unable to locate 1Password logins", QSNotifierText : @"Please enable 3rd Party integration in 1Password and set the file's location in Quicksilver's Preferences"});
-        }
-        [fm release];
+		Boolean t = false;
+		Boolean isValid = false;
+		NSString *prefsUsed = nil;
+		for (NSString *prefsString in kOnePasswordPrefs) {
+			t = CFPreferencesGetAppBooleanValue((CFStringRef)@"Enable3rdPartyIntegration", (CFStringRef) prefsString, &isValid);
+			if (isValid) {
+				prefsUsed = prefsString;
+    break;
+			}
+		}
+		NSImage *icon = [QSResourceManager imageNamed:kQS1PasswordIcon];
+		if (isValid) {
+			if (!t) {
+				QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : icon ? icon : [QSResourceManager imageNamed:@"com.blacktree.Quicksilver"], QSNotifierTitle : @"1Password 3rd Party Integration not enabled", QSNotifierText : @"Please enable 3rd Party integration in 1Password to use the 1Password Plugin"});
+			} else {
+				// QSDefaults probably won't be read until after this, so maybe pointless
+				NSString *location = [[[NSUserDefaults standardUserDefaults] objectForKey:k1PPath] stringByStandardizingPath];
+				NSFileManager *fm = [[NSFileManager alloc] init];
+				// valid locations exist and are of type 'json' (since we read this in as JSON)
+				BOOL valid = location && [fm fileExistsAtPath:location] && [[location pathExtension] isEqualToString:@"json"];
+				if (!valid) {
+					if ([prefsUsed isEqualToString:kNonMASBundleID]) {
+						location = kNonMAS1Password3rdPartyFile;
+					} else {
+						location = kMAS1Password3rdPartyFile;
+					}
+					location = [location stringByStandardizingPath];
+					if ([fm fileExistsAtPath:location]) {
+						valid = YES;
+						[[NSUserDefaults standardUserDefaults] setObject:location forKey:k1PPath];
+					}
+				}
+				if (!valid) {
+					NSImage *icon = [QSResourceManager imageNamed:kQS1PasswordIcon];
+					QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : icon ? icon : [QSResourceManager imageNamed:@"com.blacktree.Quicksilver"], QSNotifierTitle : @"Unable to locate 1Password logins", QSNotifierText : @"Please set the 1Password 3rd party integration file's location in Quicksilver's Preferences"});
+				}
+				[fm release];
+			}
+		}
     }
     return self;
 }
@@ -106,6 +137,7 @@ static id _sharedInstance;
     QSObject *newObject;
     NSString *location = [[[NSUserDefaults standardUserDefaults] objectForKey:k1PPath] stringByStandardizingPath];
     NSData *JSONData = [NSData dataWithContentsOfFile:location];
+	// TODO - check to make sure this is valid JSON data before running yajl_JSON OR switch to NSJSONSerialization
     NSArray *OPItems = [JSONData yajl_JSON];
     for (NSArray *metadata in OPItems) {
         NSString *uuid = metadata[0];
