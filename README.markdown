@@ -6,11 +6,11 @@ This plugin enables you to right arrow into the 1Password application, giving yo
 
 Requirements: **Mac OS X Leopard or higher (10.5+)**, **1Password 3+** and **Quicksilver ß60+**.
 
-You can download the latest version from the [Quicksilver Plugins Repository](http://qsapp.com/plugins "Download")
+You can download the latest version from the [Plugins preference pane in Quicksilver](http://qs.qsapp.com/plugins)
 
 ### Actions
 
-The plugin enabled 3 actions for 1Password objects.
+The plugin enables 2 actions for 1Password objects.
 
 The 'Go & Fill' action will work just like the Go & Fill command from within 1Password; it will launch your default browser and automatically log you in.
 
@@ -20,6 +20,9 @@ Both the 'Go & Fill' and 'Go & Fill With...' actions work with the comma trick, 
 
 ![Go And Fill... Action](http://i42.tinypic.com/i35lig.jpg "Go And Fill... Action")
 
+--------
+
+Previously, the plugin also added the following action to Quicksilver, but it no longer works with recent versions of 1Password.
 
 The final action, which works on all 1Password objects is 'Reveal in 1Password'. This action will launch 1Password and bring the selected login item to the front for you to view/edit it.
 
@@ -32,28 +35,17 @@ To save you from having to search for 1Password in the first pane then right arr
 
 ![1Password Catalog Source](http://i.imgur.com/RDRP7.jpg "1Password Catalog Source")
 
+-----------
+
 ## Getting Started
 
-First, make sure you're using the **Agile Keychain**. The plugin does **not** work with the Mac OS X keychain. (Check in the 1Password preferences).
+First, make sure you're using the **Agile Keychain** or **opvault** keychain. You will also need to go into the 1Password settings and click 'Advanced' then 'Enable 3rd party app integrations'.
 
 You may need to rescan manually to start with to get your logins to show up.
 If the plugin doesn't seem to work, try re-downloading and installing it. Quicksilver will pop up a message saying 'Install Complete'.
 Click 'Relaunch' and it should hopefully fix any of your problems.
 
 ![Relaunch Dialog](http://i43.tinypic.com/35bi0es.jpg "Relaunch Dialog")
-
-## Donating
-
-Believe it or not, this plugin has taken me quite a while to develop. If you wish to donate, then the click the link below. I'd really appreciate it :)
-
-[![Donate to Quicksilver 1Password Plugin](https://www.paypal.com/en_GB/i/btn/btn_donate_LG.gif "Donate")](http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/)  (Redirect) - Click the 'Donate' button on the redirected page.
-
-**Don't donate here for any work I've done on the QS app itself, this is just for my plugin**
-
-## Bugs
-
-This is nicely maturing, but you may still have some ideas or have found some bugs. If so, let me know at me@patjack.co.uk
-
 
 ## Thanks
 
