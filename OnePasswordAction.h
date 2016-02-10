@@ -28,7 +28,6 @@
     NSString *bundleID;
 }
 
-- (QSObject *)viewInOnePwd:(QSObject *)dObject;
 - (QSObject *)goAndFill:(QSObject *)dObject;
 - (QSObject *)goAndFill:(QSObject *)dObject with:(QSObject *)iObject;
 
