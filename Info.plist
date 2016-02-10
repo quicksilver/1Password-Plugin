@@ -93,7 +93,7 @@
 &lt;hr&gt;
 &lt;p&gt;This plugin has taken a lot of development time. If you enjoy using it, please consider &lt;a href="http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/"&gt;donating&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
-		<string>app-icon</string>
+		<string>QS1PasswordIcon</string>
 		<key>relatedBundles</key>
 		<array>
 			<string>com.agilebits.onepassword-osx</string>
