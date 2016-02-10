@@ -14,16 +14,8 @@
 - (void)mainViewDidLoad {
     if (!onePasswdPathField.stringValue.length) {
         NSString *storedPath = [[NSUserDefaults standardUserDefaults] stringForKey:k1PPath];
-        onePasswdPathField.stringValue = storedPath ? [self prettyPath:[NSURL fileURLWithPath:storedPath]] : @"Select the file containing your logins";
+        onePasswdPathField.stringValue = storedPath ? [storedPath stringByAbbreviatingWithTildeInPath] : @"Select the file containing your logins";
     }
-}
-
-- (NSString *)prettyPath:(NSURL *)URLpath {
-    NSString *prettyPath = [NSString string];
-    for (NSString *pathComponent in [[URLpath pathComponents] subarrayWithRange:NSMakeRange(1, [URLpath pathComponents].count - 1)]) {
-        prettyPath = [prettyPath stringByAppendingFormat:@"▸ %@ ",pathComponent];
-    }
-    return prettyPath;
 }
 
 -(IBAction)setPath:(id)sender {
@@ -36,7 +28,7 @@
      {
          if (result == NSFileHandlingPanelOKButton) {
              NSURL *URLpath = [panel URL];
-             [onePasswdPathField setStringValue:[self prettyPath:URLpath]];
+             [onePasswdPathField setStringValue:[URLpath path]];
              [[NSUserDefaults standardUserDefaults] setObject:[URLpath path] forKey:k1PPath];
              return;
          }
