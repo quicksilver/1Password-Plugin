@@ -144,12 +144,11 @@ static id _sharedInstance;
 		NSString *title = metadata[1];
 		NSString *location = metadata[2];
 		newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"%@-%@", location, uuid]];
-		[newObject setName:location];
+		[newObject setName:title];
 		[newObject setObject:uuid forType:QS1PasswordForm];
 		[newObject setObject:location forType:QSURLType];
 		[newObject setPrimaryType:QS1PasswordForm];
 		[newObject setDetails:location];
-		[newObject setLabel:title];
 		[newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
 		[objects addObject:newObject];
 	}
