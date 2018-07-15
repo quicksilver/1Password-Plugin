@@ -21,7 +21,8 @@
 // OnePassword Bundle IDs
 #define kNonMASBundleID @"com.agilebits.onepassword4"
 #define kMASBundleID @"com.agilebits.onepassword-osx"
-#define kOnePasswordBundleIDs @[kMASBundleID, @"ws.agile.1Password", kNonMASBundleID]
+#define kVersion7BundleID @"com.agilebits.onepassword7"
+#define kOnePasswordBundleIDs @[kVersion7BundleID, kMASBundleID, @"ws.agile.1Password", kNonMASBundleID]
 #define kOnePasswordPrefs @[kNonMASBundleID, [[@"~/Library/Containers/com.agilebits.onepassword-osx/Data/Library/Preferences/" stringByStandardizingPath] stringByAppendingPathComponent:kMASBundleID]]
 
 // Key for storing the keychain path in the prefs
@@ -31,3 +32,4 @@
 
 #define kMAS1Password3rdPartyFile @"~/Library/Containers/2BUA8C4S2C.com.agilebits.onepassword-osx-helper/Data/Library/3rd Party Integration/bookmarks-default.json"
 #define kNonMAS1Password3rdPartyFile @"~/Library/Application Support/1Password 4/3rd Party Integration/bookmarks-default.json"
+#define k1Password3rdPartyItemsPath @"~/Library/Containers/com.agilebits.onepassword7/Data/Library/Caches/Metadata/1Password"

@@ -52,16 +52,13 @@
 		}
 	}
 	// Get the default app for the url
-	NSURL *appURL = nil;
-	LSGetApplicationForURL((CFURLRef)[NSURL URLWithString:@"http://"], kLSRolesAll, NULL, (CFURLRef *)&appURL);
+	NSURL *appURL = (__bridge NSURL *)LSCopyDefaultApplicationURLForURL((__bridge CFURLRef)[NSURL URLWithString:@"http://"], kLSRolesAll, NULL);
 	
 	// Set the default app to be 1st in the returned list
 	id preferred = [QSObject fileObjectWithPath:[appURL path]];
 	if (!preferred) {
 		preferred = [NSNull null];
 	}
-	
-	[appURL release];
 	
 	[set addObjectsFromArray:validBrowserPaths];
 	validIndirects = [[QSLibrarian sharedInstance] scoredArrayForString:nil inSet:[QSObject fileObjectsWithPathArray:[set allObjects]]];
@@ -106,7 +103,6 @@ additionalEventParamDescriptor:nil
             }
         }
     }
-    [URLArray release];
 	return nil;
 }
 @end
