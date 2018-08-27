@@ -1,10 +1,10 @@
 ## 1Password Plugin
 
-The 1Password plugin for Quicksilver gives you the ability to manipulate 1Password data from Quicksilver, and to Go & Fill web logins.
+The 1Password plugin for Quicksilver gives you the ability to quickly find 1Password items from Quicksilver, and to Go & Fill web logins.
 
 ### Requirements
 
-For Quicksilver to index your logins, you will need to enable integration with 3rd party apps in the "Advanced" section of 1Password's preferences.
+For Quicksilver to index your logins, you will need to enable integration with 3rd party apps in the “Advanced” section of 1Password’s preferences.
 
 ### Catalog
 
@@ -12,7 +12,7 @@ This plugin allows Quicksilver to index your 1Password Logins.
 
 You can access all these items by right arrowing (→) into the 1Password.app in Quicksilver's first pane.
 
-You may also add these items to your catalog by going to the [Catalog preferences](qs://preferences#QSCatalogPrefPane) and enabling the '1Password' entry.
+You may also add these items to your catalog by going to the [Catalog preferences](qs://preferences#QSCatalogPrefPane) and enabling the “1Password Logins” preset.
 
 ### Actions
 
@@ -21,9 +21,6 @@ Go & Fill
 
 Go & Fill With…
 : This action is an extension of the 'Go & Fill' action, and allows you to specify a browser to use when filling the login/web form.
-
-Reveal in 1Password
-: The Reveal in 1Password action launches 1Password and selects the entry in the application, allowing you to manipulate or view its details.
 
 -----
 

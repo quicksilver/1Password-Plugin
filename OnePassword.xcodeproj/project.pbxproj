@@ -14,10 +14,7 @@
 		BBF581840B1D9DC3003CFF55 /* OnePasswordSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */; };
 		CD0117CC13CCBDDF00409D70 /* YAJL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0117CB13CCBDDF00409D70 /* YAJL.framework */; };
 		CD0117DA13CCBDEA00409D70 /* YAJL.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = CD0117CB13CCBDDF00409D70 /* YAJL.framework */; };
-		CD53B37A19DB18C100795282 /* QS1PasswordPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = CD53B37919DB18C100795282 /* QS1PasswordPreferencePane.m */; };
 		CD53B37B19DB19F200795282 /* QSInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FFA8E9D0816CCCA00A858CD /* QSInterface.framework */; };
-		CD9EB80319DB1BB50008B37B /* RevealIn1Pwd.scpt in Resources */ = {isa = PBXBuildFile; fileRef = CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */; };
-		CD9EB80419DB1BB60008B37B /* OnePasswordPrefPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD53B37719DB17D900795282 /* OnePasswordPrefPane.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,10 +50,6 @@
 		CD5013F214938D1B0022F5E1 /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
 		CD5013F514938D1B0022F5E1 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
 		CD5013F614938D1B0022F5E1 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		CD53B37719DB17D900795282 /* OnePasswordPrefPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnePasswordPrefPane.xib; sourceTree = "<group>"; };
-		CD53B37819DB18C100795282 /* QS1PasswordPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QS1PasswordPreferencePane.h; sourceTree = "<group>"; };
-		CD53B37919DB18C100795282 /* QS1PasswordPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QS1PasswordPreferencePane.m; sourceTree = "<group>"; };
-		CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = RevealIn1Pwd.scpt; sourceTree = "<group>"; };
 		CDF8E28714928A4F005B1E49 /* OnePasswordDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnePasswordDefines.h; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -93,8 +86,6 @@
 		0259C582FE90428111CA0C5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CD53B37719DB17D900795282 /* OnePasswordPrefPane.xib */,
-				CDDDB3341158B11100D1674E /* RevealIn1Pwd.scpt */,
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
 			);
 			name = Resources;
@@ -124,8 +115,6 @@
 		32DBCF9E0370C38000C91783 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				CD53B37819DB18C100795282 /* QS1PasswordPreferencePane.h */,
-				CD53B37919DB18C100795282 /* QS1PasswordPreferencePane.m */,
 				BBF5817A0B1D9D84003CFF55 /* OnePasswordAction.h */,
 				BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */,
 				BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */,
@@ -213,8 +202,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD9EB80319DB1BB50008B37B /* RevealIn1Pwd.scpt in Resources */,
-				CD9EB80419DB1BB60008B37B /* OnePasswordPrefPane.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +231,6 @@
 			files = (
 				BBF5817C0B1D9D84003CFF55 /* OnePasswordAction.m in Sources */,
 				BBF581840B1D9DC3003CFF55 /* OnePasswordSource.m in Sources */,
-				CD53B37A19DB18C100795282 /* QS1PasswordPreferencePane.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +241,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD5013F214938D1B0022F5E1 /* QSPlugIn.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PREFIX_HEADER = OnePassword_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = Info.plist;
@@ -266,6 +253,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD5013F214938D1B0022F5E1 /* QSPlugIn.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PREFIX_HEADER = OnePassword_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = Info.plist;

@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.1.0</string>
+	<string>4.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>3B3</string>
+	<string>3B4</string>
 	<key>QSActions</key>
 	<dict>
 		<key>goAndFill</key>
@@ -71,34 +71,30 @@
 			<string>Applications</string>
 		</array>
 		<key>description</key>
-		<string>Adds support for 1Password Data to Reveal in 1Password and to Go &amp; Fill web forms</string>
+		<string>Quickly find and use 1Password logins</string>
 		<key>extendedDescription</key>
 		<string>&lt;h2&gt;1Password Plugin&lt;/h2&gt;
-&lt;p&gt;The 1Password plugin for Quicksilver gives you the ability to manipulate 1Password data from Quicksilver, and to Go &amp;amp; Fill web logins.&lt;/p&gt;
+&lt;p&gt;The 1Password plugin for Quicksilver gives you the ability to quickly find 1Password items from Quicksilver, and to Go &amp;amp; Fill web logins.&lt;/p&gt;
 &lt;h3&gt;Requirements&lt;/h3&gt;
-&lt;p&gt;For Quicksilver to index your logins, you will need to enable integration with 3rd party apps in the "Advanced" section of 1Password's preferences.&lt;/p&gt;
+&lt;p&gt;For Quicksilver to index your logins, you will need to enable integration with 3rd party apps in the “Advanced” section of 1Password’s preferences.&lt;/p&gt;
 &lt;h3&gt;Catalog&lt;/h3&gt;
 &lt;p&gt;This plugin allows Quicksilver to index your 1Password Logins.&lt;/p&gt;
-&lt;p&gt;You can access all these items by right arrowing (→) into the 1Password.app in Quicksilver's first pane.&lt;/p&gt;
-&lt;p&gt;You may also add these items to your catalog by going to the &lt;a href="qs://preferences#QSCatalogPrefPane"&gt;Catalog preferences&lt;/a&gt; and enabling the '1Password' entry.&lt;/p&gt;
+&lt;p&gt;You can access all these items by right arrowing (→) into the 1Password.app in Quicksilver&apos;s first pane.&lt;/p&gt;
+&lt;p&gt;You may also add these items to your catalog by going to the &lt;a href=&quot;qs://preferences#QSCatalogPrefPane&quot;&gt;Catalog preferences&lt;/a&gt; and enabling the “1Password Logins” preset.&lt;/p&gt;
 &lt;h3&gt;Actions&lt;/h3&gt;
 &lt;dl&gt;
 &lt;dt&gt;Go &amp;amp; Fill&lt;/dt&gt;
 &lt;dd&gt;The Go &amp;amp; Fill action is available for 1Password web forms. When run on a web form, the plugin takes you to your browser and logs you in using the login.&lt;/dd&gt;
 &lt;dt&gt;Go &amp;amp; Fill With…&lt;/dt&gt;
-&lt;dd&gt;This action is an extension of the 'Go &amp;amp; Fill' action, and allows you to specify a browser to use when filling the login/web form.&lt;/dd&gt;
-&lt;dt&gt;Reveal in 1Password&lt;/dt&gt;
-&lt;dd&gt;The Reveal in 1Password action launches 1Password and selects the entry in the application, allowing you to manipulate or view its details.&lt;/dd&gt;
+&lt;dd&gt;This action is an extension of the &apos;Go &amp;amp; Fill&apos; action, and allows you to specify a browser to use when filling the login/web form.&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;hr&gt;
-&lt;p&gt;This plugin has taken a lot of development time. If you enjoy using it, please consider &lt;a href="http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/"&gt;donating&lt;/a&gt;.&lt;/p&gt;</string>
+&lt;p&gt;This plugin has taken a lot of development time. If you enjoy using it, please consider &lt;a href=&quot;http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/&quot;&gt;donating&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>QS1PasswordIcon</string>
 		<key>relatedBundles</key>
 		<array>
-			<string>com.agilebits.onepassword-osx</string>
-			<string>ws.agile.1Password</string>
-			<string>com.agilebits.onepassword4</string>
+			<string>com.agilebits.onepassword7</string>
 		</array>
 	</dict>
 	<key>QSPresetAdditions</key>
@@ -109,7 +105,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>icon</key>
-			<string>QS1PasswordIcon</string>
+			<string>QS1PasswordVaultIcon</string>
 			<key>name</key>
 			<string>1Password Logins</string>
 			<key>source</key>
@@ -127,11 +123,7 @@
 		</dict>
 		<key>QSBundleChildHandlers</key>
 		<dict>
-			<key>com.agilebits.onepassword-osx</key>
-			<string>OnePasswordSource</string>
-			<key>com.agilebits.onepassword4</key>
-			<string>OnePasswordSource</string>
-			<key>ws.agile.1Password</key>
+			<key>com.agilebits.onepassword7</key>
 			<string>OnePasswordSource</string>
 		</dict>
 		<key>QSObjectHandlers</key>
@@ -175,39 +167,38 @@
 	</dict>
 	<key>QSRequirements</key>
 	<dict>
+		<key>bundles</key>
+		<array>
+			<dict>
+				<key>id</key>
+				<string>com.agilebits.onepassword7</string>
+				<key>name</key>
+				<string>1Password 7</string>
+				<key>version</key>
+				<string>7.0.0</string>
+			</dict>
+		</array>
 		<key>version</key>
 		<string>4012</string>
 	</dict>
 	<key>QSResourceAdditions</key>
 	<dict>
-		<key>OnePasswordBankIcon</key>
-		<array>
-			<string>/Applications/1Password.app/Contents/Resources/type-bank-account-details.tiff</string>
-			<string>/Applications/1Password.app/Contents/Resources/wallet-icon-128.png</string>
-		</array>
-		<key>OnePasswordLoginsIcon</key>
-		<array>
-			<string>/Applications/1Password.app/Contents/Resources/type-login-details.tiff</string>
-			<string>/Applications/1Password.app/Contents/Resources/logins-icon-128.png</string>
-		</array>
-		<key>OnePasswordSecureNoteIcon</key>
-		<array>
-			<string>/Applications/1Password.app/Contents/Resources/type-secure-note-details.tiff</string>
-			<string>/Applications/1Password.app/Contents/Resources/secure-notes-icon-128.png</string>
-		</array>
 		<key>QS1PasswordIcon</key>
 		<array>
 			<dict>
 				<key>bundle</key>
-				<string>com.agilebits.onepassword-osx</string>
+				<string>com.agilebits.onepassword7</string>
 				<key>resource</key>
 				<string>app-icon-round.icns</string>
 			</dict>
+		</array>
+		<key>QS1PasswordVaultIcon</key>
+		<array>
 			<dict>
 				<key>bundle</key>
-				<string>com.agilebits.onepassword4</string>
+				<string>com.agilebits.onepassword7</string>
 				<key>resource</key>
-				<string>app-icon-round.icns</string>
+				<string>opvault.icns</string>
 			</dict>
 		</array>
 	</dict>

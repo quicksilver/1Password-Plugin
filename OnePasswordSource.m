@@ -23,79 +23,46 @@
 //
 
 #import "OnePasswordSource.h"
-#import "OnepasswordDefines.h"
+#import "OnePasswordDefines.h"
 #import <YAJL/YAJL.h>
 
 @implementation OnePasswordSource
 
--(void)dealloc {
+- (void)dealloc
+{
 	self.bundleID = nil;
-	[super dealloc];
 }
 
 static id _sharedInstance;
 
 + (id)sharedInstance {
-	if (!_sharedInstance) _sharedInstance = [[[self class] allocWithZone:[self zone]] init];
+	if (!_sharedInstance) _sharedInstance = [[[self class] alloc] init];
 	return _sharedInstance;
 }
 
 -(id)init {
 	if (self = [super init]) {
-		
-		for (NSString *bundleID in kOnePasswordBundleIDs) {
-			OSStatus result = LSFindApplicationForInfo (kLSUnknownCreator,(CFStringRef)bundleID, NULL, nil, nil);
-			if (result == noErr) {
-				self.bundleID = bundleID;
-				break;
-			}
-		}
-		Boolean t = false;
-		Boolean isValid = false;
-		NSString *prefsUsed = nil;
-		for (NSString *prefsString in kOnePasswordPrefs) {
-			t = CFPreferencesGetAppBooleanValue((CFStringRef)@"Enable3rdPartyIntegration", (CFStringRef) prefsString, &isValid);
-			if (isValid) {
-				prefsUsed = prefsString;
-				break;
-			}
-		}
-		NSImage *icon = [QSResourceManager imageNamed:kQS1PasswordIcon];
-		if (isValid) {
-			if (!t) {
-				QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : icon ? icon : [QSResourceManager imageNamed:@"com.blacktree.Quicksilver"], QSNotifierTitle : @"1Password 3rd Party Integration not enabled", QSNotifierText : @"Please enable 3rd Party integration in 1Password to use the 1Password Plugin"});
-			} else {
-				// QSDefaults probably won't be read until after this, so maybe pointless
-				NSString *location = [[[NSUserDefaults standardUserDefaults] objectForKey:k1PPath] stringByStandardizingPath];
-				NSFileManager *fm = [[NSFileManager alloc] init];
-				// valid locations exist and are of type 'json' (since we read this in as JSON)
-				BOOL valid = location && [fm fileExistsAtPath:location] && [[location pathExtension] isEqualToString:@"json"];
-				if (!valid) {
-					if ([prefsUsed isEqualToString:kNonMASBundleID]) {
-						location = kNonMAS1Password3rdPartyFile;
-					} else {
-						location = kMAS1Password3rdPartyFile;
-					}
-					location = [location stringByStandardizingPath];
-					if ([fm fileExistsAtPath:location]) {
-						valid = YES;
-						[[NSUserDefaults standardUserDefaults] setObject:location forKey:k1PPath];
-					}
-				}
-				if (!valid) {
-					NSImage *icon = [QSResourceManager imageNamed:kQS1PasswordIcon];
-					QSShowNotifierWithAttributes(@{QSNotifierType : @"OnePasswordNotifType", QSNotifierIcon : icon ? icon : [QSResourceManager imageNamed:@"com.blacktree.Quicksilver"], QSNotifierTitle : @"Unable to locate 1Password logins", QSNotifierText : @"Please set the 1Password 3rd party integration file's location in Quicksilver's Preferences"});
-				}
-				[fm release];
-			}
+		self.bundleID = kVersion7BundleID;
+		// QSDefaults probably won't be read until after this, so maybe pointless
+		NSString *location = [k1Password3rdPartyItemsPath stringByStandardizingPath];
+		NSFileManager *fm = [[NSFileManager alloc] init];
+		// valid location exists
+		BOOL valid = location && [fm fileExistsAtPath:location];
+		if (!valid) {
+			NSImage *icon = [QSResourceManager imageNamed:kQS1PasswordIcon];
+			QSShowNotifierWithAttributes(@{
+				QSNotifierType: @"OnePasswordNotifType",
+				QSNotifierIcon: icon ? icon : [QSResourceManager imageNamed:@"com.blacktree.Quicksilver"],
+				QSNotifierTitle : @"Unable to locate 1Password items",
+				QSNotifierText : @"Please enable 3rd Party integration in 1Password to use the 1Password Plugin"
+			});
 		}
 	}
 	return self;
 }
 
 - (NSString *)keychainPath {
-	NSString *path = [[NSUserDefaults standardUserDefaults] stringForKey:k1PPath];
-	return path ? path : @"";
+	return [k1Password3rdPartyItemsPath stringByStandardizingPath];
 }
 
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry{
@@ -105,8 +72,6 @@ static id _sharedInstance;
 	NSError *error = nil;
 	NSFileManager *fm = [[NSFileManager alloc] init];
 	NSDate *modDate=[[fm attributesOfItemAtPath:[self keychainPath] error:&error] fileModificationDate];
-	
-	[fm release];
 	
 	if (error) {
 		NSLog(@"Error: %@", error);
@@ -119,36 +84,42 @@ static id _sharedInstance;
 
 
 - (BOOL)loadChildrenForObject:(QSObject *)object {
-	// For the children to 1Pwd, just load what's in objectsForEntry
-	if([[object primaryType] isEqualToString:QSFilePathType]) {
-		NSArray *items = [self objectsForEntry:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:@"LoadingChildren"]];
-		if (!items) {
-			return NO;
-		}
-		[object setChildren:items];
-		return YES;
-	}
-	return NO;
+	// For the children to 1Pwd, just load items from the catalog
+	NSMutableArray *children = [[QSLib scoredArrayForType:QS1PasswordForm] mutableCopy];
+	[object setChildren:children];
+	return YES;
 }
 
-- (NSArray *)objectsForEntry:(NSDictionary *)theEntry{
+- (NSArray *)objectsForEntry:(QSCatalogEntry *)theEntry
+{
 	// Define the objects (Empty to start with) we're going to send back to QS
 	NSMutableArray *objects = [NSMutableArray array];
 	QSObject *newObject;
-	NSString *location = [[[NSUserDefaults standardUserDefaults] objectForKey:k1PPath] stringByStandardizingPath];
-	NSData *JSONData = [NSData dataWithContentsOfFile:location];
-	// TODO - check to make sure this is valid JSON data before running yajl_JSON OR switch to NSJSONSerialization
-	NSArray *OPItems = [JSONData yajl_JSON];
-	for (NSArray *metadata in OPItems) {
-		NSString *uuid = metadata[0];
-		NSString *title = metadata[1];
-		NSString *location = metadata[2];
-		newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"%@-%@", location, uuid]];
+	NSString *location = [self keychainPath];
+	NSSet *searchLocations = [NSSet setWithObject:location];
+	NSMetadataQuery *passwordSearch = [[NSMetadataQuery alloc] init];
+	NSArray *OPItems = [passwordSearch resultsForSearchString:@"kMDItemContentType == 'com.agilebits.itemmetadata'" inFolders:searchLocations];
+	for (NSMetadataItem *item in OPItems) {
+		NSDictionary *metadata = [item valuesForAttributes:@[(NSString *)kMDItemPath]];
+		NSString *itemPath = metadata[(NSString *)kMDItemPath];
+		NSData *JSONData = [NSData dataWithContentsOfFile:itemPath];
+		NSDictionary *OPItem = [JSONData yajl_JSON];
+		if (![OPItem[@"categorySingularName"] isEqualToString:@"Login"]) {
+			continue;
+		}
+		NSString *uuid = OPItem[@"uuid"];
+		NSString *title = OPItem[@"itemTitle"];
+		NSArray *urls = OPItem[@"websiteURLs"];
+		NSString *details = OPItem[@"itemDescription"];
+		newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"1PasswordItem:%@", uuid]];
 		[newObject setName:title];
 		[newObject setObject:uuid forType:QS1PasswordForm];
-		[newObject setObject:location forType:QSURLType];
 		[newObject setPrimaryType:QS1PasswordForm];
-		[newObject setDetails:location];
+		if (urls) {
+			details = urls[0];
+			[newObject setObject:details forType:QSURLType];
+		}
+		[newObject setDetails:details];
 		[newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
 		[objects addObject:newObject];
 	}
