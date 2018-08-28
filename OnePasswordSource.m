@@ -22,6 +22,8 @@
 //	along with Quicksilver 1Password Module.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+// See https://support.1password.com/integration-mac/
+
 #import "OnePasswordSource.h"
 #import "OnePasswordDefines.h"
 #import <YAJL/YAJL.h>
@@ -82,6 +84,10 @@ static id _sharedInstance;
 	return ([modDate compare:indexDate]==NSOrderedAscending);
 }
 
+- (NSString *)detailsOfObject:(QSObject *)object
+{
+	return [object objectForMeta:kOnePasswordItemDetails];
+}
 
 - (BOOL)loadChildrenForObject:(QSObject *)object {
 	// For the children to 1Pwd, just load items from the catalog
@@ -104,22 +110,22 @@ static id _sharedInstance;
 		NSString *itemPath = metadata[(NSString *)kMDItemPath];
 		NSData *JSONData = [NSData dataWithContentsOfFile:itemPath];
 		NSDictionary *OPItem = [JSONData yajl_JSON];
-		if (![OPItem[@"categorySingularName"] isEqualToString:@"Login"]) {
-			continue;
-		}
 		NSString *uuid = OPItem[@"uuid"];
+		NSString *categoty = OPItem[@"categoryUUID"];
 		NSString *title = OPItem[@"itemTitle"];
 		NSArray *urls = OPItem[@"websiteURLs"];
 		NSString *details = OPItem[@"itemDescription"];
 		newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"1PasswordItem:%@", uuid]];
 		[newObject setName:title];
-		[newObject setObject:uuid forType:QS1PasswordForm];
-		[newObject setPrimaryType:QS1PasswordForm];
+		[newObject setObject:itemPath forType:QSFilePathType];
+		[newObject setObject:categoty forMeta:kOnePasswordItemCategory];
+		[newObject setObject:details forMeta:kOnePasswordItemDetails];
 		if (urls) {
-			details = urls[0];
-			[newObject setObject:details forType:QSURLType];
+			NSString *firstURL = urls[0];
+			[newObject setObject:firstURL forType:QSURLType];
+			[newObject setObject:uuid forType:QS1PasswordForm];
 		}
-		[newObject setDetails:details];
+		[newObject setPrimaryType:QS1PasswordForm];
 		[newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
 		[objects addObject:newObject];
 	}

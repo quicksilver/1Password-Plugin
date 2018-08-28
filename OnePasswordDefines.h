@@ -9,6 +9,10 @@
 // QSObject type defines
 #define QS1PasswordForm @"QS1PasswordForm"
 #define kOnePasswordAction @"OnePasswordAction"
+#define kOnePasswordItemDetails @"details-1password"
+#define kOnePasswordItemCategory @"category-1password"
+// see https://support.1password.com/integration-mac/#appendix-categories
+#define kOnePasswordCategoryLogin @"001"
 
 // Some things from Carbon
 #define kASAppleScriptSuite 'ascr'

@@ -66,11 +66,11 @@
 	return [NSArray arrayWithObjects:preferred, validIndirects, nil];
 }
 
-
-
-
-- (QSObject *)goAndFill:(QSObject *)dObject{
-	[self goAndFill:dObject with:nil];
+- (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
+{
+	if ([[dObject objectForMeta:kOnePasswordItemCategory] isEqualToString:kOnePasswordCategoryLogin]) {
+		return @[@"goAndFill"];
+	}
 	return nil;
 }
 
