@@ -136,24 +136,6 @@
 			<key>OnePasswordSource</key>
 			<string>OnePasswordSource</string>
 		</dict>
-		<key>QSPreferencePanes</key>
-		<dict>
-			<key>1PasswordPrefPane</key>
-			<dict>
-				<key>class</key>
-				<string>QS1PasswordPreferencePane</string>
-				<key>description</key>
-				<string>Preferences</string>
-				<key>icon</key>
-				<string>QS1PasswordIcon</string>
-				<key>name</key>
-				<string>1Password</string>
-				<key>nibBundle</key>
-				<string>com.robertson.Quicksilver.OnePassword</string>
-				<key>nibName</key>
-				<string>OnePasswordPrefPane</string>
-			</dict>
-		</dict>
 		<key>QSTypeDefinitions</key>
 		<dict>
 			<key>QS1PasswordForm</key>
