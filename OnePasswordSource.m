@@ -28,15 +28,16 @@
 #import "OnePasswordDefines.h"
 #import <YAJL/YAJL.h>
 
-QSObject *onePasswordURLObject(NSString *itemURL) {
+QSObject *onePasswordURLObject(NSString *itemURL, QSObject *parentObject) {
 	NSString *ident = [NSString stringWithFormat:@"1PasswordURL:%@", itemURL];
-	NSString *name = [NSString stringWithFormat:@"Website %@", itemURL];
+	NSString *name = [NSString stringWithFormat:@"Website for %@", [parentObject displayName]];
 	QSObject *newObject = [QSObject makeObjectWithIdentifier:ident];
 	[newObject setName:name];
 	[newObject setDetails:itemURL];
 	[newObject setObject:itemURL forType:QSURLType];
 	[newObject setObject:itemURL forType:QS1PasswordURLType];
 	[newObject setPrimaryType:QS1PasswordURLType];
+	[newObject setObject:[parentObject identifier] forMeta:kQSObjectParentID];
 	return newObject;
 }
 
@@ -123,13 +124,11 @@ static id _sharedInstance;
 		NSString *name;
 		NSInteger URLCount = 1;
 		for (NSString *itemURL in URLs) {
-			newObject = onePasswordURLObject(itemURL);
+			newObject = onePasswordURLObject(itemURL, object);
 			if (URLCount > 1) {
 				name = [NSString stringWithFormat:@"Website %lu for %@", (long)URLCount, [object displayName]];
-			} else {
-				name = [NSString stringWithFormat:@"Website for %@", [object displayName]];
+				[newObject setName:name];
 			}
-			[newObject setName:name];
 			[urlObjects addObject:newObject];
 			URLCount += 1;
 		}
