@@ -122,19 +122,21 @@
 		</dict>
 		<key>QSTypeDefinitions</key>
 		<dict>
-			<key>QS1PasswordURLType</key>
-			<dict>
-				<key>icon</key>
-				<string>QS1PasswordIcon</string>
-				<key>name</key>
-				<string>URLs from 1Password</string>
-			</dict>
 			<key>QS1PasswordItemType</key>
 			<dict>
 				<key>icon</key>
 				<string>QS1PasswordIcon</string>
 				<key>name</key>
 				<string>1Password Items</string>
+				<key>smartspace</key>
+				<integer>6</integer>
+			</dict>
+			<key>QS1PasswordURLType</key>
+			<dict>
+				<key>icon</key>
+				<string>QS1PasswordIcon</string>
+				<key>name</key>
+				<string>URLs from 1Password</string>
 			</dict>
 		</dict>
 	</dict>
