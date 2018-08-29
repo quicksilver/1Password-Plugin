@@ -32,12 +32,12 @@
 - (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
 {
 	if ([[dObject objectForMeta:kOnePasswordItemCategory] isEqualToString:kOnePasswordCategoryLogin] || [[dObject primaryType] isEqualToString:QS1PasswordURLType]) {
-		return @[@"goAndFill"];
+		return @[@"openAndFill"];
 	}
 	return nil;
 }
 
-- (QSObject *)goAndFill:(QSObject *)dObject
+- (QSObject *)openAndFill:(QSObject *)dObject
 {
 	// see https://support.1password.com/integration-mac/#open-a-url
 	return nil;

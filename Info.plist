@@ -22,19 +22,19 @@
 	<string>3B4</string>
 	<key>QSActions</key>
 	<dict>
-		<key>goAndFill</key>
+		<key>openAndFill</key>
 		<dict>
 			<key>actionClass</key>
 			<string>OnePasswordAction</string>
 			<key>actionSelector</key>
-			<string>goAndFill:</string>
+			<string>openAndFill:</string>
 			<key>directTypes</key>
 			<array>
 				<string>QS1PasswordItemType</string>
 				<string>QS1PasswordURLType</string>
 			</array>
 			<key>name</key>
-			<string>Go &amp; Fill</string>
+			<string>Open &amp; Fill</string>
 			<key>precedence</key>
 			<string>4</string>
 			<key>validatesObjects</key>
