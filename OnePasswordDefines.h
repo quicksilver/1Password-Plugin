@@ -7,7 +7,7 @@
 #define kKeychainPathArray [NSArray arrayWithObjects:kOldKeychainLocation,kNewMASKeychainLocation,kDropboxLocation,kOldDropboxLocation,nil]
 
 // QSObject type defines
-#define QS1PasswordForm @"QS1PasswordForm"
+#define QS1PasswordItemType @"QS1PasswordItemType"
 #define kOnePasswordAction @"OnePasswordAction"
 #define kOnePasswordItemDetails @"details-1password"
 #define kOnePasswordItemCategory @"category-1password"

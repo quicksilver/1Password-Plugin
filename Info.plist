@@ -30,7 +30,7 @@
 			<string>goAndFill:</string>
 			<key>directTypes</key>
 			<array>
-				<string>QS1PasswordForm</string>
+				<string>QS1PasswordItemType</string>
 			</array>
 			<key>name</key>
 			<string>Go &amp; Fill</string>
@@ -128,7 +128,7 @@
 		</dict>
 		<key>QSObjectHandlers</key>
 		<dict>
-			<key>QS1PasswordForm</key>
+			<key>QS1PasswordItemType</key>
 			<string>OnePasswordSource</string>
 		</dict>
 		<key>QSObjectSources</key>

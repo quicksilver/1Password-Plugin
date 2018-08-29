@@ -81,7 +81,7 @@
     NSMutableArray *URLArray = [[NSMutableArray alloc] initWithCapacity:[dObject count]];
     for (QSObject *goAndFillObject in [dObject splitObjects]) {
         
-        NSString *URLString = [NSString stringWithFormat:@"%@?onepasswdfill=%@",[goAndFillObject details],[goAndFillObject objectForType:QS1PasswordForm]];
+        NSString *URLString = [NSString stringWithFormat:@"%@?onepasswdfill=%@",[goAndFillObject details],[goAndFillObject objectForType:QS1PasswordItemType]];
         [URLArray addObject:[NSURL URLWithString:[URLString URLEncoding]]];
         
     }

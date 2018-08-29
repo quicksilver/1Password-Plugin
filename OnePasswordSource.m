@@ -91,7 +91,7 @@ static id _sharedInstance;
 
 - (BOOL)loadChildrenForObject:(QSObject *)object {
 	// For the children to 1Pwd, just load items from the catalog
-	NSMutableArray *children = [[QSLib scoredArrayForType:QS1PasswordForm] mutableCopy];
+	NSMutableArray *children = [[QSLib scoredArrayForType:QS1PasswordItemType] mutableCopy];
 	[object setChildren:children];
 	return YES;
 }
@@ -123,9 +123,9 @@ static id _sharedInstance;
 		if (urls) {
 			NSString *firstURL = urls[0];
 			[newObject setObject:firstURL forType:QSURLType];
-			[newObject setObject:uuid forType:QS1PasswordForm];
+			[newObject setObject:uuid forType:QS1PasswordItemType];
 		}
-		[newObject setPrimaryType:QS1PasswordForm];
+		[newObject setPrimaryType:QS1PasswordItemType];
 		[newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
 		[objects addObject:newObject];
 	}
@@ -135,7 +135,7 @@ static id _sharedInstance;
 // Object Handler Methods
 // An icon that is either already in memory or easy to load
 - (void)setQuickIconForObject:(QSObject *)object{
-	if ([[object primaryType] isEqualToString:QS1PasswordForm])
+	if ([[object primaryType] isEqualToString:QS1PasswordItemType])
 	{
 		[object setIcon:[QSResourceManager imageNamed:self.bundleID]];
 	}
