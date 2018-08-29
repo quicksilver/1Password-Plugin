@@ -15,6 +15,7 @@
 #define kOnePasswordItemCategory @"category-1password"
 // see https://support.1password.com/integration-mac/#appendix-categories
 #define kOnePasswordCategoryLogin @"001"
+#define kOnePasswordVaultIdentifier @"vault-1password"
 
 // Some things from Carbon
 #define kASAppleScriptSuite 'ascr'
