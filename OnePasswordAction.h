@@ -27,9 +27,5 @@
 {
     NSString *bundleID;
 }
-
-- (QSObject *)goAndFill:(QSObject *)dObject;
-- (QSObject *)goAndFill:(QSObject *)dObject with:(QSObject *)iObject;
-
 @end
 

@@ -29,43 +29,6 @@
 
 @implementation OnePasswordAction
 
-// Method to only show browsers in the 3rd pane for the 'Go & Fill With...' action
-- (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject{
-// only for 'Go & Fill With...' action
-	if (![action isEqualToString:@"goAndFillWith"]) {
-		return nil;
-	}
-	NSArray *validBrowsers = [NSArray arrayWithObjects:@"org.mozilla.firefox",
-							  @"com.apple.Safari",@"com.google.Chrome",@"org.mozilla.camino",@"com.operasoftware.Opera",
-							  @"com.omnigroup.omniweb",@"com.ranchero.NetNewsWire",
-							  @"com.fluidapp.Fluid",@"com.devon-technologies.agent",@"de.icab.iCab",@"org.webkit.nightly.WebKit",nil];
-	NSMutableArray *validIndirects = [NSMutableArray arrayWithCapacity:1];
-	NSMutableSet *set = [NSMutableSet set];
-
-	
-	NSMutableArray *validBrowserPaths = [NSMutableArray arrayWithCapacity:1];
-	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-	for(NSString *browserID in validBrowsers) {
-		NSString *browserPath = [ws absolutePathForAppBundleWithIdentifier:browserID];
-		if (browserPath) {
-			[validBrowserPaths addObject:browserPath];
-		}
-	}
-	// Get the default app for the url
-	NSURL *appURL = (__bridge NSURL *)LSCopyDefaultApplicationURLForURL((__bridge CFURLRef)[NSURL URLWithString:@"http://"], kLSRolesAll, NULL);
-	
-	// Set the default app to be 1st in the returned list
-	id preferred = [QSObject fileObjectWithPath:[appURL path]];
-	if (!preferred) {
-		preferred = [NSNull null];
-	}
-	
-	[set addObjectsFromArray:validBrowserPaths];
-	validIndirects = [[QSLibrarian sharedInstance] scoredArrayForString:nil inSet:[QSObject fileObjectsWithPathArray:[set allObjects]]];
-	
-	return [NSArray arrayWithObjects:preferred, validIndirects, nil];
-}
-
 - (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
 {
 	if ([[dObject objectForMeta:kOnePasswordItemCategory] isEqualToString:kOnePasswordCategoryLogin]) {
@@ -74,35 +37,9 @@
 	return nil;
 }
 
-- (QSObject *)goAndFill:(QSObject *)dObject with:(QSObject *)iObject {
-	
-    NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-    
-    NSMutableArray *URLArray = [[NSMutableArray alloc] initWithCapacity:[dObject count]];
-    for (QSObject *goAndFillObject in [dObject splitObjects]) {
-        
-        NSString *URLString = [NSString stringWithFormat:@"%@?onepasswdfill=%@",[goAndFillObject details],[goAndFillObject objectForType:QS1PasswordItemType]];
-        [URLArray addObject:[NSURL URLWithString:[URLString URLEncoding]]];
-        
-    }
-       
-    if (!iObject) {
-        [ws openURLs:URLArray withAppBundleIdentifier:nil
-                                              options:0
-                       additionalEventParamDescriptor:nil
-                                    launchIdentifiers:nil];
-    } else {
-        for(QSObject *individual in [iObject splitObjects]){
-            if([individual isApplication]) {	
-                NSString *ident = [[NSBundle bundleWithPath:[individual singleFilePath]] bundleIdentifier];
-                [ws openURLs:URLArray withAppBundleIdentifier:ident
-                     options:0
-additionalEventParamDescriptor:nil
-           launchIdentifiers:nil];
-                
-            }
-        }
-    }
+- (QSObject *)goAndFill:(QSObject *)dObject
+{
+	// see https://support.1password.com/integration-mac/#open-a-url
 	return nil;
 }
 @end

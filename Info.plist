@@ -37,24 +37,7 @@
 			<key>precedence</key>
 			<string>4</string>
 			<key>validatesObjects</key>
-			<false/>
-		</dict>
-		<key>goAndFillWith</key>
-		<dict>
-			<key>actionClass</key>
-			<string>OnePasswordAction</string>
-			<key>actionSelector</key>
-			<string>goAndFill:with:</string>
-			<key>directTypes</key>
-			<array>
-				<string>QS1PasswordForm</string>
-			</array>
-			<key>name</key>
-			<string>Go &amp; Fill With…</string>
-			<key>precedence</key>
-			<string>3</string>
-			<key>validatesObjects</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>QSDefaults</key>
