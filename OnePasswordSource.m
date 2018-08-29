@@ -28,6 +28,18 @@
 #import "OnePasswordDefines.h"
 #import <YAJL/YAJL.h>
 
+QSObject *onePasswordURLObject(NSString *itemURL) {
+	NSString *ident = [NSString stringWithFormat:@"1PasswordURL:%@", itemURL];
+	NSString *name = [NSString stringWithFormat:@"Website %@", itemURL];
+	QSObject *newObject = [QSObject makeObjectWithIdentifier:ident];
+	[newObject setName:name];
+	[newObject setDetails:itemURL];
+	[newObject setObject:itemURL forType:QSURLType];
+	[newObject setObject:itemURL forType:QS1PasswordURLType];
+	[newObject setPrimaryType:QS1PasswordURLType];
+	return newObject;
+}
+
 @implementation OnePasswordSource
 
 - (void)dealloc
@@ -108,22 +120,16 @@ static id _sharedInstance;
 		NSArray *URLs = [object objectForMeta:kOnePasswordItemURLs];
 		NSMutableArray *urlObjects = [NSMutableArray arrayWithCapacity:[URLs count]];
 		QSObject *newObject;
-		NSString *ident;
 		NSString *name;
 		NSInteger URLCount = 1;
 		for (NSString *itemURL in URLs) {
-			ident = [NSString stringWithFormat:@"1PasswordURL:%@", itemURL];
+			newObject = onePasswordURLObject(itemURL);
 			if (URLCount > 1) {
 				name = [NSString stringWithFormat:@"Website %lu for %@", (long)URLCount, [object displayName]];
 			} else {
 				name = [NSString stringWithFormat:@"Website for %@", [object displayName]];
 			}
-			newObject = [QSObject makeObjectWithIdentifier:ident];
 			[newObject setName:name];
-			[newObject setDetails:itemURL];
-			[newObject setObject:itemURL forType:QSURLType];
-			[newObject setObject:itemURL forType:QS1PasswordURLType];
-			[newObject setPrimaryType:QS1PasswordURLType];
 			[urlObjects addObject:newObject];
 			URLCount += 1;
 		}
