@@ -8,8 +8,10 @@
 
 // QSObject type defines
 #define QS1PasswordItemType @"QS1PasswordItemType"
+#define QS1PasswordURLType @"QS1PasswordURLType" // URLs found in Logins
 #define kOnePasswordAction @"OnePasswordAction"
 #define kOnePasswordItemDetails @"details-1password"
+#define kOnePasswordItemURLs @"kOnePasswordItemURLs"
 #define kOnePasswordItemCategory @"category-1password"
 // see https://support.1password.com/integration-mac/#appendix-categories
 #define kOnePasswordCategoryLogin @"001"

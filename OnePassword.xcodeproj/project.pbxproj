@@ -115,11 +115,11 @@
 		32DBCF9E0370C38000C91783 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CDF8E28714928A4F005B1E49 /* OnePasswordDefines.h */,
 				BBF5817A0B1D9D84003CFF55 /* OnePasswordAction.h */,
 				BBF5817B0B1D9D84003CFF55 /* OnePasswordAction.m */,
 				BBF581820B1D9DC3003CFF55 /* OnePasswordSource.h */,
 				BBF581830B1D9DC3003CFF55 /* OnePasswordSource.m */,
-				CDF8E28714928A4F005B1E49 /* OnePasswordDefines.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";

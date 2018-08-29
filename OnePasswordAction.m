@@ -31,7 +31,7 @@
 
 - (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
 {
-	if ([[dObject objectForMeta:kOnePasswordItemCategory] isEqualToString:kOnePasswordCategoryLogin]) {
+	if ([[dObject objectForMeta:kOnePasswordItemCategory] isEqualToString:kOnePasswordCategoryLogin] || [[dObject primaryType] isEqualToString:QS1PasswordURLType]) {
 		return @[@"goAndFill"];
 	}
 	return nil;

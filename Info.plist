@@ -31,6 +31,7 @@
 			<key>directTypes</key>
 			<array>
 				<string>QS1PasswordItemType</string>
+				<string>QS1PasswordURLType</string>
 			</array>
 			<key>name</key>
 			<string>Go &amp; Fill</string>
@@ -121,12 +122,19 @@
 		</dict>
 		<key>QSTypeDefinitions</key>
 		<dict>
-			<key>QS1PasswordForm</key>
+			<key>QS1PasswordURLType</key>
 			<dict>
 				<key>icon</key>
 				<string>QS1PasswordIcon</string>
 				<key>name</key>
-				<string>1Password Login</string>
+				<string>URLs from 1Password</string>
+			</dict>
+			<key>QS1PasswordItemType</key>
+			<dict>
+				<key>icon</key>
+				<string>QS1PasswordIcon</string>
+				<key>name</key>
+				<string>1Password Items</string>
 			</dict>
 		</dict>
 	</dict>

@@ -86,13 +86,53 @@ static id _sharedInstance;
 
 - (NSString *)detailsOfObject:(QSObject *)object
 {
-	return [object objectForMeta:kOnePasswordItemDetails];
+	if ([[object primaryType] isEqualToString:QS1PasswordItemType]) {
+		return [object objectForMeta:kOnePasswordItemDetails];
+	}
+	return nil;
 }
 
-- (BOOL)loadChildrenForObject:(QSObject *)object {
-	// For the children to 1Pwd, just load items from the catalog
-	NSMutableArray *children = [[QSLib scoredArrayForType:QS1PasswordItemType] mutableCopy];
-	[object setChildren:children];
+- (BOOL)objectHasChildren:(QSObject *)object
+{
+	if ([[object primaryType] isEqualToString:QS1PasswordItemType]) {
+		if ([[object objectForMeta:kOnePasswordItemURLs] count]) {
+			return YES;
+		}
+	}
+	return NO;
+}
+
+- (BOOL)loadChildrenForObject:(QSObject *)object
+{
+	if ([[object primaryType] isEqualToString:QS1PasswordItemType]) {
+		NSArray *URLs = [object objectForMeta:kOnePasswordItemURLs];
+		NSMutableArray *urlObjects = [NSMutableArray arrayWithCapacity:[URLs count]];
+		QSObject *newObject;
+		NSString *ident;
+		NSString *name;
+		NSInteger URLCount = 1;
+		for (NSString *itemURL in URLs) {
+			ident = [NSString stringWithFormat:@"1PasswordURL:%@", itemURL];
+			if (URLCount > 1) {
+				name = [NSString stringWithFormat:@"Website %lu for %@", (long)URLCount, [object displayName]];
+			} else {
+				name = [NSString stringWithFormat:@"Website for %@", [object displayName]];
+			}
+			newObject = [QSObject makeObjectWithIdentifier:ident];
+			[newObject setName:name];
+			[newObject setDetails:itemURL];
+			[newObject setObject:itemURL forType:QSURLType];
+			[newObject setObject:itemURL forType:QS1PasswordURLType];
+			[newObject setPrimaryType:QS1PasswordURLType];
+			[urlObjects addObject:newObject];
+			URLCount += 1;
+		}
+		[object setChildren:urlObjects];
+	} else {
+		// For the children to 1Pwd, just load items from the catalog
+		NSMutableArray *children = [[QSLib scoredArrayForType:QS1PasswordItemType] mutableCopy];
+		[object setChildren:children];
+	}
 	return YES;
 }
 
@@ -124,6 +164,7 @@ static id _sharedInstance;
 			NSString *firstURL = urls[0];
 			[newObject setObject:firstURL forType:QSURLType];
 			[newObject setObject:uuid forType:QS1PasswordItemType];
+			[newObject setObject:urls forMeta:kOnePasswordItemURLs];
 		}
 		[newObject setPrimaryType:QS1PasswordItemType];
 		[newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
