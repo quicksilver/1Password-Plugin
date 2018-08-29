@@ -161,11 +161,13 @@ static id _sharedInstance;
 		NSString *title = OPItem[@"itemTitle"];
 		NSArray *urls = OPItem[@"websiteURLs"];
 		NSString *details = OPItem[@"itemDescription"];
+		NSString *vault = OPItem[@"profileUUID"];
 		newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"1PasswordItem:%@", uuid]];
 		[newObject setName:title];
 		[newObject setObject:itemPath forType:QSFilePathType];
 		[newObject setObject:categoty forMeta:kOnePasswordItemCategory];
 		[newObject setObject:details forMeta:kOnePasswordItemDetails];
+		[newObject setObject:vault forMeta:kOnePasswordVaultIdentifier];
 		if (urls) {
 			NSString *firstURL = urls[0];
 			[newObject setObject:firstURL forType:QSURLType];
