@@ -55,22 +55,27 @@
 		<string>Quickly find and use 1Password items</string>
 		<key>extendedDescription</key>
 		<string>&lt;h2&gt;1Password Plugin&lt;/h2&gt;
-&lt;p&gt;The 1Password plugin for Quicksilver gives you the ability to quickly find 1Password items from Quicksilver, and to Go &amp;amp; Fill web logins.&lt;/p&gt;
+&lt;p&gt;This plugin gives you the ability to quickly find 1Password items using Quicksilver.&lt;/p&gt;
+&lt;p&gt;With any item from 1Password selected, you can:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;View the item in 1Password&lt;/li&gt;
+&lt;li&gt;Quick Look the item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Login Items&lt;/h3&gt;
+&lt;p&gt;Login items have some special features. By default, opening a Login item will trigger the “Open &amp;amp; Fill” behavior using the first URL associated with the item. To view the item in 1Password instead, hold the Shift key while opening it.&lt;/p&gt;
+&lt;p&gt;All of the URLs associated with a Login are accesible by selecting the item and hitting &lt;kbd&gt;→&lt;/kbd&gt; or &lt;kbd&gt;/&lt;/kbd&gt;. Use this feature when you want to Open &amp;amp; Fill one of its other URLs.&lt;/p&gt;
 &lt;h3&gt;Requirements&lt;/h3&gt;
-&lt;p&gt;For Quicksilver to index your logins, you will need to enable integration with 3rd party apps in the “Advanced” section of 1Password’s preferences.&lt;/p&gt;
+&lt;p&gt;For Quicksilver to index items from 1Password, you will need to enable &lt;a href="https://support.1password.com/integration-mac/"&gt;integration with 3rd party&lt;/a&gt; apps in the “Advanced” section of 1Password’s preferences.&lt;/p&gt;
 &lt;h3&gt;Catalog&lt;/h3&gt;
-&lt;p&gt;This plugin allows Quicksilver to index your 1Password Logins.&lt;/p&gt;
-&lt;p&gt;You can access all these items by right arrowing (→) into the 1Password.app in Quicksilver&apos;s first pane.&lt;/p&gt;
-&lt;p&gt;You may also add these items to your catalog by going to the &lt;a href=&quot;qs://preferences#QSCatalogPrefPane&quot;&gt;Catalog preferences&lt;/a&gt; and enabling the “1Password Logins” preset.&lt;/p&gt;
+&lt;p&gt;The “1Password Items” preset allows Quicksilver to index your 1Password items. (Only basic information like title and URL is available. 1Password does not expose sensitive data to 3rd party applications.)&lt;/p&gt;
+&lt;p&gt;You can access all these items by right arrowing (→) into the 1Password application in Quicksilver’s first pane.&lt;/p&gt;
 &lt;h3&gt;Actions&lt;/h3&gt;
 &lt;dl&gt;
-&lt;dt&gt;Go &amp;amp; Fill&lt;/dt&gt;
-&lt;dd&gt;The Go &amp;amp; Fill action is available for 1Password web forms. When run on a web form, the plugin takes you to your browser and logs you in using the login.&lt;/dd&gt;
-&lt;dt&gt;Go &amp;amp; Fill With…&lt;/dt&gt;
-&lt;dd&gt;This action is an extension of the &apos;Go &amp;amp; Fill&apos; action, and allows you to specify a browser to use when filling the login/web form.&lt;/dd&gt;
+&lt;dt&gt;Open &amp;amp; Fill&lt;/dt&gt;
+&lt;dd&gt;The Open &amp;amp; Fill action is available for individual website URLs associated with Login items. When run, 1Password opens the URL in your browser and fills the login form.&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;hr&gt;
-&lt;p&gt;This plugin has taken a lot of development time. If you enjoy using it, please consider &lt;a href=&quot;http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/&quot;&gt;donating&lt;/a&gt;.&lt;/p&gt;</string>
+&lt;p&gt;This plugin has taken a lot of development time. If you enjoy using it, please consider &lt;a href="http://patjack.co.uk/donating-for-my-quicksilver-1password-plugin/"&gt;donating&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>QS1PasswordIcon</string>
 		<key>relatedBundles</key>

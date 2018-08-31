@@ -1,26 +1,32 @@
 ## 1Password Plugin
 
-The 1Password plugin for Quicksilver gives you the ability to quickly find 1Password items from Quicksilver, and to Go & Fill web logins.
+This plugin gives you the ability to quickly find 1Password items using Quicksilver.
+
+With any item from 1Password selected, you can:
+
+  * View the item in 1Password
+  * Quick Look the item
+
+### Login Items
+
+Login items have some special features. By default, opening a Login item will trigger the “Open & Fill” behavior using the first URL associated with the item. To view the item in 1Password instead, hold the Shift key while opening it.
+
+All of the URLs associated with a Login are accesible by selecting the item and hitting <kbd>→</kbd> or <kbd>/</kbd>. Use this feature when you want to Open & Fill one of its other URLs.
 
 ### Requirements
 
-For Quicksilver to index your logins, you will need to enable integration with 3rd party apps in the “Advanced” section of 1Password’s preferences.
+For Quicksilver to index items from 1Password, you will need to enable [integration with 3rd party](https://support.1password.com/integration-mac/) apps in the “Advanced” section of 1Password’s preferences.
 
 ### Catalog
 
-This plugin allows Quicksilver to index your 1Password Logins.
+The “1Password Items” preset allows Quicksilver to index your 1Password items. (Only basic information like title and URL is available. 1Password does not expose sensitive data to 3rd party applications.)
 
-You can access all these items by right arrowing (→) into the 1Password.app in Quicksilver's first pane.
-
-You may also add these items to your catalog by going to the [Catalog preferences](qs://preferences#QSCatalogPrefPane) and enabling the “1Password Logins” preset.
+You can access all these items by right arrowing (→) into the 1Password application in Quicksilver’s first pane.
 
 ### Actions
 
-Go & Fill
-: The Go & Fill action is available for 1Password web forms. When run on a web form, the plugin takes you to your browser and logs you in using the login.
-
-Go & Fill With…
-: This action is an extension of the 'Go & Fill' action, and allows you to specify a browser to use when filling the login/web form.
+Open & Fill
+: The Open & Fill action is available for individual website URLs associated with Login items. When run, 1Password opens the URL in your browser and fills the login form.
 
 -----
 
