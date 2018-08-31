@@ -27,7 +27,7 @@
 #import "OnePasswordDefines.h"
 #import <CommonCrypto/CommonDigest.h>
 
-NSString *sha256HashFor(NSString* input) {
+NSString *sha256Hash(NSString* input) {
 	const char* original = [input UTF8String];
 	unsigned char result[CC_SHA256_DIGEST_LENGTH];
 	CC_SHA256(original, (unsigned int)strlen(original), result);
@@ -43,7 +43,7 @@ NSURL *openAndFillURL(NSString *targetURL, QSObject *onePasswordItem) {
 	NSString *onePasswordURLFormat = @"onepassword7://open_and_fill/%@/%@/%@";
 	NSString *vault = [onePasswordItem objectForMeta:kOnePasswordVaultIdentifier];
 	NSString *uuid = [onePasswordItem objectForType:QS1PasswordItemType];
-	NSString *stringURL = [NSString stringWithFormat:onePasswordURLFormat, vault, uuid, sha256HashFor(targetURL)];
+	NSString *stringURL = [NSString stringWithFormat:onePasswordURLFormat, vault, uuid, sha256Hash(targetURL)];
 	return [[NSURL alloc] initWithString:stringURL];
 }
 

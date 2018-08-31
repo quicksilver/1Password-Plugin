@@ -37,7 +37,7 @@ QSObject *onePasswordURLObject(NSString *itemURL, QSObject *parentObject) {
 	[newObject setObject:itemURL forType:QSURLType];
 	[newObject setObject:itemURL forType:QS1PasswordURLType];
 	[newObject setPrimaryType:QS1PasswordURLType];
-	[newObject setObject:[parentObject identifier] forMeta:kQSObjectParentID];
+	[newObject setParentID:[parentObject identifier]];
 	return newObject;
 }
 
