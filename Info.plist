@@ -52,7 +52,7 @@
 			<string>Applications</string>
 		</array>
 		<key>description</key>
-		<string>Quickly find and use 1Password logins</string>
+		<string>Quickly find and use 1Password items</string>
 		<key>extendedDescription</key>
 		<string>&lt;h2&gt;1Password Plugin&lt;/h2&gt;
 &lt;p&gt;The 1Password plugin for Quicksilver gives you the ability to quickly find 1Password items from Quicksilver, and to Go &amp;amp; Fill web logins.&lt;/p&gt;
@@ -88,7 +88,7 @@
 			<key>icon</key>
 			<string>QS1PasswordVaultIcon</string>
 			<key>name</key>
-			<string>1Password Logins</string>
+			<string>1Password Items</string>
 			<key>source</key>
 			<string>OnePasswordSource</string>
 			<key>type</key>
