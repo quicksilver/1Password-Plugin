@@ -49,29 +49,11 @@ NSURL *openAndFillURL(NSString *targetURL, QSObject *onePasswordItem) {
 
 @implementation OnePasswordAction
 
-- (NSArray *)validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject
-{
-	if ([[dObject objectForMeta:kOnePasswordItemCategory] isEqualToString:kOnePasswordCategoryLogin] || [[dObject primaryType] isEqualToString:QS1PasswordURLType]) {
-		return @[@"openAndFill"];
-	}
-	return nil;
-}
-
 - (QSObject *)openAndFill:(QSObject *)dObject
 {
 	// see https://support.1password.com/integration-mac/#open-a-url
-	QSObject *onePasswordItem;
-	NSString *targetURL;
-	if ([[dObject primaryType] isEqualToString:QS1PasswordItemType]) {
-		// this is a 1Password Login item
-		onePasswordItem = dObject;
-		// use first URL
-		targetURL = [[dObject objectForMeta:kOnePasswordItemURLs] objectAtIndex:0];
-	} else {
-		// this is a specific URL from a Login item
-		onePasswordItem = [dObject parent];
-		targetURL = [dObject objectForType:QSURLType];
-	}
+	QSObject *onePasswordItem = [dObject parent];
+	NSString *targetURL = [dObject objectForType:QSURLType];
 	if (onePasswordItem && targetURL) {
 		NSURL *computedURL = openAndFillURL(targetURL, onePasswordItem);
 		[[NSWorkspace sharedWorkspace] openURL:computedURL];

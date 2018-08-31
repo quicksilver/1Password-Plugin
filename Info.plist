@@ -30,15 +30,12 @@
 			<string>openAndFill:</string>
 			<key>directTypes</key>
 			<array>
-				<string>QS1PasswordItemType</string>
 				<string>QS1PasswordURLType</string>
 			</array>
 			<key>name</key>
 			<string>Open &amp; Fill</string>
 			<key>precedence</key>
 			<string>4</string>
-			<key>validatesObjects</key>
-			<true/>
 		</dict>
 	</dict>
 	<key>QSDefaults</key>
