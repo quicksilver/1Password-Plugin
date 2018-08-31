@@ -157,6 +157,11 @@ static id _sharedInstance;
 		NSDictionary *OPItem = [JSONData yajl_JSON];
 		NSString *uuid = OPItem[@"uuid"];
 		NSString *categoty = OPItem[@"categoryUUID"];
+		if ([categoty isEqualToString:@"005"]) {
+			// omit passwords https://support.1password.com/integration-mac/#appendix-categories
+			continue;
+			// TODO: add prefs to select what categories get indexed
+		}
 		NSString *title = OPItem[@"itemTitle"];
 		NSArray *urls = OPItem[@"websiteURLs"];
 		NSString *details = OPItem[@"itemDescription"];
