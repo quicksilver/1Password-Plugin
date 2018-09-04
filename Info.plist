@@ -62,12 +62,13 @@
 &lt;li&gt;Quick Look the item&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3&gt;Login Items&lt;/h3&gt;
-&lt;p&gt;Login items have some special features. By default, opening a Login item will trigger the “Open &amp;amp; Fill” behavior using the first URL associated with the item. To view the item in 1Password instead, hold the Shift key while opening it.&lt;/p&gt;
+&lt;p&gt;Login items have some special features. By default, opening a Login item will trigger the “Open &amp;amp; Fill” behavior using the first URL associated with the item. To view the item in 1Password instead, hold the Shift key while opening it. (This behavior is part of 1Password, not Quicksilver.)&lt;/p&gt;
 &lt;p&gt;All of the URLs associated with a Login are accesible by selecting the item and hitting &lt;kbd&gt;→&lt;/kbd&gt; or &lt;kbd&gt;/&lt;/kbd&gt;. Use this feature when you want to Open &amp;amp; Fill one of its other URLs.&lt;/p&gt;
 &lt;h3&gt;Requirements&lt;/h3&gt;
 &lt;p&gt;For Quicksilver to index items from 1Password, you will need to enable &lt;a href="https://support.1password.com/integration-mac/"&gt;integration with 3rd party&lt;/a&gt; apps in the “Advanced” section of 1Password’s preferences.&lt;/p&gt;
 &lt;h3&gt;Catalog&lt;/h3&gt;
-&lt;p&gt;The “1Password Items” preset allows Quicksilver to index your 1Password items. (Only basic information like title and URL is available. 1Password does not expose sensitive data to 3rd party applications.)&lt;/p&gt;
+&lt;p&gt;The 1Password catalog presets allow Quicksilver to index your 1Password items. (Only basic information like title and URL is available. 1Password does not expose sensitive data to 3rd party applications.)&lt;/p&gt;
+&lt;p&gt;Go to Preferences → &lt;a href="qs://preferences#QSCatalogPrefPane"&gt;Catalog&lt;/a&gt; → Plugins and look for the 1Password group. By expanding this group, you can select which categories from 1Password you would like indexed by Quicksilver.&lt;/p&gt;
 &lt;p&gt;You can access all these items by right arrowing (→) into the 1Password application in Quicksilver’s first pane.&lt;/p&gt;
 &lt;h3&gt;Actions&lt;/h3&gt;
 &lt;dl&gt;
