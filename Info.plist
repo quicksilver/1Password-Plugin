@@ -93,11 +93,14 @@
 			<key>icon</key>
 			<string>QS1PasswordVaultIcon</string>
 			<key>name</key>
-			<string>1Password Items</string>
+			<string>1Password Logins</string>
+			<key>settings</key>
+			<dict>
+				<key>categoryUUID</key>
+				<string>001</string>
+			</dict>
 			<key>source</key>
 			<string>OnePasswordSource</string>
-			<key>type</key>
-			<string>WebForm</string>
 		</dict>
 	</array>
 	<key>QSRegistration</key>

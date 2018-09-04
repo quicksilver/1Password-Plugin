@@ -143,6 +143,8 @@ static id _sharedInstance;
 
 - (NSArray *)objectsForEntry:(QSCatalogEntry *)theEntry
 {
+	NSDictionary *settings = [theEntry sourceSettings];
+	NSString *scanCategory = [settings objectForKey:kOnePasswordItemCategory];
 	// Define the objects (Empty to start with) we're going to send back to QS
 	NSMutableArray *objects = [NSMutableArray array];
 	QSObject *newObject;
@@ -155,13 +157,11 @@ static id _sharedInstance;
 		NSString *itemPath = metadata[(NSString *)kMDItemPath];
 		NSData *JSONData = [NSData dataWithContentsOfFile:itemPath];
 		NSDictionary *OPItem = [JSONData yajl_JSON];
-		NSString *uuid = OPItem[@"uuid"];
-		NSString *category = OPItem[@"categoryUUID"];
-		if ([category isEqualToString:@"005"]) {
-			// omit passwords https://support.1password.com/integration-mac/#appendix-categories
+		NSString *category = OPItem[kOnePasswordItemCategory];
+		if (![category isEqualToString:scanCategory]) {
 			continue;
-			// TODO: add prefs to select what categories get indexed
 		}
+		NSString *uuid = OPItem[@"uuid"];
 		NSString *title = OPItem[@"itemTitle"];
 		NSArray *urls = OPItem[@"websiteURLs"];
 		NSString *details = OPItem[@"itemDescription"];

@@ -12,7 +12,7 @@
 #define kOnePasswordAction @"OnePasswordAction"
 #define kOnePasswordItemDetails @"details-1password"
 #define kOnePasswordItemURLs @"kOnePasswordItemURLs"
-#define kOnePasswordItemCategory @"category-1password"
+#define kOnePasswordItemCategory @"categoryUUID"
 // see https://support.1password.com/integration-mac/#appendix-categories
 #define kOnePasswordCategoryLogin @"001"
 #define kOnePasswordVaultIdentifier @"vault-1password"
