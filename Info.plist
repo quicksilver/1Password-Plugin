@@ -169,7 +169,7 @@
 				<key>bundle</key>
 				<string>com.agilebits.onepassword7</string>
 				<key>resource</key>
-				<string>app-icon-round.icns</string>
+				<string>AppIcon.icns</string>
 			</dict>
 		</array>
 		<key>QS1PasswordVaultIcon</key>
