@@ -156,8 +156,8 @@ static id _sharedInstance;
 		NSData *JSONData = [NSData dataWithContentsOfFile:itemPath];
 		NSDictionary *OPItem = [JSONData yajl_JSON];
 		NSString *uuid = OPItem[@"uuid"];
-		NSString *categoty = OPItem[@"categoryUUID"];
-		if ([categoty isEqualToString:@"005"]) {
+		NSString *category = OPItem[@"categoryUUID"];
+		if ([category isEqualToString:@"005"]) {
 			// omit passwords https://support.1password.com/integration-mac/#appendix-categories
 			continue;
 			// TODO: add prefs to select what categories get indexed
@@ -169,7 +169,7 @@ static id _sharedInstance;
 		newObject = [QSObject makeObjectWithIdentifier:[NSString stringWithFormat:@"1PasswordItem:%@", uuid]];
 		[newObject setName:title];
 		[newObject setObject:itemPath forType:QSFilePathType];
-		[newObject setObject:categoty forMeta:kOnePasswordItemCategory];
+		[newObject setObject:category forMeta:kOnePasswordItemCategory];
 		[newObject setObject:details forMeta:kOnePasswordItemDetails];
 		[newObject setObject:vault forMeta:kOnePasswordVaultIdentifier];
 		if (urls) {
