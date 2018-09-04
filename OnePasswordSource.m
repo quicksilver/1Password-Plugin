@@ -175,9 +175,9 @@ static id _sharedInstance;
 		if (urls) {
 			NSString *firstURL = urls[0];
 			[newObject setObject:firstURL forType:QSURLType];
-			[newObject setObject:uuid forType:QS1PasswordItemType];
 			[newObject setObject:urls forMeta:kOnePasswordItemURLs];
 		}
+		[newObject setObject:uuid forType:QS1PasswordItemType];
 		[newObject setPrimaryType:QS1PasswordItemType];
 		[newObject setIcon:[QSResourceManager imageNamed:self.bundleID]];
 		[objects addObject:newObject];
