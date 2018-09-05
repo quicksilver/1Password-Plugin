@@ -463,8 +463,10 @@
 				<string>7.0.0</string>
 			</dict>
 		</array>
-		<key>version</key>
+		<key>minHostVersion</key>
 		<string>4012</string>
+		<key>osRequired</key>
+		<string>10.12</string>
 	</dict>
 	<key>QSResourceAdditions</key>
 	<dict>
